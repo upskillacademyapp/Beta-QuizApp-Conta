@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contabilidad / Buchhaltung – Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ── TOKENS ── */
+  :root {
+    --bg:       #f0f4ff;
+    --surface:  #ffffff;
+    --card:     #ffffff;
+    --border:   #e2e8f8;
+    --shadow:   0 4px 24px rgba(99,102,241,.10);
+    --shadow-lg:0 12px 40px rgba(99,102,241,.16);
+
+```
+/* Course A – coral/amber */
+--gold:   #ff7849;
+--orange: #ffb347;
+--gold-soft: rgba(255,120,73,.10);
+
+/* Course B – indigo/mint */
+--blue:   #6366f1;
+--teal:   #06d6a0;
+--blue-soft: rgba(99,102,241,.10);
+
+/* Feedback */
+--green:  #10b981;
+--red:    #f43f5e;
+
+/* Text */
+--text:   #1e1b4b;
+--muted:  #94a3b8;
+--subtle: #e8edf8;
+
+--radius: 16px;
+--radius-sm: 10px;
+```
+
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
+
+body {
+background: var(–bg);
+color: var(–text);
+font-family: ‘Nunito’, sans-serif;
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+/* Subtle dot-grid background */
+body::before {
+content: ‘’;
+position: fixed; inset: 0; z-index: 0; pointer-events: none;
+background-image: radial-gradient(circle, #c7d2fe 1px, transparent 1px);
+background-size: 28px 28px;
+opacity: .45;
+}
+
+/* Decorative blobs */
+body::after {
+content: ‘’;
+position: fixed; z-index: 0; pointer-events: none;
+width: 520px; height: 520px;
+background: radial-gradient(circle at 30% 40%, rgba(255,120,73,.18) 0%, transparent 70%),
+radial-gradient(circle at 75% 70%, rgba(99,102,241,.15) 0%, transparent 65%);
+top: -100px; left: -100px; right: 0; bottom: 0;
+width: 100%; height: 100%;
+}
+
+.page { display:none; position:relative; z-index:1 }
+.page.active { display:flex; flex-direction:column; min-height:100vh }
+
+/* ── LANGUAGE SWITCHER ── */
+.lang-bar {
+position: fixed; top: 16px; right: 18px; z-index: 200;
+display: flex; gap: 3px;
+background: var(–surface);
+border: 1.5px solid var(–border);
+border-radius: 999px;
+padding: 4px;
+box-shadow: var(–shadow);
+}
+.lang-btn {
+padding: 5px 13px; border-radius: 999px; border: none;
+cursor: pointer; font-family: ‘Space Mono’, monospace; font-size: 11px;
+font-weight: 700; transition: all .2s; background: transparent; color: var(–muted);
+}
+.lang-btn.active {
+background: linear-gradient(135deg, var(–gold), var(–orange));
+color: #fff;
+box-shadow: 0 2px 10px rgba(255,120,73,.35);
+}
+
+/* ── HOME ── */
+#home {
+align-items: center; justify-content: flex-start;
+padding: 72px 20px 60px; text-align: center;
+}
+.home-inner { max-width: 880px; width: 100%; margin: 0 auto }
+
+.badge {
+display: inline-flex; align-items: center; gap: 6px;
+background: linear-gradient(135deg, var(–gold), var(–orange));
+color: #fff; font-family: ‘Space Mono’, monospace; font-size: 11px;
+font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+padding: 7px 18px; border-radius: 999px; margin-bottom: 20px;
+box-shadow: 0 4px 16px rgba(255,120,73,.30);
+animation: bounceIn .6s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+@keyframes bounceIn {
+from { opacity:0; transform:scale(.7) translateY(12px) }
+to   { opacity:1; transform:scale(1) translateY(0) }
+}
+
+.home-title {
+font-family: ‘Nunito’, sans-serif;
+font-size: clamp(42px, 7vw, 82px);
+font-weight: 900; line-height: 1.0; margin-bottom: 10px;
+background: linear-gradient(135deg, #1e1b4b 0%, var(–gold) 55%, var(–blue) 100%);
+-webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+animation: slideUp .5s .15s cubic-bezier(.4,0,.2,1) both;
+}
+
+.home-sub {
+font-size: 16px; color: var(–muted); margin-bottom: 40px;
+font-weight: 600; animation: slideUp .5s .25s cubic-bezier(.4,0,.2,1) both;
+}
+
+@keyframes slideUp {
+from { opacity:0; transform:translateY(18px) }
+to   { opacity:1; transform:translateY(0) }
+}
+
+/* Course tabs */
+.course-tabs {
+display: flex; gap: 10px; justify-content: center;
+margin-bottom: 32px; flex-wrap: wrap;
+animation: slideUp .5s .3s cubic-bezier(.4,0,.2,1) both;
+}
+.course-tab {
+padding: 11px 26px; border-radius: 999px; font-size: 14px; font-weight: 800;
+cursor: pointer; border: 2px solid var(–border); background: var(–surface);
+color: var(–muted); transition: all .22s; font-family: ‘Nunito’, sans-serif;
+box-shadow: var(–shadow);
+}
+.course-tab.active-tab { color: #fff; border-color: transparent }
+.tab-basica.active-tab { background: linear-gradient(135deg,var(–gold),var(–orange)); box-shadow: 0 6px 20px rgba(255,120,73,.35) }
+.tab-sepe.active-tab   { background: linear-gradient(135deg,var(–blue),var(–teal));  box-shadow: 0 6px 20px rgba(99,102,241,.35) }
+.course-tab:hover:not(.active-tab) { border-color: var(–blue); color: var(–blue); transform: translateY(-1px) }
+
+.course-panel { display: none }
+.course-panel.active-panel { display: block; animation: fadeIn .3s ease }
+
+.section-label {
+font-family: ‘Space Mono’, monospace; font-size: 10px;
+letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; padding-left: 2px;
+}
+.section-label.gold { color: var(–gold) }
+.section-label.blue { color: var(–blue) }
+
+/* Topic grid */
+.topic-grid {
+display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr));
+gap: 12px; margin-bottom: 32px;
+}
+.topic-card {
+background: var(–surface); border: 2px solid var(–border);
+border-radius: var(–radius); padding: 18px 16px; cursor: pointer;
+transition: all .22s; text-align: left; position: relative; overflow: hidden;
+box-shadow: var(–shadow);
+}
+.topic-card::after {
+content: ‘’;
+position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
+}
+.gold-card::after { background: linear-gradient(90deg, var(–gold), var(–orange)) }
+.blue-card::after { background: linear-gradient(90deg, var(–blue), var(–teal)) }
+.topic-card:hover::after, .topic-card.selected::after { transform: scaleX(1) }
+.gold-card:hover,.gold-card.selected { border-color: var(–gold); background: var(–gold-soft); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(255,120,73,.18) }
+.blue-card:hover,.blue-card.selected { border-color: var(–blue); background: var(–blue-soft); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(99,102,241,.18) }
+
+.topic-num {
+font-family: ‘Space Mono’, monospace; font-size: 10px;
+letter-spacing: 1px; margin-bottom: 7px; font-weight: 700;
+}
+.gold-card .topic-num { color: var(–gold) }
+.blue-card .topic-num { color: var(–blue) }
+.topic-name { font-size: 13px; font-weight: 700; line-height: 1.4; color: var(–text) }
+
+.topic-check {
+position: absolute; top: 12px; right: 12px;
+width: 20px; height: 20px; border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+font-size: 10px; opacity: 0; transition: opacity .2s; color: #fff; font-weight: 900;
+}
+.gold-card .topic-check { background: var(–gold) }
+.blue-card .topic-check { background: var(–blue) }
+.topic-card.selected .topic-check { opacity: 1 }
+
+/* Buttons */
+.btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap }
+.btn {
+display: inline-flex; align-items: center; gap: 8px;
+padding: 13px 28px; border-radius: 999px;
+font-family: ‘Nunito’, sans-serif; font-size: 15px; font-weight: 800;
+cursor: pointer; border: none; transition: all .2s; letter-spacing: .2px;
+}
+.btn-gold {
+background: linear-gradient(135deg, var(–gold), var(–orange));
+color: #fff; box-shadow: 0 6px 20px rgba(255,120,73,.35);
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,120,73,.45) }
+.btn-blue {
+background: linear-gradient(135deg, var(–blue), var(–teal));
+color: #fff; box-shadow: 0 6px 20px rgba(99,102,241,.35);
+}
+.btn-blue:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(99,102,241,.45) }
+.btn-ghost {
+background: var(–surface); color: var(–muted);
+border: 2px solid var(–border); box-shadow: var(–shadow);
+}
+.btn-ghost:hover { color: var(–text); border-color: var(–blue); transform: translateY(-1px) }
+
+/* ── QUIZ ── */
+#quiz { padding: 0; flex-direction: column }
+.quiz-topbar {
+display: flex; align-items: center; justify-content: space-between;
+padding: 14px 24px;
+background: var(–surface);
+border-bottom: 2px solid var(–border);
+position: sticky; top: 0; z-index: 10;
+box-shadow: 0 2px 12px rgba(99,102,241,.08);
+}
+.quiz-logo {
+font-family: ‘Nunito’, sans-serif; font-weight: 900; font-size: 18px;
+background: linear-gradient(135deg, var(–gold), var(–orange));
+-webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.quiz-logo.sepe {
+background: linear-gradient(135deg, var(–blue), var(–teal));
+-webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.quiz-meta { display: flex; align-items: center; gap: 16px }
+.q-counter {
+font-family: ‘Space Mono’, monospace; font-size: 13px;
+color: var(–gold); font-weight: 700;
+background: var(–gold-soft); padding: 4px 12px; border-radius: 999px;
+}
+.q-counter.sepe { color: var(–blue); background: var(–blue-soft) }
+
+.progress-wrap { height: 5px; background: var(–subtle) }
+.progress-bar {
+height: 100%;
+background: linear-gradient(90deg, var(–gold), var(–orange));
+transition: width .5s cubic-bezier(.4,0,.2,1);
+border-radius: 0 4px 4px 0;
+}
+.progress-bar.sepe { background: linear-gradient(90deg, var(–blue), var(–teal)) }
+
+.quiz-body {
+flex: 1; display: flex; align-items: flex-start; justify-content: center;
+padding: 36px 16px 60px;
+}
+.quiz-card {
+background: var(–surface); border: 2px solid var(–border);
+border-radius: 24px; padding: 40px 36px; max-width: 680px; width: 100%;
+box-shadow: var(–shadow-lg);
+animation: slideIn .38s cubic-bezier(.4,0,.2,1);
+}
+@keyframes slideIn {
+from { opacity:0; transform:translateY(22px) scale(.98) }
+to   { opacity:1; transform:translateY(0)  scale(1) }
+}
+
+.q-topic-tag {
+display: inline-block;
+font-family: ‘Space Mono’, monospace; font-size: 10px;
+letter-spacing: 1.5px; text-transform: uppercase;
+color: var(–gold); background: var(–gold-soft);
+padding: 4px 12px; border-radius: 999px;
+margin-bottom: 18px; font-weight: 700;
+}
+.q-topic-tag.sepe { color: var(–blue); background: var(–blue-soft) }
+
+.q-text {
+font-family: ‘Nunito’, sans-serif;
+font-size: clamp(18px, 2.8vw, 23px); font-weight: 800;
+line-height: 1.45; margin-bottom: 28px; color: var(–text);
+}
+
+.options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px }
+.option {
+display: flex; align-items: flex-start; gap: 14px;
+padding: 15px 18px;
+background: var(–bg); border: 2px solid var(–border); border-radius: var(–radius);
+cursor: pointer; transition: all .18s; font-size: 14.5px; line-height: 1.45;
+text-align: left; color: var(–text); font-family: ‘Nunito’, sans-serif;
+font-weight: 600; width: 100%;
+}
+.option:hover:not(.locked) {
+border-color: var(–gold); background: var(–gold-soft);
+transform: translateX(3px);
+}
+.option-key {
+flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px;
+background: var(–subtle); display: flex; align-items: center; justify-content: center;
+font-family: ‘Space Mono’, monospace; font-size: 11px; font-weight: 700;
+color: var(–muted); margin-top: 1px; transition: all .18s;
+}
+.option.correct { border-color: var(–green); background: rgba(16,185,129,.09) }
+.option.correct .option-key { background: var(–green); color: #fff }
+.option.wrong   { border-color: var(–red);   background: rgba(244,63,94,.08) }
+.option.wrong .option-key   { background: var(–red);   color: #fff }
+.option.locked  { cursor: default; transform: none }
+
+.explanation-box {
+background: var(–subtle); border: 2px solid var(–border);
+border-left: 4px solid var(–green); border-radius: var(–radius-sm);
+padding: 15px 18px; font-size: 14px; color: #475569;
+line-height: 1.65; margin-bottom: 22px; display: none; font-weight: 600;
+}
+.explanation-box.show { display: block; animation: fadeIn .3s ease }
+.explanation-box.wrong-exp { border-left-color: var(–red) }
+
+@keyframes fadeIn {
+from { opacity:0; transform:translateY(6px) }
+to   { opacity:1; transform:translateY(0) }
+}
+.quiz-nav { display: flex; justify-content: flex-end }
+
+/* ── RESULTS ── */
+#results {
+align-items: center; justify-content: center;
+padding: 60px 20px; text-align: center;
+}
+.results-inner { max-width: 580px; width: 100% }
+
+.score-ring { width: 160px; height: 160px; margin: 0 auto 28px; position: relative }
+.score-ring svg { transform: rotate(-90deg) }
+.score-ring::before {
+content: ‘’;
+position: absolute; inset: 8px;
+background: radial-gradient(circle, rgba(255,120,73,.08), transparent);
+border-radius: 50%;
+}
+.score-center {
+position: absolute; inset: 0;
+display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.score-num {
+font-family: ‘Nunito’, sans-serif; font-size: 44px; font-weight: 900;
+background: linear-gradient(135deg, var(–gold), var(–orange));
+-webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+line-height: 1;
+}
+.score-label {
+font-size: 9px; color: var(–muted);
+font-family: ‘Space Mono’, monospace; letter-spacing: 1.5px; text-transform: uppercase;
+margin-top: 2px;
+}
+
+.results-title {
+font-family: ‘Nunito’, sans-serif; font-size: 32px;
+font-weight: 900; margin-bottom: 8px; color: var(–text);
+}
+.results-sub {
+color: var(–muted); font-size: 15px; margin-bottom: 36px;
+line-height: 1.65; font-weight: 600;
+}
+
+.breakdown { display: flex; justify-content: center; gap: 14px; margin-bottom: 28px; flex-wrap: wrap }
+.breakdown-item {
+background: var(–surface); border: 2px solid var(–border);
+border-radius: var(–radius); padding: 16px 22px; text-align: center;
+min-width: 92px; box-shadow: var(–shadow);
+}
+.breakdown-val {
+font-family: ‘Nunito’, sans-serif; font-size: 30px; font-weight: 900; margin-bottom: 4px;
+}
+.breakdown-val.c { color: var(–green) }
+.breakdown-val.w { color: var(–red) }
+.breakdown-lbl {
+font-size: 10px; color: var(–muted);
+text-transform: uppercase; letter-spacing: 1px;
+font-family: ‘Space Mono’, monospace;
+}
+
+.topic-breakdown {
+background: var(–surface); border: 2px solid var(–border);
+border-radius: var(–radius); padding: 20px; margin-bottom: 28px;
+text-align: left; box-shadow: var(–shadow);
+}
+.tb-title {
+font-size: 10px; color: var(–muted);
+font-family: ‘Space Mono’, monospace; letter-spacing: 1px;
+text-transform: uppercase; margin-bottom: 16px;
+}
+.tb-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px }
+.tb-name { flex: 1; color: var(–text); line-height: 1.3; font-weight: 700 }
+.tb-bar-wrap {
+width: 110px; height: 7px; background: var(–subtle);
+border-radius: 999px; overflow: hidden; flex-shrink: 0;
+}
+.tb-bar {
+height: 100%; border-radius: 999px;
+background: linear-gradient(90deg, var(–green), var(–teal));
+transition: width 1s ease;
+}
+.tb-bar.sepe { background: linear-gradient(90deg, var(–blue), var(–teal)) }
+.tb-score {
+font-family: ‘Space Mono’, monospace; font-size: 11px;
+color: var(–muted); width: 34px; text-align: right; flex-shrink: 0; font-weight: 700;
+}
+
+.course-badge-r {
+display: inline-block; font-family: ‘Space Mono’, monospace; font-size: 10px;
+font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+padding: 5px 16px; border-radius: 999px; margin-bottom: 20px;
+}
+.course-badge-r.gold { background: linear-gradient(135deg,var(–gold),var(–orange)); color:#fff; box-shadow:0 4px 14px rgba(255,120,73,.3) }
+.course-badge-r.blue { background: linear-gradient(135deg,var(–blue),var(–teal));  color:#fff; box-shadow:0 4px 14px rgba(99,102,241,.3) }
+</style>
+
+</head>
+<body>
+
+<!-- LANGUAGE SWITCHER -->
+
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('es')">🇪🇸 ES</button>
+  <button class="lang-btn" onclick="setLang('de')">🇩🇪 DE</button>
+</div>
+
+<!-- HOME -->
+
+<div id="home" class="page active">
+  <div class="home-inner">
+    <div class="badge" id="ui-badge">📊 Contabilidad</div>
+    <h1 class="home-title" id="ui-title">Quiz<br>Interactivo</h1>
+    <p class="home-sub" id="ui-sub">Elige el curso y los temas que quieres repasar</p>
+    <div class="course-tabs">
+      <button class="course-tab tab-basica active-tab" onclick="switchCourse('basica')" id="tab-basica-btn">📘 Contabilidad Básica</button>
+      <button class="course-tab tab-sepe" onclick="switchCourse('sepe')" id="tab-sepe-btn">🏛️ Curso SEPE</button>
+    </div>
+    <div class="course-panel active-panel" id="panel-basica">
+      <div class="section-label gold" id="ui-select-topics-a">Selecciona los temas</div>
+      <div class="topic-grid" id="grid-basica"></div>
+      <div class="btn-row">
+        <button class="btn btn-ghost" onclick="selectAll('basica')" id="ui-selectall-a">Seleccionar todo</button>
+        <button class="btn btn-gold" onclick="startQuiz('basica')" id="ui-start-a">Empezar quiz →</button>
+      </div>
+    </div>
+    <div class="course-panel" id="panel-sepe">
+      <div class="section-label blue" id="ui-select-topics-b">Selecciona los módulos</div>
+      <div class="topic-grid" id="grid-sepe"></div>
+      <div class="btn-row">
+        <button class="btn btn-ghost" onclick="selectAll('sepe')" id="ui-selectall-b">Seleccionar todo</button>
+        <button class="btn btn-blue" onclick="startQuiz('sepe')" id="ui-start-b">Empezar quiz →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+
+<div id="quiz" class="page">
+  <div class="quiz-topbar">
+    <span class="quiz-logo" id="quizLogoLabel">Contabilidad</span>
+    <div class="quiz-meta">
+      <span class="q-counter" id="qCounter">1 / 10</span>
+      <button class="btn btn-ghost" style="padding:7px 14px;font-size:13px" onclick="goHome()" id="ui-exit">← Salir</button>
+    </div>
+  </div>
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
+  <div class="quiz-body">
+    <div class="quiz-card" id="quizCard">
+      <div class="q-topic-tag" id="qTopic"></div>
+      <div class="q-text" id="qText"></div>
+      <div class="options" id="optionsContainer"></div>
+      <div class="explanation-box" id="explanationBox"></div>
+      <div class="quiz-nav"><button class="btn btn-gold" id="nextBtn" onclick="nextQuestion()" style="display:none">Siguiente →</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS -->
+
+<div id="results" class="page">
+  <div class="results-inner">
+    <div class="course-badge-r gold" id="resultBadge">📘 CONTABILIDAD BÁSICA</div>
+    <div class="score-ring">
+      <svg width="160" height="160" viewBox="0 0 160 160">
+        <circle cx="80" cy="80" r="67" fill="none" stroke="#e2e8f8" stroke-width="10"/>
+        <circle cx="80" cy="80" r="67" fill="none" stroke="url(#rg)" stroke-width="10" stroke-linecap="round" stroke-dasharray="421" id="scoreCircle" stroke-dashoffset="421"/>
+        <defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f5c842" id="rg1"/><stop offset="100%" stop-color="#e07b3a" id="rg2"/></linearGradient></defs>
+      </svg>
+      <div class="score-center"><div class="score-num" id="scoreNum">0%</div><div class="score-label" id="ui-result-label">RESULTADO</div></div>
+    </div>
+    <h2 class="results-title" id="resultsTitle"></h2>
+    <p class="results-sub" id="resultsSub"></p>
+    <div class="breakdown">
+      <div class="breakdown-item"><div class="breakdown-val c" id="correctCount">0</div><div class="breakdown-lbl" id="ui-correct-lbl">Correctas</div></div>
+      <div class="breakdown-item"><div class="breakdown-val w" id="wrongCount">0</div><div class="breakdown-lbl" id="ui-wrong-lbl">Incorrectas</div></div>
+      <div class="breakdown-item"><div class="breakdown-val" id="totalCount">0</div><div class="breakdown-lbl" id="ui-total-lbl">Total</div></div>
+    </div>
+    <div class="topic-breakdown" id="topicBreakdown"></div>
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="goHome()" id="ui-change-topics">Cambiar temas</button>
+      <button class="btn btn-gold" id="restartBtn" onclick="restartQuiz()">Repetir quiz →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// UI TRANSLATIONS
+// ═══════════════════════════════════════════════════════
+const UI = {
+  es: {
+    badge: '📊 Contabilidad',
+    title: 'Quiz\nInteractivo',
+    sub: 'Elige el curso y los temas que quieres repasar',
+    tabBasica: '📘 Contabilidad Básica',
+    tabSepe: '🏛️ Curso SEPE',
+    selectTopicsA: 'Selecciona los temas',
+    selectTopicsB: 'Selecciona los módulos',
+    selectAll: 'Seleccionar todo',
+    startQuiz: 'Empezar quiz →',
+    exit: '← Salir',
+    next: 'Siguiente →',
+    restart: 'Repetir quiz →',
+    changeTopics: 'Cambiar temas',
+    resultLabel: 'RESULTADO',
+    correct: 'Correctas',
+    wrong: 'Incorrectas',
+    total: 'Total',
+    badgeBasica: '📘 CONTABILIDAD BÁSICA',
+    badgeSepe: '🏛️ CURSO SEPE',
+    logoBasica: 'Contabilidad',
+    logoSepe: 'Curso SEPE',
+    topicPrefix: 'TEMA',
+    modulePrefix: 'MÓDULO',
+    breakdownTitle: tema => `📊 Resultados por ${tema}`,
+    tema: 'tema',
+    modulo: 'módulo',
+    scores: {
+      90: ['¡Excelente! 🏆', '¡Dominas el tema a la perfección!'],
+      70: ['¡Muy bien! 🎉', 'Tienes una sólida base. Repasa los puntos donde fallaste.'],
+      50: ['Vas por buen camino 📚', 'Revisa los módulos con más fallos y vuelve a intentarlo.'],
+      0:  ['Sigue practicando 💪', '¡Repasa los conceptos y vuelve! La práctica hace al maestro.'],
+    }
+  },
+  de: {
+    badge: '📊 Buchhaltung',
+    title: 'Interaktives\nQuiz',
+    sub: 'Wähle den Kurs und die Themen, die du wiederholen möchtest',
+    tabBasica: '📘 Buchhaltung Basis',
+    tabSepe: '🏛️ SEPE-Kurs',
+    selectTopicsA: 'Themen auswählen',
+    selectTopicsB: 'Module auswählen',
+    selectAll: 'Alle auswählen',
+    startQuiz: 'Quiz starten →',
+    exit: '← Beenden',
+    next: 'Weiter →',
+    restart: 'Quiz wiederholen →',
+    changeTopics: 'Themen ändern',
+    resultLabel: 'ERGEBNIS',
+    correct: 'Richtig',
+    wrong: 'Falsch',
+    total: 'Gesamt',
+    badgeBasica: '📘 BUCHHALTUNG BASIS',
+    badgeSepe: '🏛️ SEPE-KURS',
+    logoBasica: 'Buchhaltung',
+    logoSepe: 'SEPE-Kurs',
+    topicPrefix: 'THEMA',
+    modulePrefix: 'MODUL',
+    breakdownTitle: tema => `📊 Ergebnisse nach ${tema}`,
+    tema: 'Thema',
+    modulo: 'Modul',
+    scores: {
+      90: ['Ausgezeichnet! 🏆', 'Du beherrschst das Thema perfekt!'],
+      70: ['Sehr gut! 🎉', 'Du hast eine solide Basis. Wiederhole die Bereiche, in denen du Fehler gemacht hast.'],
+      50: ['Auf dem richtigen Weg 📚', 'Wiederhole die Module mit den meisten Fehlern und versuche es erneut.'],
+      0:  ['Weiter üben 💪', 'Wiederhole die Konzepte und komm zurück! Übung macht den Meister.'],
+    }
+  }
+};
+
+// ═══════════════════════════════════════════════════════
+// TOPIC NAMES (bilingual)
+// ═══════════════════════════════════════════════════════
+const TOPICS_A = {
+  es: ["Conceptos básicos","Patrimonio y cuentas","Plan General Contable","Libros contables","IVA y facturación","Balance y resultados","Cierre contable"],
+  de: ["Grundkonzepte","Vermögen und Konten","Allgemeiner Kontenrahmen","Buchführungsbücher","MwSt. und Rechnungsstellung","Bilanz und Ergebnis","Jahresabschluss"]
+};
+const TOPICS_B = {
+  es: ["Introducción a la contabilidad","Análisis de estados financieros","Control de costes","Control de presupuestos","Obligaciones fiscales"],
+  de: ["Einführung in die Buchhaltung","Analyse von Jahresabschlüssen","Kostenkontrolle","Budgetkontrolle","Steuerliche Pflichten"]
+};
+
+// ═══════════════════════════════════════════════════════
+// QUESTION BANK – Contabilidad Básica (Course A)
+// Each question: {t, q:{es,de}, o:{es:[],de:[]}, a, e:{es,de}}
+// ═══════════════════════════════════════════════════════
+const QA = [
+  // TEMA 0
+  {t:0,
+   q:{es:"¿Qué es la contabilidad empresarial?",de:"Was ist die Unternehmensbuchhaltung?"},
+   o:{es:["Sistema que registra y analiza los hechos económicos de una empresa","Método para calcular únicamente los impuestos","Sistema exclusivo para grandes corporaciones","Registro informal de entradas y salidas de caja"],
+      de:["Ein System, das wirtschaftliche Vorgänge eines Unternehmens erfasst und analysiert","Eine Methode zur ausschließlichen Steuerberechnung","Ein System nur für Großunternehmen","Eine informelle Aufzeichnung von Ein- und Ausgaben"]},
+   a:0,
+   e:{es:"La contabilidad es un sistema de información que permite registrar, clasificar y analizar todos los hechos económicos para facilitar la toma de decisiones.",
+      de:"Die Buchhaltung ist ein Informationssystem, das alle wirtschaftlichen Vorgänge erfasst, klassifiziert und analysiert, um Entscheidungen zu erleichtern."}},
+
+  {t:0,
+   q:{es:"¿Cuál es el objetivo principal de la contabilidad?",de:"Was ist das Hauptziel der Buchhaltung?"},
+   o:{es:["Maximizar beneficios a cualquier coste","Proporcionar información financiera fiable para la toma de decisiones","Calcular el salario de los empleados","Determinar el precio de venta"],
+      de:["Gewinne um jeden Preis maximieren","Zuverlässige Finanzinformationen für Entscheidungen bereitzustellen","Die Gehälter der Mitarbeiter berechnen","Den Verkaufspreis bestimmen"]},
+   a:1,
+   e:{es:"El objetivo central de la contabilidad es ofrecer información económica y financiera veraz y oportuna para que los usuarios puedan tomar decisiones.",
+      de:"Das zentrale Ziel der Buchhaltung ist es, wahre und zeitnahe Wirtschafts- und Finanzinformationen bereitzustellen, damit Nutzer fundierte Entscheidungen treffen können."}},
+
+  {t:0,
+   q:{es:"¿Qué principio establece que los gastos se registran cuando se producen, no cuando se pagan?",de:"Welches Prinzip besagt, dass Aufwendungen erfasst werden, wenn sie entstehen, nicht wenn sie bezahlt werden?"},
+   o:{es:["Principio de prudencia","Principio de devengo","Principio de uniformidad","Principio de empresa en funcionamiento"],
+      de:["Vorsichtsprinzip","Realisationsprinzip (Periodenabgrenzung)","Stetigkeitsprinzip","Going-Concern-Prinzip"]},
+   a:1,
+   e:{es:"El principio de devengo indica que los ingresos y gastos se reconocen cuando se generan económicamente, independientemente del momento de cobro o pago.",
+      de:"Das Realisationsprinzip besagt, dass Erträge und Aufwendungen dann erfasst werden, wenn sie wirtschaftlich entstehen, unabhängig vom Zeitpunkt der Zahlung."}},
+
+  {t:0,
+   q:{es:"¿Qué entiendemos por 'ejercicio contable'?",de:"Was versteht man unter einem 'Geschäftsjahr'?"},
+   o:{es:["El período de prácticas de un contable","El período de tiempo al que se refieren las cuentas anuales (normalmente 12 meses)","El resultado final de la empresa","El balance de comprobación mensual"],
+      de:["Die Praktikumszeit eines Buchhalters","Der Zeitraum, auf den sich der Jahresabschluss bezieht (normalerweise 12 Monate)","Das Endergebnis des Unternehmens","Die monatliche Proberechnung"]},
+   a:1,
+   e:{es:"El ejercicio contable es el período de tiempo —generalmente un año natural— al que se refiere la información financiera recogida en las cuentas anuales.",
+      de:"Das Geschäftsjahr ist der Zeitraum – in der Regel ein Kalenderjahr –, auf den sich die im Jahresabschluss enthaltenen Finanzinformationen beziehen."}},
+
+  {t:0,
+   q:{es:"¿Qué es un hecho contable?",de:"Was ist ein buchhalterischer Geschäftsvorfall?"},
+   o:{es:["Cualquier opinión del gerente sobre las finanzas","Todo acontecimiento económico que modifica el patrimonio y debe registrarse","Un documento de compra informal","La firma de un contrato laboral"],
+      de:["Jede Meinung des Geschäftsführers zur Finanzlage","Jedes wirtschaftliche Ereignis, das das Vermögen verändert und aufgezeichnet werden muss","Ein informelles Kaufdokument","Die Unterzeichnung eines Arbeitsvertrags"]},
+   a:1,
+   e:{es:"Un hecho contable es cualquier operación o acontecimiento económico que altera el patrimonio de la empresa y que debe quedar reflejado en la contabilidad.",
+      de:"Ein buchhalterischer Geschäftsvorfall ist jede wirtschaftliche Operation oder jedes Ereignis, das das Vermögen des Unternehmens verändert und in der Buchhaltung erfasst werden muss."}},
+
+  {t:0,
+   q:{es:"La contabilidad financiera está regulada principalmente por:",de:"Die Finanzbuchhaltung wird hauptsächlich geregelt durch:"},
+   o:{es:["Criterios propios de cada empresa","El Plan General Contable y la normativa mercantil","Las preferencias del director financiero","Las normas internas del sector bancario"],
+      de:["Die eigenen Kriterien jedes Unternehmens","Den Allgemeinen Kontenplan und das Handelsrecht","Die Präferenzen des Finanzvorstands","Die internen Normen des Bankensektors"]},
+   a:1,
+   e:{es:"En España, la contabilidad financiera está regulada por el Plan General de Contabilidad (PGC) y por el Código de Comercio.",
+      de:"In Spanien wird die Finanzbuchhaltung durch den Allgemeinen Kontenplan (PGC) und das Handelsgesetzbuch geregelt."}},
+
+  {t:0,
+   q:{es:"¿Qué diferencia la contabilidad analítica de la financiera?",de:"Was unterscheidet die Kosten- von der Finanzbuchhaltung?"},
+   o:{es:["La analítica es obligatoria y la financiera voluntaria","La analítica se centra en costes internos; la financiera en la imagen externa","La financiera solo estudia inversiones en bolsa","No existe ninguna diferencia"],
+      de:["Die Kostenbuchhaltung ist Pflicht, die Finanzbuchhaltung freiwillig","Die Kostenbuchhaltung fokussiert interne Kosten; die Finanzbuchhaltung das externe Bild","Die Finanzbuchhaltung untersucht nur Börseninvestitionen","Es gibt keinen Unterschied"]},
+   a:1,
+   e:{es:"La contabilidad analítica analiza costes y rentabilidad interna. La financiera ofrece una visión global hacia usuarios externos.",
+      de:"Die Kostenbuchhaltung analysiert interne Kosten und Rentabilität. Die Finanzbuchhaltung bietet externen Nutzern ein Gesamtbild des Unternehmens."}},
+
+  {t:0,
+   q:{es:"¿Cuál de las siguientes NO es una rama de la contabilidad?",de:"Welches der folgenden ist KEIN Zweig der Buchhaltung?"},
+   o:{es:["Contabilidad financiera","Contabilidad de costes","Contabilidad de recursos humanos directos","Contabilidad pública"],
+      de:["Finanzbuchhaltung","Kostenbuchhaltung","Direkte Personalressourcenbuchhaltung","Öffentliche Buchhaltung"]},
+   a:2,
+   e:{es:"Las principales ramas son la contabilidad financiera, analítica/de costes, pública y fiscal. 'Contabilidad de recursos humanos directos' no existe como rama.",
+      de:"Die Hauptzweige sind Finanz-, Kosten-, öffentliche und Steuerbuchhaltung. 'Direkte Personalressourcenbuchhaltung' existiert nicht als anerkannter Zweig."}},
+
+  {t:0,
+   q:{es:"¿Qué significa que la información contable sea 'relevante'?",de:"Was bedeutet es, dass Buchhaltungsinformationen 'relevant' sind?"},
+   o:{es:["Que esté redactada en términos técnicos complejos","Que sea capaz de influir en las decisiones de sus usuarios","Que solo la entiendan los expertos","Que se elabore con la mayor rapidez posible"],
+      de:["Dass sie in komplexen Fachbegriffen verfasst ist","Dass sie die Entscheidungen ihrer Nutzer beeinflussen kann","Dass nur Experten sie verstehen","Dass sie so schnell wie möglich erstellt wird"]},
+   a:1,
+   e:{es:"La relevancia implica que la información contable tiene capacidad de influir en las decisiones económicas de quienes la utilizan.",
+      de:"Relevanz bedeutet, dass die Buchhaltungsinformation die wirtschaftlichen Entscheidungen ihrer Nutzer beeinflussen kann."}},
+
+  {t:0,
+   q:{es:"¿Quiénes son los usuarios externos de la información contable?",de:"Wer sind die externen Nutzer von Buchhaltungsinformationen?"},
+   o:{es:["Solo los directivos","Bancos, proveedores, inversores y administración pública","Únicamente los empleados","Solo los accionistas mayoritarios"],
+      de:["Nur die Geschäftsführung","Banken, Lieferanten, Investoren und öffentliche Verwaltung","Nur die Mitarbeiter","Nur die Mehrheitsaktionäre"]},
+   a:1,
+   e:{es:"Los usuarios externos incluyen entidades financieras, proveedores, clientes, inversores y organismos públicos como la Agencia Tributaria.",
+      de:"Externe Nutzer umfassen Finanzinstitute, Lieferanten, Kunden, Investoren und Behörden wie das Finanzamt."}},
+
+  // TEMA 1
+  {t:1,
+   q:{es:"¿Cómo se calcula el Patrimonio Neto?",de:"Wie berechnet sich das Eigenkapital?"},
+   o:{es:["Activo + Pasivo","Activo − Pasivo","Pasivo − Activo","Ingresos − Gastos"],
+      de:["Aktiva + Passiva","Aktiva − Fremdkapital","Fremdkapital − Aktiva","Erträge − Aufwendungen"]},
+   a:1,
+   e:{es:"La ecuación fundamental del patrimonio es: Activo = Pasivo + Patrimonio Neto, por tanto PN = Activo − Pasivo.",
+      de:"Die Grundgleichung der Bilanz lautet: Aktiva = Fremdkapital + Eigenkapital, daher EK = Aktiva − Fremdkapital."}},
+
+  {t:1,
+   q:{es:"¿Qué representa el ACTIVO de una empresa?",de:"Was repräsentiert das AKTIVA eines Unternehmens?"},
+   o:{es:["Las deudas con terceros","Los bienes, derechos y recursos controlados por la empresa","Los fondos propios aportados por los socios","Los gastos pendientes de pago"],
+      de:["Die Schulden gegenüber Dritten","Die vom Unternehmen kontrollierten Vermögensgegenstände, Rechte und Ressourcen","Das von den Gesellschaftern eingebrachte Eigenkapital","Die ausstehenden Zahlungsverpflichtungen"]},
+   a:1,
+   e:{es:"El activo comprende todos los bienes, derechos y recursos controlados por la empresa de los que se esperan beneficios futuros.",
+      de:"Das Aktiva umfasst alle Vermögensgegenstände, Rechte und Ressourcen, die das Unternehmen kontrolliert und von denen künftige Erträge erwartet werden."}},
+
+  {t:1,
+   q:{es:"¿En qué se diferencia el Activo Corriente del No Corriente?",de:"Was unterscheidet das Umlaufvermögen vom Anlagevermögen?"},
+   o:{es:["No existe diferencia práctica","El corriente permanece más de un año; el no corriente menos","El corriente tiene permanencia inferior a 1 año; el no corriente superior","El corriente son solo edificios"],
+      de:["Es gibt keinen praktischen Unterschied","Das Umlaufvermögen verbleibt länger als ein Jahr; das Anlagevermögen kürzer","Das Umlaufvermögen verbleibt kürzer als 1 Jahr im Unternehmen; das Anlagevermögen länger","Umlaufvermögen sind nur Gebäude"]},
+   a:2,
+   e:{es:"El activo corriente incluye elementos con permanencia prevista inferior a 12 meses. El no corriente permanece más de un año.",
+      de:"Das Umlaufvermögen umfasst Posten mit einer voraussichtlichen Verweildauer unter 12 Monaten. Das Anlagevermögen verbleibt länger als ein Jahr im Unternehmen."}},
+
+  {t:1,
+   q:{es:"En el método de partida doble, ¿qué regla debe cumplirse siempre?",de:"Beim doppelten Buchführungssystem – welche Regel muss immer eingehalten werden?"},
+   o:{es:["El Debe siempre es mayor que el Haber","El Haber siempre es mayor que el Debe","El total del Debe debe ser igual al total del Haber","Solo se anota en el Debe"],
+      de:["Das Soll ist immer größer als das Haben","Das Haben ist immer größer als das Soll","Die Gesamtsumme des Solls muss gleich der des Habens sein","Es wird nur auf der Sollseite gebucht"]},
+   a:2,
+   e:{es:"El principio de partida doble exige que en todo asiento la suma de los importes en el Debe sea igual a la suma en el Haber.",
+      de:"Das Prinzip der doppelten Buchführung erfordert, dass in jedem Buchungssatz die Summe der Sollbeträge gleich der Summe der Habenbeträge ist."}},
+
+  {t:1,
+   q:{es:"¿Qué es el PASIVO de una empresa?",de:"Was sind die PASSIVA eines Unternehmens?"},
+   o:{es:["Los bienes y derechos de la empresa","Las obligaciones y deudas que la empresa debe a terceros","Los beneficios acumulados","Las inversiones en otras empresas"],
+      de:["Die Vermögensgegenstände und Rechte des Unternehmens","Die Verpflichtungen und Schulden des Unternehmens gegenüber Dritten","Die angesammelten Gewinne","Die Beteiligungen an anderen Unternehmen"]},
+   a:1,
+   e:{es:"El pasivo recoge todas las obligaciones presentes de la empresa: deudas con proveedores, préstamos bancarios, impuestos pendientes, etc.",
+      de:"Das Fremdkapital erfasst alle gegenwärtigen Verbindlichkeiten des Unternehmens: Lieferantenschulden, Bankdarlehen, ausstehende Steuern usw."}},
+
+  {t:1,
+   q:{es:"¿Qué es el 'saldo' de una cuenta?",de:"Was ist der 'Saldo' eines Kontos?"},
+   o:{es:["La diferencia entre el total del Debe y el total del Haber","La suma de todos los apuntes del Debe","El número total de operaciones registradas","El beneficio obtenido"],
+      de:["Die Differenz zwischen der Gesamtsumme des Solls und des Habens","Die Summe aller Sollbuchungen","Die Gesamtanzahl der gebuchten Vorgänge","Der erzielte Gewinn"]},
+   a:0,
+   e:{es:"El saldo es la diferencia entre los importes anotados en el Debe y en el Haber.",
+      de:"Der Saldo ist die Differenz zwischen den im Soll und im Haben gebuchten Beträgen."}},
+
+  {t:1,
+   q:{es:"Las existencias (mercancías en almacén) forman parte del:",de:"Vorräte (Waren im Lager) gehören zum:"},
+   o:{es:["Activo No Corriente","Pasivo Corriente","Activo Corriente","Patrimonio Neto"],
+      de:["Anlagevermögen","Kurzfristigen Fremdkapital","Umlaufvermögen","Eigenkapital"]},
+   a:2,
+   e:{es:"Las existencias son bienes destinados a la venta que se espera convertir en dinero en menos de un año: Activo Corriente.",
+      de:"Vorräte sind zum Verkauf bestimmte Güter, die voraussichtlich innerhalb eines Jahres in Geld umgewandelt werden: Umlaufvermögen."}},
+
+  {t:1,
+   q:{es:"Un préstamo bancario a 5 años se clasifica como:",de:"Ein Bankdarlehen mit 5 Jahren Laufzeit wird klassifiziert als:"},
+   o:{es:["Activo No Corriente","Pasivo No Corriente","Activo Corriente","Patrimonio Neto"],
+      de:["Anlagevermögen","Langfristiges Fremdkapital","Umlaufvermögen","Eigenkapital"]},
+   a:1,
+   e:{es:"Una deuda con vencimiento superior a 12 meses se incluye en el Pasivo No Corriente (deudas a largo plazo).",
+      de:"Eine Schuld mit einer Laufzeit von mehr als 12 Monaten wird dem langfristigen Fremdkapital zugeordnet."}},
+
+  {t:1,
+   q:{es:"¿Cuál es la diferencia entre un hecho contable permutativo y uno modificativo?",de:"Was ist der Unterschied zwischen einem Tauschvorgang und einem vermögensverändernden Buchungsvorfall?"},
+   o:{es:["No existe diferencia","El permutativo cambia la composición sin alterar la cuantía total; el modificativo altera el valor total","El modificativo es solo para ingresos","El permutativo solo afecta al pasivo"],
+      de:["Es gibt keinen Unterschied","Der Tauschvorgang ändert die Zusammensetzung ohne den Gesamtbetrag zu ändern; der andere verändert das Gesamtvermögen","Der vermögensverändernde Vorfall betrifft nur Erträge","Der Tauschvorgang betrifft nur das Fremdkapital"]},
+   a:1,
+   e:{es:"Los hechos permutativos intercambian elementos sin modificar el PN total. Los modificativos aumentan o disminuyen el patrimonio neto.",
+      de:"Tauschvorgänge tauschen Posten aus, ohne das Gesamteigenkapital zu verändern. Vermögensverändernde Vorgänge erhöhen oder vermindern das Eigenkapital."}},
+
+  {t:1,
+   q:{es:"¿Qué es una cuenta contable?",de:"Was ist ein Buchführungskonto?"},
+   o:{es:["Un contrato bancario","Instrumento de representación y medida de un elemento patrimonial","El resultado final del ejercicio","Un documento fiscal obligatorio"],
+      de:["Ein Bankvertrag","Ein Darstellungs- und Messinstrument für einen Vermögensposten","Das Endergebnis des Geschäftsjahres","Ein obligatorisches Steuerdokument"]},
+   a:1,
+   e:{es:"Una cuenta contable representa un elemento del patrimonio y registra cronológicamente todos los cambios que lo afectan.",
+      de:"Ein Buchführungskonto repräsentiert einen Vermögensposten und erfasst chronologisch alle Veränderungen, die ihn betreffen."}},
+
+  // TEMA 2
+  {t:2,
+   q:{es:"¿Cuántos grupos tiene el Plan General Contable español?",de:"Wie viele Gruppen hat der spanische Allgemeine Kontenplan?"},
+   o:{es:["5 grupos","7 grupos","9 grupos","10 grupos"],
+      de:["5 Gruppen","7 Gruppen","9 Gruppen","10 Gruppen"]},
+   a:2,
+   e:{es:"El PGC español está organizado en 9 grupos numerados del 1 al 9.",
+      de:"Der spanische PGC ist in 9 Gruppen unterteilt, nummeriert von 1 bis 9."}},
+
+  {t:2,
+   q:{es:"¿Qué grupo del PGC recoge las cuentas de 'Existencias'?",de:"Welche Gruppe des PGC enthält die 'Vorrats'-Konten?"},
+   o:{es:["Grupo 1","Grupo 3","Grupo 6","Grupo 7"],
+      de:["Gruppe 1","Gruppe 3","Gruppe 6","Gruppe 7"]},
+   a:1,
+   e:{es:"El Grupo 3 del PGC corresponde a las Existencias: mercaderías, materias primas, productos terminados, etc.",
+      de:"Gruppe 3 des PGC entspricht den Vorräten: Waren, Rohstoffe, Fertigerzeugnisse usw."}},
+
+  {t:2,
+   q:{es:"Las cuentas del Grupo 6 del PGC representan:",de:"Die Konten der Gruppe 6 des PGC repräsentieren:"},
+   o:{es:["Financiación básica","Compras y gastos por naturaleza","Ventas e ingresos","Inmovilizado"],
+      de:["Grundfinanzierung","Käufe und Aufwendungen nach Art","Umsätze und Erträge","Anlagevermögen"]},
+   a:1,
+   e:{es:"El Grupo 6 agrupa las cuentas de compras y gastos: materiales, personal, suministros, amortizaciones, etc.",
+      de:"Gruppe 6 umfasst die Konten für Käufe und Aufwendungen: Materialien, Personal, Versorgungsleistungen, Abschreibungen usw."}},
+
+  {t:2,
+   q:{es:"¿Qué grupo del PGC corresponde al 'Inmovilizado'?",de:"Welche Gruppe des PGC entspricht dem 'Anlagevermögen'?"},
+   o:{es:["Grupo 2","Grupo 3","Grupo 4","Grupo 6"],
+      de:["Gruppe 2","Gruppe 3","Gruppe 4","Gruppe 6"]},
+   a:0,
+   e:{es:"El Grupo 2 recoge el Activo No Corriente: inmovilizado intangible, material e inversiones inmobiliarias.",
+      de:"Gruppe 2 enthält das Anlagevermögen: immaterielle Vermögenswerte, Sachanlagen und Immobilieninvestitionen."}},
+
+  {t:2,
+   q:{es:"Las cuentas del Grupo 1 del PGC recogen:",de:"Die Konten der Gruppe 1 des PGC enthalten:"},
+   o:{es:["Las ventas del ejercicio","La financiación básica: fondos propios y deudas a largo plazo","Los gastos de personal","Las cuentas de tesorería"],
+      de:["Die Umsätze des Geschäftsjahres","Die Grundfinanzierung: Eigenkapital und langfristige Schulden","Die Personalkosten","Die Kassenkonten"]},
+   a:1,
+   e:{es:"El Grupo 1 (Financiación básica) incluye el capital, reservas, subvenciones y deudas a largo plazo.",
+      de:"Gruppe 1 (Grundfinanzierung) umfasst Kapital, Rücklagen, Zuschüsse und langfristige Schulden."}},
+
+  {t:2,
+   q:{es:"¿Cuál es la cuenta que representa el capital social?",de:"Welches ist das Konto, das das Stammkapital repräsentiert?"},
+   o:{es:["Cuenta 100","Cuenta 400","Cuenta 570","Cuenta 300"],
+      de:["Konto 100","Konto 400","Konto 570","Konto 300"]},
+   a:0,
+   e:{es:"La cuenta 100 'Capital Social' registra las aportaciones de los socios y forma parte del Grupo 1 (Patrimonio Neto).",
+      de:"Konto 100 'Stammkapital' erfasst die Einlagen der Gesellschafter und gehört zur Gruppe 1 (Eigenkapital)."}},
+
+  {t:2,
+   q:{es:"El PGC de PYMES se diferencia del PGC general en que:",de:"Der PGC für KMU unterscheidet sich vom allgemeinen PGC dadurch, dass:"},
+   o:{es:["Es obligatorio para todas las empresas","Está simplificado y adaptado a pequeñas y medianas empresas","Elimina completamente las cuentas de gastos","No reconoce el principio de devengo"],
+      de:["Er für alle Unternehmen verpflichtend ist","Er vereinfacht und auf kleine und mittlere Unternehmen zugeschnitten ist","Er Aufwandskonten vollständig eliminiert","Er das Realisationsprinzip nicht anerkennt"]},
+   a:1,
+   e:{es:"El PGC para PYMES es una versión simplificada con menos cuentas y criterios más sencillos para empresas de menor tamaño.",
+      de:"Der PGC für KMU ist eine vereinfachte Version mit weniger Konten und einfacheren Kriterien für kleinere Unternehmen."}},
+
+  {t:2,
+   q:{es:"¿Qué indica el número '4' al inicio del código de una cuenta del PGC?",de:"Was bedeutet die Ziffer '4' am Anfang eines PGC-Kontonummers?"},
+   o:{es:["Que es una cuenta de inmovilizado","Grupo 4: Acreedores y deudores por operaciones comerciales","Que es una cuenta de tesorería","Que es una cuenta de gastos"],
+      de:["Dass es ein Anlagevermögenskonto ist","Gruppe 4: Gläubiger und Schuldner aus Handelsgeschäften","Dass es ein Kassenkonto ist","Dass es ein Aufwandskonto ist"]},
+   a:1,
+   e:{es:"El Grupo 4 recoge acreedores y deudores derivados de la actividad comercial: clientes, proveedores, hacienda pública, etc.",
+      de:"Gruppe 4 enthält Gläubiger und Schuldner aus der Handelsaktivität: Kunden, Lieferanten, Finanzamt usw."}},
+
+  {t:2,
+   q:{es:"La cuenta 572 'Bancos c/c' pertenece al grupo:",de:"Das Konto 572 'Bankkonten' gehört zur Gruppe:"},
+   o:{es:["Grupo 5 – Cuentas financieras","Grupo 4 – Acreedores y deudores","Grupo 1 – Financiación básica","Grupo 2 – Activo no corriente"],
+      de:["Gruppe 5 – Finanzkonten","Gruppe 4 – Gläubiger und Schuldner","Gruppe 1 – Grundfinanzierung","Gruppe 2 – Anlagevermögen"]},
+   a:0,
+   e:{es:"La cuenta 572 pertenece al Grupo 5 (Cuentas financieras) del PGC, que incluye instrumentos financieros a corto plazo y tesorería.",
+      de:"Konto 572 gehört zur Gruppe 5 (Finanzkonten) des PGC, die kurzfristige Finanzinstrumente und Kassenbestände umfasst."}},
+
+  {t:2,
+   q:{es:"¿Cuántos dígitos tiene el código de una subcuenta del PGC a nivel máximo?",de:"Wie viele Stellen hat der Code einer PGC-Unterkonto auf der maximalen Ebene?"},
+   o:{es:["2 dígitos","3 dígitos","5 dígitos","7 dígitos"],
+      de:["2 Stellen","3 Stellen","5 Stellen","7 Stellen"]},
+   a:2,
+   e:{es:"El PGC establece cuentas de hasta 5 dígitos. El primer dígito identifica el grupo, los dos primeros el subgrupo, etc.",
+      de:"Der PGC sieht Konten mit bis zu 5 Stellen vor. Die erste Stelle identifiziert die Gruppe, die ersten zwei die Untergruppe usw."}},
+
+  // TEMA 3
+  {t:3,
+   q:{es:"¿Qué es el Libro Diario?",de:"Was ist das Grundbuch (Libro Diario)?"},
+   o:{es:["El libro donde se recogen solo las ventas diarias","El libro donde se registran cronológicamente todos los asientos","El resumen anual de las cuentas","El registro de existencias"],
+      de:["Das Buch, in dem nur die Tagesverkäufe erfasst werden","Das Buch, in dem alle Buchungssätze chronologisch erfasst werden","Die jährliche Kontozusammenfassung","Das Lagerbestandsregister"]},
+   a:1,
+   e:{es:"El Libro Diario es el libro contable obligatorio donde se anotan cronológicamente todos los asientos que reflejan los hechos económicos.",
+      de:"Das Grundbuch ist das obligatorische Buchführungsbuch, in dem alle Buchungssätze chronologisch eingetragen werden, die die wirtschaftlichen Vorgänge widerspiegeln."}},
+
+  {t:3,
+   q:{es:"¿Cuál es la función del Libro Mayor?",de:"Was ist die Funktion des Hauptbuchs (Libro Mayor)?"},
+   o:{es:["Registrar los asientos en orden cronológico","Recoger todas las operaciones agrupadas por cuenta para conocer el saldo","Resumir los estados financieros anuales","Controlar el inventario"],
+      de:["Buchungssätze in chronologischer Reihenfolge zu erfassen","Alle Vorgänge nach Konto gruppiert zu erfassen, um den Saldo zu kennen","Die jährlichen Jahresabschlüsse zusammenzufassen","Das Inventar zu kontrollieren"]},
+   a:1,
+   e:{es:"El Libro Mayor recoge, por cada cuenta, todos los movimientos que la han afectado, permitiendo conocer su saldo en cualquier momento.",
+      de:"Das Hauptbuch erfasst für jedes Konto alle Bewegungen, die es betroffen haben, und ermöglicht so, den Saldo jederzeit zu kennen."}},
+
+  {t:3,
+   q:{es:"¿Durante cuántos años deben conservarse los libros contables en España?",de:"Wie viele Jahre müssen Buchführungsunterlagen in Spanien aufbewahrt werden?"},
+   o:{es:["3 años","6 años","10 años","20 años"],
+      de:["3 Jahre","6 Jahre","10 Jahre","20 Jahre"]},
+   a:1,
+   e:{es:"Según el Código de Comercio, los libros contables deben conservarse durante un mínimo de 6 años.",
+      de:"Gemäß dem Handelsgesetzbuch müssen Buchführungsunterlagen mindestens 6 Jahre aufbewahrt werden."}},
+
+  {t:3,
+   q:{es:"¿Qué es un asiento contable?",de:"Was ist ein Buchungssatz?"},
+   o:{es:["Un contrato con el banco","El registro de un hecho contable en el Libro Diario con sus cargos y abonos","Un resumen del balance","La firma digital de documentos fiscales"],
+      de:["Ein Bankvertrag","Die Erfassung eines Geschäftsvorfalls im Grundbuch mit Soll- und Habenbuchungen","Eine Bilanzzusammenfassung","Die digitale Unterschrift von Steuerdokumenten"]},
+   a:1,
+   e:{es:"Un asiento es el registro contable de una operación económica en el Libro Diario, indicando cuentas afectadas, importes y si se cargan (Debe) o abonan (Haber).",
+      de:"Ein Buchungssatz ist die buchhalterische Erfassung eines wirtschaftlichen Vorgangs im Grundbuch unter Angabe der betroffenen Konten, Beträge und ob sie belastet (Soll) oder gutgeschrieben (Haben) werden."}},
+
+  {t:3,
+   q:{es:"¿Qué significa 'cargar' una cuenta?",de:"Was bedeutet es, ein Konto zu 'belasten' (im Soll buchen)?"},
+   o:{es:["Anotar un importe en el Haber","Anotar un importe en el Debe","Cerrar la cuenta al final del ejercicio","Eliminar la cuenta del sistema"],
+      de:["Einen Betrag im Haben eintragen","Einen Betrag im Soll eintragen","Das Konto am Ende des Geschäftsjahres schließen","Das Konto aus dem System löschen"]},
+   a:1,
+   e:{es:"Cargar (o debitar) una cuenta significa anotar un importe en el lado izquierdo (Debe) de la cuenta en T.",
+      de:"Ein Konto belasten (oder debitieren) bedeutet, einen Betrag auf der linken Seite (Soll) des T-Kontos einzutragen."}},
+
+  {t:3,
+   q:{es:"¿Cuándo se 'abona' una cuenta?",de:"Wann wird ein Konto 'gutgeschrieben' (im Haben gebucht)?"},
+   o:{es:["Cuando se anota en el Debe","Cuando se liquida una deuda fiscal","Cuando se anota un importe en el Haber","Cuando se compra un activo"],
+      de:["Wenn im Soll gebucht wird","Wenn eine Steuerschuld beglichen wird","Wenn ein Betrag im Haben eingetragen wird","Wenn ein Aktivposten gekauft wird"]},
+   a:2,
+   e:{es:"Abonar (o acreditar) una cuenta consiste en registrar un importe en el Haber, el lado derecho de la cuenta en T.",
+      de:"Ein Konto gutschreiben (oder kreditieren) bedeutet, einen Betrag im Haben, der rechten Seite des T-Kontos, einzutragen."}},
+
+  {t:3,
+   q:{es:"Los libros contables en España deben ser:",de:"Buchführungsunterlagen müssen in Spanien:"},
+   o:{es:["Presentados en formato físico con sello notarial","Legalizados en el Registro Mercantil en los 4 meses siguientes al cierre","Entregados mensualmente a la Agencia Tributaria","Firmados por un auditor externo cada año"],
+      de:["In physischer Form mit Notarsiegel vorgelegt werden","Innerhalb von 4 Monaten nach dem Jahresabschluss im Handelsregister legalisiert werden","Monatlich an das Finanzamt übermittelt werden","Jährlich von einem externen Prüfer unterzeichnet werden"]},
+   a:1,
+   e:{es:"Las empresas deben legalizar sus libros en el Registro Mercantil dentro de los cuatro meses posteriores al cierre del ejercicio.",
+      de:"Unternehmen müssen ihre Bücher innerhalb von vier Monaten nach Jahresabschluss im Handelsregister legalisieren."}},
+
+  {t:3,
+   q:{es:"¿Qué libros son de llevanza obligatoria en España?",de:"Welche Bücher sind in Spanien obligatorisch zu führen?"},
+   o:{es:["Solo el Libro de Inventarios","El Libro Diario y el Libro de Inventarios y Cuentas Anuales","Únicamente el Libro Mayor","Solo el libro de facturas emitidas"],
+      de:["Nur das Inventarbuch","Das Grundbuch und das Inventar- und Jahresabschlussbuch","Nur das Hauptbuch","Nur das Ausgangsrechnungsbuch"]},
+   a:1,
+   e:{es:"El Código de Comercio establece como obligatorios el Libro Diario y el Libro de Inventarios y Cuentas Anuales.",
+      de:"Das Handelsgesetzbuch legt als obligatorisch fest: das Grundbuch und das Inventar- und Jahresabschlussbuch."}},
+
+  {t:3,
+   q:{es:"¿Qué es el Balance de Comprobación de Sumas y Saldos?",de:"Was ist die Summen- und Saldenliste?"},
+   o:{es:["El balance final del ejercicio","Un documento que verifica que Debe = Haber y recoge el saldo de cada cuenta","El registro de todas las facturas","Un informe de auditoría externa"],
+      de:["Der endgültige Jahresabschluss","Ein Dokument, das überprüft, dass Soll = Haben, und den Saldo jedes Kontos enthält","Das Register aller Rechnungen","Ein externer Prüfbericht"]},
+   a:1,
+   e:{es:"El Balance de Comprobación verifica la igualdad Debe = Haber y muestra el movimiento y saldo de todas las cuentas en un período.",
+      de:"Die Summen- und Saldenliste überprüft die Gleichheit Soll = Haben und zeigt Bewegungen und Salden aller Konten in einem Zeitraum."}},
+
+  {t:3,
+   q:{es:"El Libro de Inventarios y Cuentas Anuales incluye:",de:"Das Inventar- und Jahresabschlussbuch enthält:"},
+   o:{es:["Solo el balance de situación","El inventario inicial, el balance de comprobación y las cuentas anuales","Únicamente la cuenta de PyG","Solo los datos de los proveedores"],
+      de:["Nur die Bilanz","Das Anfangsinventar, die Summen- und Saldenliste und den Jahresabschluss","Nur die Gewinn- und Verlustrechnung","Nur Lieferantendaten"]},
+   a:1,
+   e:{es:"Este libro recoge el inventario inicial, el balance de comprobación de sumas y saldos y las cuentas anuales.",
+      de:"Dieses Buch enthält das Anfangsinventar, die Summen- und Saldenliste und den Jahresabschluss."}},
+
+  // TEMA 4
+  {t:4,
+   q:{es:"¿Qué significa IVA?",de:"Was bedeutet die Abkürzung 'IVA' (Mehrwertsteuer)?"},
+   o:{es:["Impuesto sobre Ventas Anuales","Impuesto sobre el Valor Añadido","Índice de Valor Acumulado","Impuesto Variable Anual"],
+      de:["Jährliche Umsatzsteuer","Mehrwertsteuer (Impuesto sobre el Valor Añadido)","Kumulierter Wertindex","Variable Jahressteuer"]},
+   a:1,
+   e:{es:"IVA son las siglas de Impuesto sobre el Valor Añadido, un impuesto indirecto que grava el consumo de bienes y servicios.",
+      de:"IVA steht für Impuesto sobre el Valor Añadido (Mehrwertsteuer), eine indirekte Steuer, die den Konsum von Waren und Dienstleistungen besteuert."}},
+
+  {t:4,
+   q:{es:"¿Cuál es el tipo general de IVA en España?",de:"Wie hoch ist der allgemeine Mehrwertsteuersatz in Spanien?"},
+   o:{es:["4%","10%","21%","25%"],
+      de:["4%","10%","21%","25%"]},
+   a:2,
+   e:{es:"El tipo impositivo general del IVA en España es del 21%, con tipos reducidos (10%) y superreducidos (4%) para ciertos bienes.",
+      de:"Der allgemeine Mehrwertsteuersatz in Spanien beträgt 21%, mit ermäßigten (10%) und stark ermäßigten Sätzen (4%) für bestimmte Güter."}},
+
+  {t:4,
+   q:{es:"¿Qué es el IVA soportado?",de:"Was ist die Vorsteuer (IVA soportado)?"},
+   o:{es:["El IVA que la empresa cobra a sus clientes","El IVA que la empresa paga a sus proveedores al adquirir bienes o servicios","El IVA que se ingresa directamente a Hacienda","El IVA de las exportaciones"],
+      de:["Die MwSt., die das Unternehmen seinen Kunden berechnet","Die MwSt., die das Unternehmen seinen Lieferanten beim Kauf von Waren oder Dienstleistungen zahlt","Die direkt ans Finanzamt abgeführte MwSt.","Die MwSt. auf Exporte"]},
+   a:1,
+   e:{es:"El IVA soportado es el que la empresa abona a sus proveedores cuando compra bienes o servicios.",
+      de:"Die Vorsteuer ist die MwSt., die das Unternehmen seinen Lieferanten beim Kauf von Waren oder Dienstleistungen zahlt."}},
+
+  {t:4,
+   q:{es:"¿Cuándo debe ingresar IVA a Hacienda una empresa?",de:"Wann muss ein Unternehmen Mehrwertsteuer ans Finanzamt abführen?"},
+   o:{es:["Cuando el IVA repercutido es mayor que el IVA soportado","Cuando el IVA soportado es mayor que el repercutido","Siempre, independientemente de la diferencia","Nunca, es el cliente quien lo paga"],
+      de:["Wenn die Umsatzsteuer größer ist als die Vorsteuer","Wenn die Vorsteuer größer ist als die Umsatzsteuer","Immer, unabhängig von der Differenz","Nie, der Kunde zahlt sie direkt"]},
+   a:0,
+   e:{es:"Si el IVA repercutido (cobrado a clientes) supera al IVA soportado (pagado a proveedores), la diferencia debe ingresarse a Hacienda.",
+      de:"Wenn die Umsatzsteuer (von Kunden erhoben) die Vorsteuer (an Lieferanten gezahlt) übersteigt, muss die Differenz ans Finanzamt abgeführt werden."}},
+
+  {t:4,
+   q:{es:"¿Qué datos son obligatorios en una factura?",de:"Welche Angaben sind auf einer Rechnung Pflicht?"},
+   o:{es:["Solo el importe total y la fecha","Número, fecha, datos del emisor y receptor, descripción, base imponible, tipo y cuota de IVA e importe total","Únicamente el NIF del comprador","Solo el nombre de la empresa y el importe"],
+      de:["Nur der Gesamtbetrag und das Datum","Nummer, Datum, Angaben zu Aussteller und Empfänger, Beschreibung, Steuerbemessungsgrundlage, MwSt.-Satz und -Betrag sowie Gesamtbetrag","Nur die Steuernummer des Käufers","Nur Unternehmensname und Betrag"]},
+   a:1,
+   e:{es:"Una factura debe incluir: número correlativo, fecha, datos del emisor y receptor, descripción, base imponible, tipo y cuota de IVA e importe total.",
+      de:"Eine Rechnung muss enthalten: laufende Nummer, Datum, Angaben zu Aussteller und Empfänger, Beschreibung, Steuerbemessungsgrundlage, MwSt.-Satz und -Betrag sowie Gesamtbetrag."}},
+
+  {t:4,
+   q:{es:"La cuenta del PGC donde se registra el IVA soportado es:",de:"Das PGC-Konto, auf dem die Vorsteuer erfasst wird, ist:"},
+   o:{es:["Cuenta 477","Cuenta 472","Cuenta 400","Cuenta 600"],
+      de:["Konto 477","Konto 472","Konto 400","Konto 600"]},
+   a:1,
+   e:{es:"La cuenta 472 'Hacienda Pública, IVA soportado' registra el IVA que la empresa paga a sus proveedores.",
+      de:"Konto 472 'Staatskasse, Vorsteuer' erfasst die MwSt., die das Unternehmen seinen Lieferanten zahlt."}},
+
+  {t:4,
+   q:{es:"La cuenta 477 del PGC corresponde a:",de:"Konto 477 des PGC entspricht:"},
+   o:{es:["IVA soportado deducible","Hacienda Pública acreedora","IVA repercutido","Retenciones y pagos a cuenta"],
+      de:["Abziehbare Vorsteuer","Staatskasse als Gläubiger","Umsatzsteuer (abgeführte MwSt.)","Einbehalte und Vorauszahlungen"]},
+   a:2,
+   e:{es:"La cuenta 477 'Hacienda Pública, IVA repercutido' recoge el IVA que la empresa carga a sus clientes.",
+      de:"Konto 477 'Staatskasse, Umsatzsteuer' erfasst die MwSt., die das Unternehmen seinen Kunden berechnet."}},
+
+  {t:4,
+   q:{es:"¿Con qué periodicidad se liquida el IVA habitualmente?",de:"In welchem Rhythmus wird die MwSt. üblicherweise abgerechnet?"},
+   o:{es:["Diariamente","Mensualmente","Trimestralmente","Anualmente"],
+      de:["Täglich","Monatlich","Vierteljährlich","Jährlich"]},
+   a:2,
+   e:{es:"La mayoría de empresas y autónomos presentan el modelo 303 de liquidación del IVA trimestralmente.",
+      de:"Die meisten Unternehmen und Selbständige reichen die MwSt.-Abrechnung (Formular 303) vierteljährlich ein."}},
+
+  {t:4,
+   q:{es:"¿Qué es la base imponible en una factura?",de:"Was ist die Steuerbemessungsgrundlage auf einer Rechnung?"},
+   o:{es:["El importe total con IVA incluido","El importe sobre el que se calcula el IVA, antes de aplicar el tipo impositivo","El resultado de restar el descuento al IVA","El importe del IVA solamente"],
+      de:["Der Gesamtbetrag einschließlich MwSt.","Der Betrag, auf den die MwSt. berechnet wird, vor Anwendung des Steuersatzes","Das Ergebnis aus Abzug des Rabatts von der MwSt.","Nur der MwSt.-Betrag"]},
+   a:1,
+   e:{es:"La base imponible es el importe neto de la operación (precio antes de IVA) sobre el que se aplica el porcentaje de IVA.",
+      de:"Die Steuerbemessungsgrundlage ist der Nettobetrag des Vorgangs (Preis vor MwSt.), auf den der MwSt.-Satz angewendet wird."}},
+
+  {t:4,
+   q:{es:"¿Qué es una factura simplificada?",de:"Was ist eine vereinfachte Rechnung (Kassenbon)?"},
+   o:{es:["Una factura completa con todos los datos del cliente","Un documento simplificado para operaciones de menor cuantía que no siempre requiere datos del destinatario","Un documento exclusivo para exportaciones","Una factura sin IVA para autónomos"],
+      de:["Eine vollständige Rechnung mit allen Kundendaten","Ein vereinfachtes Dokument für kleinere Beträge, das nicht immer Empfängerdaten erfordert","Ein ausschließlich für Exporte bestimmtes Dokument","Eine MwSt.-freie Rechnung für Selbständige"]},
+   a:1,
+   e:{es:"La factura simplificada (antes tique) puede emitirse en operaciones de hasta 400 € sin necesidad de identificar al destinatario.",
+      de:"Die vereinfachte Rechnung (früher Kassenbon) kann für Umsätze bis 400 € ausgestellt werden, ohne den Empfänger identifizieren zu müssen."}},
+
+  // TEMA 5
+  {t:5,
+   q:{es:"¿Qué muestra el Balance de Situación?",de:"Was zeigt die Bilanz?"},
+   o:{es:["Los ingresos y gastos del ejercicio","La situación patrimonial en un momento determinado: activo, pasivo y patrimonio neto","Solo las deudas con entidades financieras","El flujo de caja del ejercicio"],
+      de:["Die Erträge und Aufwendungen des Geschäftsjahres","Die Vermögenssituation zu einem bestimmten Zeitpunkt: Aktiva, Fremdkapital und Eigenkapital","Nur die Schulden gegenüber Finanzinstituten","Den Cashflow des Geschäftsjahres"]},
+   a:1,
+   e:{es:"El Balance de Situación es una fotografía del patrimonio de la empresa en una fecha concreta.",
+      de:"Die Bilanz ist eine Momentaufnahme des Unternehmensvermögens zu einem bestimmten Zeitpunkt."}},
+
+  {t:5,
+   q:{es:"¿Qué recoge la Cuenta de Pérdidas y Ganancias?",de:"Was enthält die Gewinn- und Verlustrechnung?"},
+   o:{es:["Los bienes y derechos de la empresa","Los ingresos y gastos del ejercicio para determinar el resultado","Las deudas a largo plazo","El capital aportado por los socios"],
+      de:["Die Vermögensgegenstände und Rechte des Unternehmens","Die Erträge und Aufwendungen des Geschäftsjahres zur Ermittlung des Ergebnisses","Die langfristigen Schulden","Das von den Gesellschaftern eingebrachte Kapital"]},
+   a:1,
+   e:{es:"La Cuenta de PyG muestra todos los ingresos y gastos del período, cuya diferencia determina si hay beneficio o pérdida.",
+      de:"Die GuV zeigt alle Erträge und Aufwendungen des Zeitraums, deren Differenz Gewinn oder Verlust bestimmt."}},
+
+  {t:5,
+   q:{es:"Si el Activo es 500.000 € y el Pasivo 320.000 €, ¿cuál es el Patrimonio Neto?",de:"Wenn das Aktiva 500.000 € und das Fremdkapital 320.000 € beträgt, wie hoch ist das Eigenkapital?"},
+   o:{es:["820.000 €","180.000 €","160.000 €","500.000 €"],
+      de:["820.000 €","180.000 €","160.000 €","500.000 €"]},
+   a:1,
+   e:{es:"Patrimonio Neto = Activo − Pasivo = 500.000 − 320.000 = 180.000 €.",
+      de:"Eigenkapital = Aktiva − Fremdkapital = 500.000 − 320.000 = 180.000 €."}},
+
+  {t:5,
+   q:{es:"¿En qué parte del balance se incluye el 'inmovilizado material'?",de:"In welchem Teil der Bilanz wird das 'Sachanlagevermögen' ausgewiesen?"},
+   o:{es:["Activo Corriente","Pasivo No Corriente","Activo No Corriente","Patrimonio Neto"],
+      de:["Umlaufvermögen","Langfristiges Fremdkapital","Anlagevermögen","Eigenkapital"]},
+   a:2,
+   e:{es:"El inmovilizado material permanece más de un año en la empresa: Activo No Corriente.",
+      de:"Das Sachanlagevermögen verbleibt länger als ein Jahr im Unternehmen: Anlagevermögen."}},
+
+  {t:5,
+   q:{es:"¿Qué son las 'reservas' en el balance?",de:"Was sind 'Rücklagen' in der Bilanz?"},
+   o:{es:["Deudas con los bancos","Beneficios de ejercicios anteriores no repartidos que quedan en la empresa","Gastos pendientes de pago","Anticipos de clientes"],
+      de:["Schulden gegenüber Banken","Nicht ausgeschüttete Gewinne aus Vorjahren, die im Unternehmen verbleiben","Ausstehende Zahlungsverpflichtungen","Kundenvorauszahlungen"]},
+   a:1,
+   e:{es:"Las reservas son beneficios obtenidos en ejercicios anteriores que la empresa retiene para autofinanciar su crecimiento.",
+      de:"Rücklagen sind Gewinne aus Vorjahren, die das Unternehmen einbehält, um sein Wachstum selbst zu finanzieren."}},
+
+  {t:5,
+   q:{es:"¿Cómo se calcula el Resultado del ejercicio?",de:"Wie berechnet sich das Jahresergebnis?"},
+   o:{es:["Activo − Pasivo","Ingresos totales − Gastos totales","Capital + Reservas","Ventas − Compras únicamente"],
+      de:["Aktiva − Fremdkapital","Gesamterträge − Gesamtaufwendungen","Kapital + Rücklagen","Nur Umsätze − Käufe"]},
+   a:1,
+   e:{es:"El resultado del ejercicio (beneficio o pérdida) se obtiene restando los gastos totales a los ingresos totales del período.",
+      de:"Das Jahresergebnis (Gewinn oder Verlust) ergibt sich aus der Differenz zwischen Gesamterträgen und Gesamtaufwendungen des Zeitraums."}},
+
+  {t:5,
+   q:{es:"Si una empresa tiene más gastos que ingresos, el resultado será:",de:"Wenn ein Unternehmen mehr Aufwendungen als Erträge hat, ist das Ergebnis:"},
+   o:{es:["Un beneficio","Una pérdida","Un activo corriente","Una reserva legal"],
+      de:["Ein Gewinn","Ein Verlust","Umlaufvermögen","Eine gesetzliche Rücklage"]},
+   a:1,
+   e:{es:"Cuando los gastos superan a los ingresos, el resultado es negativo: la empresa incurre en pérdidas.",
+      de:"Wenn die Aufwendungen die Erträge übersteigen, ist das Ergebnis negativ: das Unternehmen erleidet Verluste."}},
+
+  {t:5,
+   q:{es:"¿Qué son los 'fondos propios'?",de:"Was ist das 'Eigenkapital' (Fondos propios)?"},
+   o:{es:["Las deudas a largo plazo con entidades financieras","Capital social, reservas y resultado del ejercicio que pertenecen a los socios","Los créditos concedidos a clientes","Las existencias de mercancías"],
+      de:["Langfristige Schulden gegenüber Finanzinstituten","Stammkapital, Rücklagen und Jahresergebnis, das den Gesellschaftern gehört","Den Kunden gewährte Kredite","Warenvorräte"]},
+   a:1,
+   e:{es:"Los fondos propios incluyen el capital social aportado por los socios, las reservas acumuladas y el resultado del ejercicio.",
+      de:"Das Eigenkapital umfasst das von den Gesellschaftern eingebrachte Stammkapital, die angesammelten Rücklagen und das Jahresergebnis."}},
+
+  {t:5,
+   q:{es:"Las 'deudas a corto plazo con proveedores' se incluyen en:",de:"'Kurzfristige Verbindlichkeiten gegenüber Lieferanten' werden ausgewiesen unter:"},
+   o:{es:["Activo Corriente","Activo No Corriente","Pasivo Corriente","Patrimonio Neto"],
+      de:["Umlaufvermögen","Anlagevermögen","Kurzfristiges Fremdkapital","Eigenkapital"]},
+   a:2,
+   e:{es:"Las deudas comerciales con vencimiento inferior a 12 meses se clasifican en el Pasivo Corriente del balance.",
+      de:"Handelsverbindlichkeiten mit einer Laufzeit unter 12 Monaten werden dem kurzfristigen Fremdkapital der Bilanz zugeordnet."}},
+
+  {t:5,
+   q:{es:"¿Cuál de estos elementos NO aparece en la Cuenta de Pérdidas y Ganancias?",de:"Welcher dieser Posten erscheint NICHT in der Gewinn- und Verlustrechnung?"},
+   o:{es:["Ventas de mercaderías","Gastos de personal","Inmovilizado material","Amortizaciones del inmovilizado"],
+      de:["Warenverkäufe","Personalaufwendungen","Sachanlagevermögen","Abschreibungen auf Anlagevermögen"]},
+   a:2,
+   e:{es:"El inmovilizado material aparece en el Balance de Situación, no en la Cuenta de Pérdidas y Ganancias.",
+      de:"Das Sachanlagevermögen erscheint in der Bilanz, nicht in der Gewinn- und Verlustrechnung."}},
+
+  // TEMA 6
+  {t:6,
+   q:{es:"¿Cuándo se realiza el cierre contable habitualmente?",de:"Wann erfolgt der Jahresabschluss üblicherweise?"},
+   o:{es:["El 30 de junio","Al final del ejercicio económico, generalmente el 31 de diciembre","El primer día del nuevo ejercicio","Cada trimestre fiscal"],
+      de:["Am 30. Juni","Am Ende des Geschäftsjahres, in der Regel am 31. Dezember","Am ersten Tag des neuen Geschäftsjahres","Jedes Steuerstrimester"]},
+   a:1,
+   e:{es:"El cierre contable se realiza al finalizar el ejercicio económico, normalmente el 31 de diciembre.",
+      de:"Der Jahresabschluss erfolgt am Ende des Geschäftsjahres, normalerweise am 31. Dezember."}},
+
+  {t:6,
+   q:{es:"¿Qué es el asiento de regularización?",de:"Was ist der Abschlussbuchungssatz (Regularización)?"},
+   o:{es:["El asiento que corrige errores del ejercicio","El asiento que cancela las cuentas de ingresos y gastos trasladando su saldo a Pérdidas y Ganancias","El asiento inicial del nuevo ejercicio","El asiento de apertura de cuentas"],
+      de:["Der Buchungssatz, der Fehler des Geschäftsjahres korrigiert","Der Buchungssatz, der Ertrags- und Aufwandskonten schließt und ihre Salden in die GuV überträgt","Der erste Buchungssatz des neuen Geschäftsjahres","Der Eröffnungsbuchungssatz"]},
+   a:1,
+   e:{es:"El asiento de regularización cierra las cuentas de los Grupos 6 y 7, traspasando sus saldos a la cuenta 129 'Resultado del ejercicio'.",
+      de:"Der Abschlussbuchungssatz schließt die Konten der Gruppen 6 und 7 und überträgt ihre Salden auf Konto 129 'Jahresergebnis'."}},
+
+  {t:6,
+   q:{es:"¿Cuál es el objetivo del asiento de cierre?",de:"Was ist das Ziel des Abschlussbuchungssatzes?"},
+   o:{es:["Abrir las cuentas del nuevo ejercicio","Saldar todas las cuentas de activo, pasivo y PN dejando a cero el Libro Mayor","Registrar las ventas del último día","Calcular los impuestos del ejercicio"],
+      de:["Die Konten des neuen Geschäftsjahres zu eröffnen","Alle Aktiv-, Fremdkapital- und Eigenkapitalkonten auf null zu setzen","Die Verkäufe des letzten Tages zu erfassen","Die Steuern des Geschäftsjahres zu berechnen"]},
+   a:1,
+   e:{es:"El asiento de cierre pone a cero el saldo de todas las cuentas de balance, dejando el Libro Mayor listo para el nuevo ejercicio.",
+      de:"Der Abschlussbuchungssatz setzt den Saldo aller Bilanzkonten auf null und bereitet das Hauptbuch für das neue Geschäftsjahr vor."}},
+
+  {t:6,
+   q:{es:"¿Qué son las cuentas anuales?",de:"Was sind die Jahresabschlussunterlagen?"},
+   o:{es:["Los balances mensuales de comprobación","El conjunto de documentos que reflejan la imagen fiel de la empresa: balance, PyG, ECPN, EFE y memoria","Solo el balance de situación anual","El registro de operaciones del último trimestre"],
+      de:["Die monatlichen Probebilanzen","Die Gesamtheit der Dokumente, die ein getreues Bild des Unternehmens wiedergeben: Bilanz, GuV, EKV, Kapitalflussrechnung und Anhang","Nur die Jahresbilanz","Das Vorgangsregister des letzten Quartals"]},
+   a:1,
+   e:{es:"Las cuentas anuales comprenden el Balance, la Cuenta de PyG, el ECPN, el Estado de Flujos de Efectivo y la Memoria.",
+      de:"Der Jahresabschluss umfasst die Bilanz, die GuV, den Eigenkapitalveränderungsspiegel, die Kapitalflussrechnung und den Anhang."}},
+
+  {t:6,
+   q:{es:"¿Qué es el asiento de apertura del nuevo ejercicio?",de:"Was ist der Eröffnungsbuchungssatz des neuen Geschäftsjahres?"},
+   o:{es:["Un asiento que recoge errores del año anterior","El primer asiento que reabre las cuentas de balance con los saldos del cierre anterior","Un asiento que registra las primeras ventas del año","El asiento de corrección de inventario"],
+      de:["Ein Buchungssatz, der Fehler des Vorjahres erfasst","Der erste Buchungssatz, der die Bilanzkonten mit den Abschlusssalden des Vorjahres wieder eröffnet","Ein Buchungssatz, der die ersten Verkäufe des Jahres erfasst","Der Inventarkorrekturbuchungssatz"]},
+   a:1,
+   e:{es:"El asiento de apertura reabre todas las cuentas de activo, pasivo y patrimonio neto con los saldos del cierre.",
+      de:"Der Eröffnungsbuchungssatz eröffnet alle Aktiv-, Fremdkapital- und Eigenkapitalkonten mit den Abschlusssalden wieder."}},
+
+  {t:6,
+   q:{es:"¿Qué es la amortización contable?",de:"Was ist die buchhalterische Abschreibung?"},
+   o:{es:["Una deuda que se paga a plazos","La imputación sistemática del coste de un activo como gasto a lo largo de su vida útil","Un método de financiación a largo plazo","El ajuste del inventario al final del año"],
+      de:["Eine in Raten zu zahlende Schuld","Die systematische Verteilung der Kosten eines Vermögenswerts als Aufwand über seine Nutzungsdauer","Eine langfristige Finanzierungsmethode","Die Inventaranpassung am Jahresende"]},
+   a:1,
+   e:{es:"La amortización distribuye el coste de un activo no corriente como gasto a lo largo de los ejercicios en que genera beneficios.",
+      de:"Die Abschreibung verteilt die Kosten eines Anlagevermögenswerts als Aufwand über die Geschäftsjahre, in denen er Erträge erzielt."}},
+
+  {t:6,
+   q:{es:"¿Cuál es la cuenta del PGC donde se recoge el resultado del ejercicio?",de:"Welches PGC-Konto erfasst das Jahresergebnis?"},
+   o:{es:["Cuenta 100","Cuenta 129","Cuenta 400","Cuenta 600"],
+      de:["Konto 100","Konto 129","Konto 400","Konto 600"]},
+   a:1,
+   e:{es:"La cuenta 129 'Resultado del ejercicio' recoge el beneficio o pérdida del período tras el asiento de regularización.",
+      de:"Konto 129 'Jahresergebnis' erfasst den Gewinn oder Verlust des Zeitraums nach dem Abschlussbuchungssatz."}},
+
+  {t:6,
+   q:{es:"¿Qué indica el principio contable de 'empresa en funcionamiento'?",de:"Was besagt das buchhalterische 'Going-Concern-Prinzip' (Unternehmensfortführung)?"},
+   o:{es:["Que la empresa no puede cerrar nunca","Que la contabilidad se elabora bajo la hipótesis de que la empresa continuará en el futuro previsible","Que solo se aplica a grandes empresas","Que la empresa debe operar 24h al día"],
+      de:["Dass das Unternehmen nie schließen darf","Dass die Buchhaltung unter der Annahme erstellt wird, dass das Unternehmen in absehbarer Zukunft weitergeführt wird","Dass es nur für Großunternehmen gilt","Dass das Unternehmen 24h täglich betrieben werden muss"]},
+   a:1,
+   e:{es:"Este principio presupone que la empresa continuará operando en el futuro, justificando valorar activos por su coste histórico.",
+      de:"Dieses Prinzip setzt voraus, dass das Unternehmen in Zukunft weiter operieren wird, was die Bewertung von Vermögenswerten zu historischen Kosten rechtfertigt."}},
+
+  {t:6,
+   q:{es:"¿En qué plazo deben depositarse las cuentas anuales en el Registro Mercantil?",de:"Binnen welcher Frist müssen die Jahresabschlussunterlagen im Handelsregister hinterlegt werden?"},
+   o:{es:["Dentro del mes siguiente al cierre","En el plazo de un mes desde su aprobación por la Junta (máximo 7 meses desde el cierre)","En cualquier momento del año siguiente","Solo si la empresa tiene más de 50 empleados"],
+      de:["Innerhalb des auf den Abschluss folgenden Monats","Innerhalb eines Monats nach Genehmigung durch die Hauptversammlung (maximal 7 Monate nach Abschluss)","Zu einem beliebigen Zeitpunkt des Folgejahres","Nur wenn das Unternehmen mehr als 50 Mitarbeiter hat"]},
+   a:1,
+   e:{es:"Las cuentas anuales deben aprobarse por la Junta General en los 6 meses siguientes al cierre y depositarse en el mes posterior.",
+      de:"Der Jahresabschluss muss innerhalb von 6 Monaten nach dem Abschluss von der Hauptversammlung genehmigt und im Folgemonat hinterlegt werden."}},
+];
+
+// ═══════════════════════════════════════════════════════
+// QUESTION BANK – SEPE (Course B)
+// ═══════════════════════════════════════════════════════
+const QB = [
+  // MÓDULO 0: Introducción
+  {t:0,q:{es:"¿Cuál es la diferencia entre una cuenta de activo y una de pasivo en cuanto a su funcionamiento?",de:"Was ist der Unterschied zwischen einem Aktiv- und einem Passivkonto in Bezug auf ihre Funktionsweise?"},o:{es:["Las de activo aumentan por el Haber y las de pasivo por el Debe","Las de activo aumentan por el Debe y las de pasivo por el Haber","Ambas aumentan por el Debe","Ambas aumentan por el Haber"],de:["Aktivkonten erhöhen sich im Haben, Passivkonten im Soll","Aktivkonten erhöhen sich im Soll, Passivkonten im Haben","Beide erhöhen sich im Soll","Beide erhöhen sich im Haben"]},a:1,e:{es:"Las cuentas de activo se cargan (Debe) cuando aumentan y se abonan (Haber) cuando disminuyen. En pasivo y neto es al revés.",de:"Aktivkonten werden im Soll belastet, wenn sie steigen, und im Haben gutgeschrieben, wenn sie fallen. Bei Passiv- und Eigenkapitalkonten ist es umgekehrt."}},
+
+  {t:0,q:{es:"¿Qué representa el Patrimonio Neto en la estructura del balance?",de:"Was repräsentiert das Eigenkapital in der Bilanzstruktur?"},o:{es:["Las deudas totales de la empresa","Los fondos propios: lo que realmente pertenece a los propietarios","El resultado del ejercicio únicamente","Los activos corrientes de la empresa"],de:["Die Gesamtschulden des Unternehmens","Das Eigenkapital: was wirklich den Eigentümern gehört","Nur das Jahresergebnis","Das Umlaufvermögen des Unternehmens"]},a:1,e:{es:"El Patrimonio Neto refleja los recursos propios: capital, reservas, subvenciones de capital y resultado del ejercicio.",de:"Das Eigenkapital spiegelt die eigenen Mittel wider: Kapital, Rücklagen, Investitionszuschüsse und Jahresergebnis."}},
+
+  {t:0,q:{es:"¿Cómo funciona una cuenta de ingresos?",de:"Wie funktioniert ein Ertragskonto?"},o:{es:["Aumenta por el Debe y disminuye por el Haber","Aumenta por el Haber y disminuye por el Debe","Siempre tiene saldo deudor","No tiene relación con el resultado del ejercicio"],de:["Es erhöht sich im Soll und vermindert sich im Haben","Es erhöht sich im Haben und wird im Soll geschlossen","Es hat immer einen Sollsaldo","Es hat keinen Bezug zum Jahresergebnis"]},a:1,e:{es:"Las cuentas de ingresos (Grupo 7) aumentan su saldo por el Haber y se cancelan por el Debe al realizar el asiento de regularización.",de:"Ertragskonten (Gruppe 7) erhöhen ihren Saldo im Haben und werden im Soll beim Abschlussbuchungssatz aufgelöst."}},
+
+  {t:0,q:{es:"¿Cómo funciona una cuenta de gastos?",de:"Wie funktioniert ein Aufwandskonto?"},o:{es:["Aumenta por el Haber y disminuye por el Debe","Aumenta por el Debe y se cancela por el Haber al regularizar","Solo recoge gastos de personal","Es una cuenta de activo"],de:["Es erhöht sich im Haben und vermindert sich im Soll","Es erhöht sich im Soll und wird im Haben beim Abschluss aufgelöst","Es erfasst nur Personalkosten","Es ist ein Aktivkonto"]},a:1,e:{es:"Las cuentas de gastos (Grupo 6) se cargan (Debe) cuando se produce el gasto y se abonan (Haber) al efectuar el asiento de regularización.",de:"Aufwandskonten (Gruppe 6) werden im Soll belastet, wenn der Aufwand entsteht, und im Haben beim Abschlussbuchungssatz aufgelöst."}},
+
+  {t:0,q:{es:"Si una empresa vende mercancías al contado, ¿qué cuentas intervienen?",de:"Wenn ein Unternehmen Waren gegen Barzahlung verkauft, welche Konten sind beteiligt?"},o:{es:["Solo la cuenta de Ventas","Caja o Banco (Debe) y Ventas de mercaderías (Haber)","Solo la cuenta de Caja","Compras (Debe) y Proveedores (Haber)"],de:["Nur das Umsatzkonto","Kasse oder Bank (Soll) und Warenverkäufe (Haben)","Nur das Kassenkonto","Käufe (Soll) und Lieferanten (Haben)"]},a:1,e:{es:"Al vender al contado se carga la cuenta de tesorería (Debe) por el cobro y se abona Ventas de mercaderías (Haber).",de:"Beim Barverkauf wird das Kassenkonto (Soll) für den Eingang belastet und Warenverkäufe (Haben) gutgeschrieben."}},
+
+  {t:0,q:{es:"¿Qué tipo de saldo tienen normalmente las cuentas de pasivo?",de:"Welchen Saldo haben Passivkonten normalerweise?"},o:{es:["Saldo deudor","Saldo acreedor","Siempre saldo cero","Cualquier saldo indistintamente"],de:["Sollsaldo","Habensaldo","Immer Saldo null","Beliebigen Saldo"]},a:1,e:{es:"Las cuentas de pasivo tienen normalmente saldo acreedor, ya que registran obligaciones que la empresa tiene con terceros.",de:"Passivkonten haben normalerweise einen Habensaldo, da sie Verpflichtungen des Unternehmens gegenüber Dritten erfassen."}},
+
+  {t:0,q:{es:"¿Cuál es la ecuación fundamental de la contabilidad?",de:"Was ist die grundlegende Gleichung der Buchhaltung?"},o:{es:["Activo = Ingresos − Gastos","Activo = Pasivo + Patrimonio Neto","Patrimonio Neto = Activo + Pasivo","Pasivo = Activo + Neto"],de:["Aktiva = Erträge − Aufwendungen","Aktiva = Fremdkapital + Eigenkapital","Eigenkapital = Aktiva + Fremdkapital","Fremdkapital = Aktiva + Eigenkapital"]},a:1,e:{es:"La ecuación fundamental es Activo = Pasivo + Patrimonio Neto, base de toda la contabilidad por partida doble.",de:"Die Grundgleichung lautet: Aktiva = Fremdkapital + Eigenkapital – die Basis der doppelten Buchführung."}},
+
+  {t:0,q:{es:"Al comprar una maquinaria a crédito, ¿cómo se registra contablemente?",de:"Wie wird der Kauf einer Maschine auf Kredit buchhalterisch erfasst?"},o:{es:["Se carga Bancos y se abona Maquinaria","Se carga Maquinaria (Debe) y se abona Proveedores de inmovilizado (Haber)","Se carga Gastos y se abona Caja","No se registra hasta que se pague"],de:["Bank wird belastet und Maschine gutgeschrieben","Maschine wird im Soll belastet und Lieferanten für Anlagevermögen im Haben gutgeschrieben","Aufwand wird belastet und Kasse gutgeschrieben","Es wird erst bei Zahlung erfasst"]},a:1,e:{es:"Compra de maquinaria a crédito: cargo en Maquinaria (Debe) y abono en Proveedores de inmovilizado (Haber).",de:"Maschinenkauf auf Kredit: Soll an Maschinen, Haben an Lieferanten für Anlagevermögen."}},
+
+  {t:0,q:{es:"¿Qué ocurre con el Patrimonio Neto cuando la empresa obtiene beneficios?",de:"Was passiert mit dem Eigenkapital, wenn das Unternehmen Gewinne erzielt?"},o:{es:["Disminuye","Permanece igual","Aumenta","Se transfiere al pasivo"],de:["Es nimmt ab","Es bleibt gleich","Es nimmt zu","Es wird ins Fremdkapital übertragen"]},a:2,e:{es:"El beneficio del ejercicio incrementa el Patrimonio Neto a través del resultado positivo que se incorpora a los fondos propios.",de:"Der Jahresgewinn erhöht das Eigenkapital durch das positive Ergebnis, das in die Eigenmittel einfließt."}},
+
+  {t:0,q:{es:"¿Cuál de estos es un ejemplo de cuenta de Patrimonio Neto?",de:"Welches dieser Beispiele ist ein Eigenkapitalkonto?"},o:{es:["Clientes","Capital social","Proveedores","Existencias"],de:["Forderungen (Kunden)","Stammkapital","Verbindlichkeiten (Lieferanten)","Vorräte"]},a:1,e:{es:"El Capital Social es una cuenta de Patrimonio Neto (Grupo 1), ya que representa la aportación de los socios.",de:"Das Stammkapital ist ein Eigenkapitalkonto (Gruppe 1), da es die Einlagen der Gesellschafter repräsentiert."}},
+
+  // MÓDULO 1: Análisis
+  {t:1,q:{es:"¿Qué mide el ratio de liquidez corriente?",de:"Was misst die kurzfristige Liquiditätskennzahl?"},o:{es:["La rentabilidad sobre ventas","La capacidad de cubrir deudas a corto plazo con activos corrientes","El nivel de endeudamiento total","La eficiencia en la gestión de cobros"],de:["Die Rentabilität auf Umsätze","Die Fähigkeit, kurzfristige Schulden mit Umlaufvermögen zu decken","Den Gesamtverschuldungsgrad","Die Effizienz des Forderungsmanagements"]},a:1,e:{es:"El ratio de liquidez corriente (Activo Corriente / Pasivo Corriente) mide si la empresa puede hacer frente a sus deudas a corto plazo.",de:"Die kurzfristige Liquiditätskennzahl (Umlaufvermögen / Kurzfristiges Fremdkapital) misst, ob das Unternehmen seine kurzfristigen Schulden decken kann."}},
+
+  {t:1,q:{es:"¿Qué indica un ratio de endeudamiento elevado?",de:"Was zeigt ein hoher Verschuldungsgrad an?"},o:{es:["Que la empresa tiene poca deuda","Que la empresa depende en gran medida de financiación ajena","Que la empresa es muy rentable","Que tiene mucho efectivo en caja"],de:["Dass das Unternehmen wenig Schulden hat","Dass das Unternehmen stark von Fremdfinanzierung abhängt","Dass das Unternehmen sehr rentabel ist","Dass es viel Bargeld in der Kasse hat"]},a:1,e:{es:"Un ratio de endeudamiento alto indica que la empresa financia sus activos principalmente con deudas.",de:"Ein hoher Verschuldungsgrad zeigt, dass das Unternehmen seine Aktiva hauptsächlich mit Fremdkapital finanziert – höheres finanzielles Risiko."}},
+
+  {t:1,q:{es:"¿Cuál es la diferencia entre resultado de explotación y resultado financiero?",de:"Was ist der Unterschied zwischen Betriebsergebnis und Finanzergebnis?"},o:{es:["No existe diferencia","El de explotación surge de la actividad principal; el financiero de operaciones financieras","El resultado financiero es siempre positivo","El de explotación incluye los impuestos"],de:["Es gibt keinen Unterschied","Das Betriebsergebnis stammt aus der Haupttätigkeit; das Finanzergebnis aus Finanzoperationen","Das Finanzergebnis ist immer positiv","Das Betriebsergebnis enthält die Steuern"]},a:1,e:{es:"El resultado de explotación (EBIT) refleja el rendimiento de la actividad principal. El resultado financiero recoge ingresos y gastos financieros.",de:"Das Betriebsergebnis (EBIT) spiegelt die Leistung der Haupttätigkeit wider. Das Finanzergebnis umfasst Finanzerträge und -aufwendungen."}},
+
+  {t:1,q:{es:"¿Qué es el EBITDA?",de:"Was ist das EBITDA?"},o:{es:["El resultado neto después de impuestos","El resultado antes de intereses, impuestos, depreciaciones y amortizaciones","El volumen total de ventas","El beneficio distribuido a los accionistas"],de:["Das Nettoergebnis nach Steuern","Das Ergebnis vor Zinsen, Steuern, Abschreibungen (EBITDA)","Der Gesamtumsatz","Der an die Aktionäre ausgeschüttete Gewinn"]},a:1,e:{es:"El EBITDA mide la capacidad de generar beneficios de la actividad operativa sin considerar aspectos financieros ni contables.",de:"Das EBITDA misst die Fähigkeit, aus der operativen Tätigkeit Gewinne zu erzielen, ohne Finanz- und Buchführungsaspekte zu berücksichtigen."}},
+
+  {t:1,q:{es:"¿Qué es el Fondo de Maniobra?",de:"Was ist das Working Capital (Nettoumlaufvermögen)?"},o:{es:["La diferencia entre ingresos y gastos del ejercicio","La diferencia entre el Activo Corriente y el Pasivo Corriente","El total del patrimonio neto","El resultado antes de impuestos"],de:["Die Differenz zwischen Erträgen und Aufwendungen des Geschäftsjahres","Die Differenz zwischen Umlaufvermögen und kurzfristigem Fremdkapital","Das gesamte Eigenkapital","Das Ergebnis vor Steuern"]},a:1,e:{es:"El Fondo de Maniobra (FM = AC − PC) indica el margen de seguridad para hacer frente a obligaciones a corto plazo.",de:"Das Working Capital (WC = UV − KF) gibt die Sicherheitsmarge für kurzfristige Verbindlichkeiten an."}},
+
+  {t:1,q:{es:"¿Qué indica la Rentabilidad Económica (ROA)?",de:"Was zeigt die wirtschaftliche Rentabilität (ROA) an?"},o:{es:["La rentabilidad para los accionistas","La rentabilidad generada por los activos totales","La capacidad de pago de deudas","El margen bruto sobre ventas"],de:["Die Rentabilität für die Aktionäre","Die durch das Gesamtvermögen erzielte Rentabilität","Die Schuldendeckungsfähigkeit","Die Bruttomarge auf Umsätze"]},a:1,e:{es:"El ROA (Resultado de explotación / Activo Total) mide la eficiencia con la que la empresa utiliza sus activos para generar beneficio.",de:"Der ROA (Betriebsergebnis / Gesamtvermögen) misst die Effizienz, mit der das Unternehmen seine Aktiva zur Gewinnerzielung einsetzt."}},
+
+  {t:1,q:{es:"Un Fondo de Maniobra negativo implica:",de:"Ein negatives Working Capital bedeutet:"},o:{es:["Que la empresa tiene mucha tesorería","Que el Pasivo Corriente supera al Activo Corriente, situación de riesgo","Que la empresa es muy rentable","Que el patrimonio neto es elevado"],de:["Dass das Unternehmen viel Liquidität hat","Dass das kurzfristige Fremdkapital das Umlaufvermögen übersteigt – eine Risikolage","Dass das Unternehmen sehr rentabel ist","Dass das Eigenkapital hoch ist"]},a:1,e:{es:"FM negativo: el Pasivo Corriente supera al Activo Corriente. La empresa financia activos a largo plazo con deudas a corto.",de:"Negatives WC: Kurzfristiges Fremdkapital übersteigt Umlaufvermögen. Das Unternehmen finanziert langfristige Aktiva mit kurzfristigen Schulden – Finanzierungsrisiko."}},
+
+  {t:1,q:{es:"¿Qué mide la Rentabilidad Financiera (ROE)?",de:"Was misst die finanzielle Rentabilität (ROE)?"},o:{es:["La eficiencia en el uso de todos los activos","El rendimiento obtenido por los fondos propios de los accionistas","El margen de beneficio sobre ventas","La capacidad de endeudamiento"],de:["Die Effizienz im Einsatz aller Aktiva","Die Rendite auf das Eigenkapital der Aktionäre","Die Gewinnmarge auf Umsätze","Die Verschuldungskapazität"]},a:1,e:{es:"El ROE (Resultado neto / Fondos Propios) mide la rentabilidad que obtienen los propietarios sobre su inversión.",de:"Der ROE (Nettoergebnis / Eigenkapital) misst die Rendite, die die Eigentümer auf ihre Investition erzielen."}},
+
+  {t:1,q:{es:"¿Qué diferencia el análisis estático del dinámico?",de:"Was unterscheidet die statische von der dynamischen Analyse?"},o:{es:["El estático analiza varios ejercicios; el dinámico solo uno","El estático analiza la situación en un momento concreto; el dinámico estudia la evolución en el tiempo","No existe diferencia relevante","El dinámico solo se usa en grandes empresas"],de:["Die statische Analyse betrachtet mehrere Geschäftsjahre; die dynamische nur eines","Die statische Analyse betrachtet die Lage zu einem bestimmten Zeitpunkt; die dynamische die Entwicklung über die Zeit","Es gibt keinen relevanten Unterschied","Die dynamische Analyse wird nur in Großunternehmen verwendet"]},a:1,e:{es:"El análisis estático estudia la situación en un momento dado. El dinámico compara varios períodos para evaluar la evolución.",de:"Die statische Analyse untersucht die Situation zu einem bestimmten Zeitpunkt. Die dynamische vergleicht mehrere Perioden, um die Entwicklung zu bewerten."}},
+
+  {t:1,q:{es:"¿Qué muestra el análisis de la estructura del activo?",de:"Was zeigt die Analyse der Vermögensstruktur?"},o:{es:["El nivel de deudas de la empresa","Cómo están distribuidos los recursos entre activo corriente y no corriente","Los gastos del ejercicio","El capital social de la empresa"],de:["Den Verschuldungsgrad des Unternehmens","Wie die Mittel zwischen Umlauf- und Anlagevermögen verteilt sind","Die Aufwendungen des Geschäftsjahres","Das Stammkapital des Unternehmens"]},a:1,e:{es:"El análisis de la estructura del activo estudia la composición y proporción entre activo corriente y no corriente.",de:"Die Analyse der Vermögensstruktur untersucht die Zusammensetzung und das Verhältnis zwischen Umlauf- und Anlagevermögen."}},
+
+  // MÓDULO 2: Control de costes
+  {t:2,q:{es:"¿Cuál es la diferencia entre coste fijo y coste variable?",de:"Was ist der Unterschied zwischen fixen und variablen Kosten?"},o:{es:["Los fijos cambian con la producción; los variables no","Los fijos no cambian con la producción; los variables sí","Ambos cambian con la producción","Ninguno cambia con la producción"],de:["Fixkosten ändern sich mit der Produktion; variable nicht","Fixkosten ändern sich nicht mit der Produktion; variable Kosten schon","Beide ändern sich mit der Produktion","Keiner ändert sich mit der Produktion"]},a:1,e:{es:"Los costes fijos (alquiler, seguros) permanecen constantes. Los costes variables (materias primas) cambian proporcionalmente al volumen producido.",de:"Fixkosten (Miete, Versicherungen) bleiben konstant. Variable Kosten (Rohstoffe) ändern sich proportional zur Produktionsmenge."}},
+
+  {t:2,q:{es:"¿Qué es el punto de equilibrio o umbral de rentabilidad?",de:"Was ist die Gewinnschwelle (Break-Even-Point)?"},o:{es:["El punto donde los costes fijos igualan a los variables","El nivel de ventas donde los ingresos totales igualan a los costes totales","El nivel máximo de producción","El precio mínimo de venta"],de:["Der Punkt, wo Fixkosten gleich variable Kosten sind","Das Umsatzniveau, bei dem Gesamterträge gleich Gesamtkosten sind","Das maximale Produktionsniveau","Der Mindestverkaufspreis"]},a:1,e:{es:"El punto de equilibrio es el volumen de ventas necesario para cubrir todos los costes, sin beneficio ni pérdidas.",de:"Die Gewinnschwelle ist das Umsatzvolumen, das zur Deckung aller Kosten erforderlich ist – weder Gewinn noch Verlust."}},
+
+  {t:2,q:{es:"¿Cómo se calcula el Margen de Contribución unitario?",de:"Wie berechnet sich der Deckungsbeitrag pro Einheit?"},o:{es:["Precio de venta − Costes fijos","Precio de venta − Coste variable unitario","Ingresos totales − Costes totales","Beneficio neto / Ventas"],de:["Verkaufspreis − Fixkosten","Verkaufspreis − Variable Stückkosten","Gesamterträge − Gesamtkosten","Nettogewinn / Umsatz"]},a:1,e:{es:"El Margen de Contribución unitario = Precio de venta − Coste variable unitario. Indica cuánto contribuye cada unidad a cubrir costes fijos.",de:"Deckungsbeitrag je Einheit = Verkaufspreis − Variable Stückkosten. Er zeigt, wie viel jede Einheit zur Deckung der Fixkosten beiträgt."}},
+
+  {t:2,q:{es:"¿Qué es el coste de oportunidad?",de:"Was sind Opportunitätskosten?"},o:{es:["El coste de almacenar los productos","El beneficio al que se renuncia al elegir una alternativa sobre otra","El coste de producir una unidad adicional","Los gastos financieros de un préstamo"],de:["Die Kosten der Produktlagerung","Der Nutzen, auf den man beim Wählen einer Alternative gegenüber einer anderen verzichtet","Die Kosten der Produktion einer zusätzlichen Einheit","Die Finanzierungskosten eines Darlehens"]},a:1,e:{es:"El coste de oportunidad es el valor de la mejor alternativa desechada al tomar una decisión.",de:"Opportunitätskosten sind der Wert der besten aufgegebenen Alternative bei einer Entscheidung."}},
+
+  {t:2,q:{es:"¿Qué analiza el análisis 'make or buy'?",de:"Was analysiert die 'Make-or-Buy'-Entscheidung?"},o:{es:["Si lanzar un nuevo producto al mercado","Si fabricar internamente un componente o subcontratarlo a un proveedor externo","Si contratar más personal","Si ampliar las instalaciones"],de:["Ob ein neues Produkt auf den Markt gebracht wird","Ob ein Bauteil intern produziert oder an einen externen Lieferanten ausgelagert wird","Ob mehr Personal eingestellt wird","Ob die Anlagen erweitert werden"]},a:1,e:{es:"El análisis 'make or buy' compara el coste de producción interno frente al precio de adquisición en el mercado.",de:"Die Make-or-Buy-Analyse vergleicht die internen Produktionskosten mit dem Marktbeschaffungspreis, um die effizientere Option zu bestimmen."}},
+
+  {t:2,q:{es:"¿Qué es el coste primo o coste directo?",de:"Was sind Einzelkosten (Primärkosten)?"},o:{es:["La suma de todos los costes de la empresa","La suma de los costes directos de materiales y mano de obra directa","Solo los gastos generales de fabricación","El coste de distribución"],de:["Die Summe aller Unternehmenskosten","Die Summe der direkten Material- und Fertigungslohnkosten","Nur die allgemeinen Herstellungskosten","Die Vertriebskosten"]},a:1,e:{es:"El coste primo incluye los costes directamente atribuibles al Produkt: Materiales Directos + Mano de Obra Directa.",de:"Einzelkosten umfassen direkt dem Produkt zurechenbare Kosten: Direktmaterial + Fertigungslöhne."}},
+
+  {t:2,q:{es:"Si el precio es 50 €, el coste variable unitario 30 € y los costes fijos 4.000 €, ¿cuál es el punto de equilibrio en unidades?",de:"Wenn der Preis 50 €, die variablen Stückkosten 30 € und die Fixkosten 4.000 € betragen, wie hoch ist die Gewinnschwelle in Einheiten?"},o:{es:["100 unidades","133 unidades","200 unidades","80 unidades"],de:["100 Einheiten","133 Einheiten","200 Einheiten","80 Einheiten"]},a:2,e:{es:"Punto de equilibrio = Costes Fijos / Margen de Contribución = 4.000 / (50−30) = 4.000 / 20 = 200 unidades.",de:"Gewinnschwelle = Fixkosten / Deckungsbeitrag je Einheit = 4.000 / (50−30) = 4.000 / 20 = 200 Einheiten."}},
+
+  {t:2,q:{es:"¿Qué es el sistema de costes por absorción (full costing)?",de:"Was ist das Vollkostenverfahren (Full Costing)?"},o:{es:["Un sistema donde solo se imputan los costes variables al producto","Un sistema donde tanto costes fijos como variables se incluyen en el coste del producto","Un sistema exclusivo para grandes empresas","Un sistema que solo considera materiales"],de:["Ein System, bei dem nur variable Kosten dem Produkt zugerechnet werden","Ein System, bei dem sowohl fixe als auch variable Kosten in den Produktkosten enthalten sind","Ein System nur für Großunternehmen","Ein System, das nur Materialien berücksichtigt"]},a:1,e:{es:"El full costing imputa al producto tanto los costes variables como los fijos de fabricación, ofreciendo el coste total de producción.",de:"Das Vollkostenverfahren rechnet dem Produkt sowohl variable als auch fixe Fertigungskosten zu und ergibt die vollständigen Herstellungskosten."}},
+
+  {t:2,q:{es:"¿Qué es el coste de conversión?",de:"Was sind Konversionskosten?"},o:{es:["El coste de convertir materias primas en divisas","Mano de obra directa + costes indirectos de fabricación","Solo el coste de amortización de maquinaria","El coste de comercialización"],de:["Die Kosten der Umrechnung von Rohstoffen in Devisen","Fertigungslöhne + Gemeinkosten der Fertigung","Nur die Maschinenabschreibungskosten","Die Vermarktungskosten"]},a:1,e:{es:"El coste de conversión = Mano de Obra Directa + Costes Indirectos de Fabricación. Representa el esfuerzo productivo para transformar las materias primas.",de:"Konversionskosten = Fertigungslöhne + Gemeinkosten der Fertigung. Sie repräsentieren den Produktionsaufwand zur Umwandlung der Rohstoffe."}},
+
+  {t:2,q:{es:"¿Qué es la imputación de costes indirectos?",de:"Was ist die Zurechnung von Gemeinkosten?"},o:{es:["El registro directo de materias primas a un producto","El proceso de asignar costes no atribuibles directamente mediante criterios de reparto","La suma de todos los costes fijos","El cálculo del precio de venta"],de:["Die direkte Erfassung von Rohstoffen für ein Produkt","Der Prozess der Zuweisung nicht direkt zurechenbarer Kosten nach Verteilungsschlüsseln","Die Summe aller Fixkosten","Die Berechnung des Verkaufspreises"]},a:1,e:{es:"Los costes indirectos se reparten entre productos mediante bases de imputación (horas máquina, m², etc.).",de:"Gemeinkosten werden mittels Verteilungsschlüsseln (Maschinenstunden, m² usw.) auf die Produkte verteilt."}},
+
+  // MÓDULO 3: Presupuestos
+  {t:3,q:{es:"¿Qué es un presupuesto empresarial?",de:"Was ist ein Unternehmensbudget?"},o:{es:["Un documento exclusivo del departamento financiero","La cuantificación económica de los planes y objetivos de la empresa para un período futuro","El registro contable de las operaciones pasadas","Un informe de auditoría interna"],de:["Ein Dokument ausschließlich der Finanzabteilung","Die wirtschaftliche Quantifizierung der Pläne und Ziele des Unternehmens für einen zukünftigen Zeitraum","Die buchhalterische Erfassung vergangener Vorgänge","Ein interner Prüfbericht"]},a:1,e:{es:"El presupuesto es la expresión cuantitativa y temporal de los planes de la empresa: anticipa ingresos, gastos e inversiones previstas.",de:"Das Budget ist der quantitative und zeitliche Ausdruck der Unternehmenspläne: Es antizipiert geplante Erträge, Aufwendungen und Investitionen."}},
+
+  {t:3,q:{es:"¿Qué es una desviación presupuestaria?",de:"Was ist eine Budgetabweichung?"},o:{es:["El error de cálculo en la contabilidad financiera","La diferencia entre el valor real obtenido y el valor presupuestado","El resultado negativo del ejercicio","La diferencia entre activo y pasivo"],de:["Der Rechenfehler in der Finanzbuchhaltung","Die Differenz zwischen dem tatsächlichen und dem geplanten Wert","Das negative Jahresergebnis","Die Differenz zwischen Aktiva und Fremdkapital"]},a:1,e:{es:"La desviación presupuestaria es la diferencia entre lo planificado (presupuesto) y lo que realmente ha ocurrido. Puede ser favorable o desfavorable.",de:"Die Budgetabweichung ist die Differenz zwischen dem Geplanten (Budget) und dem tatsächlich Eingetretenen. Sie kann günstig oder ungünstig sein."}},
+
+  {t:3,q:{es:"¿Qué es el presupuesto maestro?",de:"Was ist das Masterbudget?"},o:{es:["El presupuesto de mayor importe","El conjunto integrado de todos los presupuestos parciales de la empresa","Solo el presupuesto de ventas","El presupuesto aprobado por los accionistas"],de:["Das Budget mit dem höchsten Betrag","Die integrierte Gesamtheit aller Teilbudgets des Unternehmens","Nur das Umsatzbudget","Das von den Aktionären genehmigte Budget"]},a:1,e:{es:"El presupuesto maestro integra todos los presupuestos funcionales (ventas, producción, compras, gastos) en un plan económico-financiero completo.",de:"Das Masterbudget integriert alle Funktionsbudgets (Umsatz, Produktion, Einkauf, Kosten) in einen vollständigen wirtschaftlich-finanziellen Plan."}},
+
+  {t:3,q:{es:"¿Cuál es la secuencia lógica para elaborar el sistema presupuestario?",de:"Was ist die logische Reihenfolge bei der Erstellung des Budgetsystems?"},o:{es:["Primero el presupuesto de gastos, luego el de ventas","Primero el de ventas, después producción, compras, gastos y finalmente el financiero","Primero el financiero, luego el de ventas","El orden es indiferente"],de:["Zuerst das Kostenbudget, dann das Umsatzbudget","Zuerst das Umsatzbudget, dann Produktion, Einkauf, Kosten und schließlich das Finanzbudget","Zuerst das Finanzbudget, dann das Umsatzbudget","Die Reihenfolge ist beliebig"]},a:1,e:{es:"El proceso parte del presupuesto de ventas, del que se deriva el de producción, luego compras, gastos generales y finalmente el presupuesto financiero.",de:"Der Prozess beginnt mit dem Umsatzbudget, aus dem sich Produktions-, Einkaufs-, Gemeinkosten- und schließlich das Finanzbudget ableiten."}},
+
+  {t:3,q:{es:"Una desviación en costes es favorable cuando:",de:"Eine Kostenabweichung ist günstig, wenn:"},o:{es:["El coste real es mayor que el presupuestado","El coste real es igual al presupuestado","El coste real es menor que el presupuestado","El coste real duplica al presupuestado"],de:["Die Istkosten größer als die Plankosten sind","Die Istkosten gleich den Plankosten sind","Die Istkosten kleiner als die Plankosten sind","Die Istkosten doppelt so hoch wie die Plankosten sind"]},a:2,e:{es:"Una desviación de costes es favorable cuando el coste real resulta inferior al coste presupuestado: un ahorro.",de:"Eine Kostenabweichung ist günstig, wenn die Istkosten unter den Plankosten liegen – eine Einsparung gegenüber dem Plan."}},
+
+  {t:3,q:{es:"¿Qué es el presupuesto de tesorería?",de:"Was ist der Liquiditätsplan (Kassenbudget)?"},o:{es:["El presupuesto de ingresos por ventas únicamente","La previsión de los cobros y pagos para asegurar la liquidez en cada período","El presupuesto de gastos de personal","El plan de inversiones en activo fijo"],de:["Nur das Ertragsbudget aus Umsätzen","Die Planung der Einnahmen und Ausgaben zur Sicherung der Liquidität in jedem Zeitraum","Das Personalkostenbudget","Der Investitionsplan für Anlagevermögen"]},a:1,e:{es:"El presupuesto de tesorería prevé los cobros y pagos esperados para cada período, asegurando que la empresa disponga de liquidez.",de:"Der Liquiditätsplan prognostiziert die erwarteten Einnahmen und Ausgaben für jeden Zeitraum und stellt sicher, dass das Unternehmen über ausreichende Liquidität verfügt."}},
+
+  {t:3,q:{es:"¿Para qué sirve el análisis de desviaciones presupuestarias?",de:"Wozu dient die Analyse von Budgetabweichungen?"},o:{es:["Para registrar las operaciones contables del ejercicio","Para identificar las causas de las diferencias entre lo planificado y lo real, y tomar medidas correctoras","Para calcular los impuestos del ejercicio","Para elaborar el balance de situación"],de:["Zur Erfassung buchhalterischer Vorgänge des Geschäftsjahres","Um die Ursachen der Unterschiede zwischen Plan und Ist zu identifizieren und Korrekturmaßnahmen zu ergreifen","Zur Berechnung der Jahressteuern","Zur Erstellung der Bilanz"]},a:1,e:{es:"El análisis de desviaciones detecta dónde y por qué los resultados difieren del plan, facilitando la toma de decisiones correctoras.",de:"Die Abweichungsanalyse erkennt, wo und warum die Ergebnisse vom Plan abweichen, und erleichtert Korrekturentscheidungen."}},
+
+  {t:3,q:{es:"¿Qué es el presupuesto base cero?",de:"Was ist das Zero-Base-Budgeting?"},o:{es:["Un presupuesto que parte de los datos del ejercicio anterior ajustados","Un método donde cada partida debe justificarse desde cero, sin asumir gastos históricos","Un presupuesto sin estimación de ingresos","Un presupuesto exclusivo para el sector público"],de:["Ein Budget, das von den angepassten Daten des Vorjahres ausgeht","Eine Methode, bei der jede Position von Null an begründet werden muss, ohne historische Kosten vorauszusetzen","Ein Budget ohne Ertragsprognose","Ein Budget ausschließlich für den öffentlichen Sektor"]},a:1,e:{es:"En el presupuesto base cero, cada departamento justifica todos sus gastos desde cero cada período, fomentando la eficiencia.",de:"Beim Zero-Base-Budgeting muss jede Abteilung alle ihre Kosten in jedem Zeitraum von Null an begründen – dies fördert Effizienz."}},
+
+  {t:3,q:{es:"La desviación en ventas puede descomponerse en:",de:"Die Umsatzabweichung kann unterteilt werden in:"},o:{es:["Desviación de precio y desviación de volumen","Desviación de coste fijo y coste variable","Solo desviación de precio","Solo desviación de cantidad"],de:["Preisabweichung und Mengenabweichung","Fixkosten- und variable Kostenabweichung","Nur Preisabweichung","Nur Mengenabweichung"]},a:0,e:{es:"La desviación total en ventas = Desviación de precio + Desviación de volumen.",de:"Die Gesamtumsatzabweichung = Preisabweichung (Ist- vs. Planpreis) + Mengenabweichung (Ist- vs. Planmenge)."}},
+
+  {t:3,q:{es:"¿Qué es el presupuesto flexible?",de:"Was ist ein flexibles Budget?"},o:{es:["Un presupuesto que no tiene en cuenta los costes variables","Un presupuesto que se adapta al nivel de actividad real para comparar de forma más justa","Un presupuesto aprobado sin límite de gasto","Un presupuesto solo para grandes empresas"],de:["Ein Budget, das variable Kosten nicht berücksichtigt","Ein Budget, das sich dem tatsächlichen Aktivitätsniveau anpasst, um fairere Vergleiche zu ermöglichen","Ein Budget ohne Ausgabenobergrenze","Ein Budget nur für Großunternehmen"]},a:1,e:{es:"El presupuesto flexible recalcula los costes presupuestados al nivel de actividad real, permitiendo comparaciones más justas.",de:"Das flexible Budget berechnet die geplanten Kosten auf Basis des tatsächlichen Aktivitätsniveaus und ermöglicht so fairere Vergleiche als ein starres Budget."}},
+
+  // MÓDULO 4: Obligaciones fiscales
+  {t:4,q:{es:"¿Qué es el Impuesto sobre Sociedades?",de:"Was ist die Körperschaftsteuer (Impuesto sobre Sociedades)?"},o:{es:["Un impuesto sobre las ventas de las empresas","Un impuesto directo que grava el beneficio obtenido por las sociedades mercantiles","Un impuesto sobre el patrimonio de los directivos","Un impuesto indirecto sobre el consumo"],de:["Eine Steuer auf den Umsatz der Unternehmen","Eine direkte Steuer auf den Gewinn von Handelsgesellschaften","Eine Steuer auf das Vermögen der Führungskräfte","Eine indirekte Verbrauchsteuer"]},a:1,e:{es:"El Impuesto sobre Sociedades (IS) es un impuesto directo que grava la renta (beneficio) obtenida por personas jurídicas.",de:"Die Körperschaftsteuer ist eine direkte Steuer, die den Gewinn juristischer Personen (Unternehmen, Gesellschaften) besteuert."}},
+
+  {t:4,q:{es:"¿Cuál es el tipo general del Impuesto sobre Sociedades en España?",de:"Wie hoch ist der allgemeine Körperschaftsteuersatz in Spanien?"},o:{es:["15%","20%","25%","30%"],de:["15%","20%","25%","30%"]},a:2,e:{es:"El tipo general del Impuesto sobre Sociedades en España es del 25%. Existen tipos reducidos (15%) para empresas de nueva creación.",de:"Der allgemeine Körperschaftsteuersatz in Spanien beträgt 25%. Es gibt ermäßigte Sätze (15%) für neu gegründete Unternehmen."}},
+
+  {t:4,q:{es:"¿Qué es el modelo 303 en materia fiscal?",de:"Was ist das Formular 303 im Steuerrecht?"},o:{es:["La declaración anual del Impuesto sobre Sociedades","La autoliquidación periódica del IVA","La declaración del IRPF","El modelo de alta en el IAE"],de:["Die jährliche Körperschaftsteuererklärung","Die periodische MwSt.-Selbstveranlagung","Die Einkommensteuererklärung","Das Anmeldeformular für die IAE"]},a:1,e:{es:"El modelo 303 es la autoliquidación del IVA que deben presentar empresas y autónomos, habitualmente de forma trimestral.",de:"Formular 303 ist die MwSt.-Selbstveranlagung, die Unternehmen und Selbständige üblicherweise vierteljährlich einreichen müssen."}},
+
+  {t:4,q:{es:"¿Qué es el Impuesto de Actividades Económicas (IAE)?",de:"Was ist die Gewerbesteuer (IAE) in Spanien?"},o:{es:["Un impuesto sobre los beneficios","Un tributo local que grava el ejercicio de actividades empresariales, profesionales o artísticas","Un impuesto sobre las nóminas","Un impuesto sobre el patrimonio inmobiliario"],de:["Eine Steuer auf Gewinne","Eine lokale Steuer, die die Ausübung unternehmerischer, beruflicher oder künstlerischer Tätigkeiten besteuert","Eine Steuer auf Lohnabrechnungen","Eine Steuer auf Immobilienvermögen"]},a:1,e:{es:"El IAE es un impuesto local que grava el ejercicio de actividades económicas. Exentos: primeros dos años de actividad y empresas con facturación inferior a 1 millón de €.",de:"Die IAE ist eine lokale Steuer auf die Ausübung wirtschaftlicher Tätigkeiten. Befreit: die ersten zwei Tätigkeitsjahre und Unternehmen mit einem Umsatz unter 1 Million €."}},
+
+  {t:4,q:{es:"¿Qué es el modelo 390?",de:"Was ist das Formular 390?"},o:{es:["La declaración trimestral del IVA","El resumen anual del IVA del ejercicio","La declaración de retenciones de IRPF","El alta censal de una empresa"],de:["Die vierteljährliche MwSt.-Erklärung","Die jährliche MwSt.-Zusammenfassung des Geschäftsjahres","Die Erklärung der Lohnsteuereinbehalte","Die steuerliche Anmeldung eines Unternehmens"]},a:1,e:{es:"El modelo 390 es el resumen-declaración anual del IVA, que recapitula las autoliquidaciones trimestrales (modelo 303) del ejercicio.",de:"Formular 390 ist die jährliche MwSt.-Zusammenfassungserklärung, die die vierteljährlichen Selbstveranlagungen (Formular 303) des Geschäftsjahres zusammenfasst."}},
+
+  {t:4,q:{es:"¿Qué son las retenciones a cuenta del IRPF?",de:"Was sind die Lohnsteuereinbehalte (Retenciones)?"},o:{es:["Pagos voluntarios que realiza la empresa a Hacienda","Cantidades que la empresa retiene de los pagos a trabajadores y profesionales e ingresa a Hacienda","El importe del IVA repercutido","Anticipos del Impuesto sobre Sociedades"],de:["Freiwillige Zahlungen des Unternehmens an das Finanzamt","Beträge, die das Unternehmen von Zahlungen an Arbeitnehmer und Freiberufler einbehält und ans Finanzamt abführt","Der Betrag der Umsatzsteuer","Vorauszahlungen auf die Körperschaftsteuer"]},a:1,e:{es:"Las retenciones son cantidades que la empresa descuenta de salarios u honorarios e ingresa a la Agencia Tributaria como pago a cuenta del IRPF.",de:"Einbehalte sind Beträge, die das Unternehmen von Gehältern oder Honoraren abzieht und als Vorauszahlung auf die Einkommensteuer ans Finanzamt abführt."}},
+
+  {t:4,q:{es:"¿Con qué modelo se declaran las retenciones sobre rendimientos del trabajo?",de:"Mit welchem Formular werden die Lohnsteuereinbehalte erklärt?"},o:{es:["Modelo 303","Modelo 130","Modelo 111","Modelo 200"],de:["Formular 303","Formular 130","Formular 111","Formular 200"]},a:2,e:{es:"El modelo 111 es la autoliquidación trimestral de las retenciones e ingresos a cuenta del IRPF sobre rendimientos del trabajo.",de:"Formular 111 ist die vierteljährliche Selbstveranlagung der Lohnsteuereinbehalte auf Arbeitsentgelte und freiberufliche Honorare."}},
+
+  {t:4,q:{es:"¿Cuándo se presenta el Impuesto sobre Sociedades?",de:"Wann wird die Körperschaftsteuererklärung eingereicht?"},o:{es:["Trimestralmente","En los 25 días naturales siguientes a los 6 meses posteriores al cierre (normalmente julio)","El 31 de diciembre de cada año","El primer día hábil de enero"],de:["Vierteljährlich","Innerhalb der 25 Tage nach den 6 Monaten nach dem Jahresabschluss (normalerweise Juli)","Am 31. Dezember jedes Jahres","Am ersten Werktag im Januar"]},a:1,e:{es:"Para ejercicios cerrados el 31/12, el IS (modelo 200) se presenta del 1 al 25 de julio del año siguiente.",de:"Für am 31.12 abgeschlossene Geschäftsjahre wird die Körperschaftsteuer (Formular 200) vom 1. bis 25. Juli des Folgejahres eingereicht."}},
+
+  {t:4,q:{es:"¿Qué es el Número de Identificación Fiscal (NIF) de una empresa?",de:"Was ist die Steueridentifikationsnummer (NIF) eines Unternehmens?"},o:{es:["El número de empleados de la empresa","El código identificativo de la persona jurídica ante la Administración Tributaria","El código postal de la sede social","El número de cuenta bancaria"],de:["Die Mitarbeiterzahl des Unternehmens","Der Identifikationscode der juristischen Person bei der Steuerverwaltung","Die Postleitzahl des Hauptsitzes","Die Bankkontonummer"]},a:1,e:{es:"El NIF es el código que identifica a la persona jurídica ante la Agencia Tributaria. Se asigna al constituirse la sociedad.",de:"Die NIF ist der Code, der die juristische Person bei der Steuerbehörde identifiziert. Sie wird bei der Unternehmensgründung zugewiesen."}},
+
+  {t:4,q:{es:"¿Qué es la declaración censal (modelo 036/037)?",de:"Was ist die Steueranmeldung (Formulare 036/037)?"},o:{es:["La declaración del Impuesto sobre Sociedades","El documento por el que se comunica a Hacienda el inicio de actividad, modificaciones o cese","La liquidación trimestral del IVA","El resumen anual de retenciones"],de:["Die Körperschaftsteuererklärung","Das Dokument, mit dem der Beginn, Änderungen oder die Einstellung der Tätigkeit ans Finanzamt gemeldet werden","Die vierteljährliche MwSt.-Abrechnung","Die jährliche Zusammenfassung der Einbehalte"]},a:1,e:{es:"El modelo 036 (y el simplificado 037) es la declaración censal con la que se comunica el alta, modificación o baja en el Censo de Empresarios.",de:"Formular 036 (und das vereinfachte 037) ist die Steueranmeldung, mit der die Anmeldung, Änderung oder Abmeldung im Unternehmerregister mitgeteilt wird."}},
+];
+
+// ═══════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════
+let lang = 'es';
+let activeCourse = 'basica';
+let selectedA = new Set([0,1,2,3,4,5,6]);
+let selectedB = new Set([0,1,2,3,4]);
+let quizQuestions = [], currentIdx = 0, answers = [], currentCourse = 'basica';
+
+// ═══════════════════════════════════════════════════════
+// LANGUAGE SWITCHER
+// ═══════════════════════════════════════════════════════
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${l}')"]`).classList.add('active');
+  applyUITranslations();
+  rebuildGrids();
+}
+
+function applyUITranslations() {
+  const t = UI[lang];
+  document.getElementById('ui-badge').textContent = t.badge;
+  const titleEl = document.getElementById('ui-title');
+  titleEl.innerHTML = t.title.replace('\n','<br>');
+  document.getElementById('ui-sub').textContent = t.sub;
+  document.getElementById('tab-basica-btn').textContent = t.tabBasica;
+  document.getElementById('tab-sepe-btn').textContent = t.tabSepe;
+  document.getElementById('ui-select-topics-a').textContent = t.selectTopicsA;
+  document.getElementById('ui-select-topics-b').textContent = t.selectTopicsB;
+  document.querySelectorAll('[id^="ui-selectall"]').forEach(el => el.textContent = t.selectAll);
+  document.getElementById('ui-start-a').textContent = t.startQuiz;
+  document.getElementById('ui-start-b').textContent = t.startQuiz;
+  document.getElementById('ui-exit').textContent = t.exit;
+  document.getElementById('nextBtn').textContent = t.next;
+  document.getElementById('restartBtn').textContent = t.restart;
+  document.getElementById('ui-change-topics').textContent = t.changeTopics;
+  document.getElementById('ui-result-label').textContent = t.resultLabel;
+  document.getElementById('ui-correct-lbl').textContent = t.correct;
+  document.getElementById('ui-wrong-lbl').textContent = t.wrong;
+  document.getElementById('ui-total-lbl').textContent = t.total;
+}
+
+// ═══════════════════════════════════════════════════════
+// BUILD GRIDS
+// ═══════════════════════════════════════════════════════
+function buildGrid(gridId, topicsObj, selSet, colorClass, prefix) {
+  const grid = document.getElementById(gridId);
+  grid.innerHTML = '';
+  topicsObj[lang].forEach((name, i) => {
+    const card = document.createElement('div');
+    card.className = `topic-card ${colorClass}${selSet.has(i) ? ' selected' : ''}`;
+    card.dataset.idx = i;
+    card.innerHTML = `<div class="topic-num">${prefix}${String(i+1).padStart(2,'0')}</div><div class="topic-name">${name}</div><div class="topic-check">✓</div>`;
+    card.addEventListener('click', () => {
+      if (selSet.has(i)) { if (selSet.size === 1) return; selSet.delete(i); card.classList.remove('selected'); }
+      else { selSet.add(i); card.classList.add('selected'); }
+    });
+    grid.appendChild(card);
+  });
+}
+
+function rebuildGrids() {
+  buildGrid('grid-basica', TOPICS_A, selectedA, 'gold-card', 'T');
+  buildGrid('grid-sepe',   TOPICS_B, selectedB, 'blue-card', 'M');
+}
+
+rebuildGrids();
+
+function switchCourse(c) {
+  activeCourse = c;
+  document.querySelectorAll('.course-tab').forEach(el => el.classList.remove('active-tab'));
+  document.querySelector(`.tab-${c}`).classList.add('active-tab');
+  document.querySelectorAll('.course-panel').forEach(el => el.classList.remove('active-panel'));
+  document.getElementById(`panel-${c}`).classList.add('active-panel');
+}
+
+function selectAll(c) {
+  const [sel, gid, tops] = c === 'basica' ? [selectedA,'grid-basica',TOPICS_A] : [selectedB,'grid-sepe',TOPICS_B];
+  tops[lang].forEach((_,i) => sel.add(i));
+  document.querySelectorAll(`#${gid} .topic-card`).forEach(el => el.classList.add('selected'));
+}
+
+// ═══════════════════════════════════════════════════════
+// START QUIZ
+// ═══════════════════════════════════════════════════════
+function startQuiz(c) {
+  currentCourse = c;
+  const [qBank, sel] = c === 'basica' ? [QA, selectedA] : [QB, selectedB];
+  const pool = qBank.filter(q => sel.has(q.t));
+  quizQuestions = [...pool].sort(() => Math.random() - .5).slice(0, Math.min(10, pool.length));
+  currentIdx = 0; answers = [];
+  const isSepe = c === 'sepe';
+  const t = UI[lang];
+  document.getElementById('quizLogoLabel').className = isSepe ? 'quiz-logo sepe' : 'quiz-logo';
+  document.getElementById('quizLogoLabel').textContent = isSepe ? t.logoSepe : t.logoBasica;
+  document.getElementById('qCounter').className = isSepe ? 'q-counter sepe' : 'q-counter';
+  document.getElementById('progressBar').className = isSepe ? 'progress-bar sepe' : 'progress-bar';
+  document.getElementById('nextBtn').className = isSepe ? 'btn btn-blue' : 'btn btn-gold';
+  document.getElementById('nextBtn').textContent = t.next;
+  showPage('quiz');
+  renderQuestion();
+}
+
+// ═══════════════════════════════════════════════════════
+// QUIZ RENDER
+// ═══════════════════════════════════════════════════════
+function renderQuestion() {
+  const q = quizQuestions[currentIdx], total = quizQuestions.length;
+  const isSepe = currentCourse === 'sepe';
+  const topics = isSepe ? TOPICS_B : TOPICS_A;
+  const t = UI[lang];
+  document.getElementById('qCounter').textContent = `${currentIdx+1} / ${total}`;
+  document.getElementById('progressBar').style.width = `${(currentIdx/total)*100}%`;
+  document.getElementById('qTopic').className = isSepe ? 'q-topic-tag sepe' : 'q-topic-tag';
+  document.getElementById('qTopic').textContent = `${isSepe ? t.modulePrefix : t.topicPrefix} 0${q.t+1} · ${topics[lang][q.t].toUpperCase()}`;
+  document.getElementById('qText').textContent = q.q[lang];
+
+  const container = document.getElementById('optionsContainer');
+  container.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  // shuffle option indices
+  const shuffled = [0,1,2,3].sort(() => Math.random() - .5);
+  shuffled.forEach((origIdx, pos) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.dataset.correct = origIdx === q.a ? '1' : '0';
+    btn.innerHTML = `<span class="option-key">${letters[pos]}</span><span>${q.o[lang][origIdx]}</span>`;
+    btn.addEventListener('click', () => selectAnswer(btn, q));
+    container.appendChild(btn);
+  });
+
+  document.getElementById('explanationBox').className = 'explanation-box';
+  document.getElementById('nextBtn').style.display = 'none';
+  const card = document.getElementById('quizCard');
+  card.style.animation = 'none'; card.offsetHeight; card.style.animation = 'slideIn .35s cubic-bezier(.4,0,.2,1)';
+}
+
+function selectAnswer(btn, q) {
+  document.querySelectorAll('.option').forEach(o => o.classList.add('locked'));
+  const isCorrect = btn.dataset.correct === '1';
+  answers.push({ correct: isCorrect, topicIdx: q.t });
+  if (isCorrect) { btn.classList.add('correct'); }
+  else { btn.classList.add('wrong'); document.querySelectorAll('.option').forEach(o => { if (o.dataset.correct === '1') o.classList.add('correct'); }); }
+  const exp = document.getElementById('explanationBox');
+  exp.textContent = q.e[lang];
+  exp.className = 'explanation-box show' + (isCorrect ? '' : ' wrong-exp');
+  document.getElementById('nextBtn').style.display = 'inline-flex';
+}
+
+function nextQuestion() { currentIdx++; if (currentIdx >= quizQuestions.length) showResults(); else renderQuestion(); }
+
+// ═══════════════════════════════════════════════════════
+// RESULTS
+// ═══════════════════════════════════════════════════════
+function showResults() {
+  showPage('results');
+  const isSepe = currentCourse === 'sepe';
+  const topics = isSepe ? TOPICS_B : TOPICS_A;
+  const t = UI[lang];
+  const total = answers.length;
+  const correct = answers.filter(a => a.correct).length;
+  const pct = Math.round((correct / total) * 100);
+
+  document.getElementById('resultBadge').className = isSepe ? 'course-badge-r blue' : 'course-badge-r gold';
+  document.getElementById('resultBadge').textContent = isSepe ? t.badgeSepe : t.badgeBasica;
+  document.getElementById('scoreNum').textContent = pct + '%';
+  document.getElementById('correctCount').textContent = correct;
+  document.getElementById('wrongCount').textContent = total - correct;
+  document.getElementById('totalCount').textContent = total;
+  document.getElementById('totalCount').style.color = isSepe ? 'var(--blue)' : 'var(--gold)';
+  document.getElementById('restartBtn').className = isSepe ? 'btn btn-blue' : 'btn btn-gold';
+  document.getElementById('restartBtn').textContent = t.restart;
+  document.getElementById('ui-change-topics').textContent = t.changeTopics;
+  document.getElementById('ui-result-label').textContent = t.resultLabel;
+  document.getElementById('ui-correct-lbl').textContent = t.correct;
+  document.getElementById('ui-wrong-lbl').textContent = t.wrong;
+  document.getElementById('ui-total-lbl').textContent = t.total;
+  document.getElementById('rg1').setAttribute('stop-color', isSepe ? '#5b8dee' : '#f5c842');
+  document.getElementById('rg2').setAttribute('stop-color', isSepe ? '#3ecf8e' : '#e07b3a');
+
+  const offset = 421 - (421 * pct / 100);
+  document.getElementById('scoreCircle').style.strokeDashoffset = 421;
+  setTimeout(() => {
+    document.getElementById('scoreCircle').style.transition = 'stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1)';
+    document.getElementById('scoreCircle').style.strokeDashoffset = offset;
+  }, 200);
+
+  const scores = t.scores;
+  let title, sub;
+  if (pct >= 90) { [title,sub] = scores[90]; }
+  else if (pct >= 70) { [title,sub] = scores[70]; }
+  else if (pct >= 50) { [title,sub] = scores[50]; }
+  else { [title,sub] = scores[0]; }
+  document.getElementById('resultsTitle').textContent = title;
+  document.getElementById('resultsSub').textContent = sub;
+
+  const topicStats = {};
+  answers.forEach(a => {
+    if (!topicStats[a.topicIdx]) topicStats[a.topicIdx] = { c: 0, total: 0 };
+    topicStats[a.topicIdx].total++;
+    if (a.correct) topicStats[a.topicIdx].c++;
+  });
+
+  const tb = document.getElementById('topicBreakdown');
+  tb.innerHTML = `<div class="tb-title">${t.breakdownTitle(isSepe ? t.modulo : t.tema)}</div>`;
+  Object.keys(topicStats).sort().forEach(ti => {
+    const s = topicStats[ti], p = Math.round((s.c / s.total) * 100);
+    const row = document.createElement('div');
+    row.className = 'tb-row';
+    row.innerHTML = `<div class="tb-name">${topics[lang][Number(ti)]}</div><div class="tb-bar-wrap"><div class="tb-bar${isSepe ? ' sepe' : ''}" style="width:0%" data-pct="${p}"></div></div><div class="tb-score">${s.c}/${s.total}</div>`;
+    tb.appendChild(row);
+  });
+  setTimeout(() => { document.querySelectorAll('.tb-bar').forEach(b => b.style.width = b.dataset.pct + '%'); }, 400);
+}
+
+function restartQuiz() { startQuiz(currentCourse); }
+function goHome() { showPage('home'); }
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
