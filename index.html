@@ -4,20 +4,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Contabilidad Quiz 📊</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=Sora:wght@700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<!-- fonts loaded inside style -->
 <style>
-  /* ══════════════════════════════════════════════════════
-     DESIGN TOKENS – "Libro Mayor" theme
-     Clean, professional, warm – like a modern fintech app
-     inspired by spanish accounting software aesthetics
-  ══════════════════════════════════════════════════════ */
-  :root {
-    /* Base */
-    --bg:        #f6f8fc;
-    --surface:   #ffffff;
-    --border:    #e4e9f5;
-    --border-strong: #c9d3eb;
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=Sora:wght@700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+
+/* ══════════════════════════════════════════════════════
+DESIGN TOKENS – “Libro Mayor” theme
+Clean, professional, warm – like a modern fintech app
+inspired by spanish accounting software aesthetics
+══════════════════════════════════════════════════════ */
+:root {
+/* Base */
+–bg:        #f6f8fc;
+–surface:   #ffffff;
+–border:    #e4e9f5;
+–border-strong: #c9d3eb;
 
 ```
 /* Course A – Verde contable (like ledger ink) */
@@ -62,7 +65,10 @@
 
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
 
+html, body { background-color: #f6f8fc !important; }
+
 body {
+background: #f6f8fc;
 background: var(–bg);
 color: var(–text);
 font-family: ‘Plus Jakarta Sans’, sans-serif;
@@ -90,8 +96,8 @@ radial-gradient(ellipse 55% 45% at 5% 0%, rgba(14,164,114,.12) 0%, transparent 1
 radial-gradient(ellipse 50% 50% at 95% 100%, rgba(59,91,219,.10) 0%, transparent 100%);
 }
 
-.page { display:none; position:relative; z-index:1 }
-.page.active { display:flex; flex-direction:column; min-height:100vh }
+.page { display:none !important; position:relative; z-index:1 }
+.page.active { display:flex !important; flex-direction:column; min-height:100vh }
 
 /* ── LANGUAGE SWITCHER ── */
 .lang-bar {
@@ -496,7 +502,7 @@ color: #fff; box-shadow: 0 4px 16px var(–b-glow);
 
 <!-- HOME -->
 
-<div id="home" class="page active">
+<div id="home" class="page active" style="display:flex;flex-direction:column;min-height:100vh">
   <div class="home-inner">
     <div class="home-deco">
       <span class="deco-pill">DEBE ↔ HABER</span>
@@ -1561,8 +1567,13 @@ function showResults() {
 function restartQuiz() { startQuiz(currentCourse); }
 function goHome() { showPage('home'); }
 function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+  const el = document.getElementById(id);
+  el.classList.add('active');
+  el.style.display = 'flex';
   window.scrollTo(0, 0);
 }
 </script>
