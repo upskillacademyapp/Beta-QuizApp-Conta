@@ -69,8 +69,8 @@ html, body { background-color: #f6f8fc !important; }
 
 body {
 background: #f6f8fc;
-background: var(–bg);
-color: var(–text);
+background: #f6f8fc;
+color: #0f1923;
 font-family: ‘Plus Jakarta Sans’, sans-serif;
 min-height: 100vh;
 overflow-x: hidden;
@@ -103,22 +103,22 @@ radial-gradient(ellipse 50% 50% at 95% 100%, rgba(59,91,219,.10) 0%, transparent
 .lang-bar {
 position: fixed; top: 16px; right: 20px; z-index: 200;
 display: flex; gap: 2px;
-background: var(–surface);
-border: 1.5px solid var(–border);
+background: #ffffff;
+border: 1.5px solid #e4e9f5;
 border-radius: 999px; padding: 3px;
-box-shadow: var(–sh);
+box-shadow: 0 2px 12px rgba(15,25,35,.07), 0 1px 3px rgba(15,25,35,.05);
 }
 .lang-btn {
 padding: 5px 14px; border-radius: 999px; border: none;
 cursor: pointer;
 font-family: ‘JetBrains Mono’, monospace;
 font-size: 11px; font-weight: 700;
-transition: all .18s; background: transparent; color: var(–muted);
+transition: all .18s; background: transparent; color: #94a3b8;
 letter-spacing: .5px;
 }
 .lang-btn.active {
-background: var(–a1); color: #fff;
-box-shadow: 0 2px 10px var(–a-glow);
+background: #0ea472; color: #fff;
+box-shadow: 0 2px 10px rgba(14,164,114,.22);
 }
 
 /* ── HOME ── */
@@ -138,22 +138,22 @@ position: absolute; border-radius: 999px; font-family: ‘JetBrains Mono’, mon
 font-size: 10px; font-weight: 700; padding: 5px 12px; opacity: .6;
 white-space: nowrap; letter-spacing: .5px;
 }
-.deco-pill:nth-child(1){ top:40px;  left:2%;  background:rgba(14,164,114,.12); color:var(–a1); animation: float1 6s ease-in-out infinite }
-.deco-pill:nth-child(2){ top:80px;  right:3%; background:rgba(59,91,219,.10); color:var(–b1); animation: float2 7s ease-in-out infinite }
-.deco-pill:nth-child(3){ top:140px; left:5%;  background:rgba(14,164,114,.08); color:var(–a1); animation: float1 8s ease-in-out infinite .5s }
-.deco-pill:nth-child(4){ top:20px;  right:8%; background:rgba(59,91,219,.07); color:var(–b1); animation: float2 9s ease-in-out infinite 1s }
+.deco-pill:nth-child(1){ top:40px;  left:2%;  background:rgba(14,164,114,.12); color:#0ea472; animation: float1 6s ease-in-out infinite }
+.deco-pill:nth-child(2){ top:80px;  right:3%; background:rgba(59,91,219,.10); color:#3b5bdb; animation: float2 7s ease-in-out infinite }
+.deco-pill:nth-child(3){ top:140px; left:5%;  background:rgba(14,164,114,.08); color:#0ea472; animation: float1 8s ease-in-out infinite .5s }
+.deco-pill:nth-child(4){ top:20px;  right:8%; background:rgba(59,91,219,.07); color:#3b5bdb; animation: float2 9s ease-in-out infinite 1s }
 
 @keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
 @keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 
 .badge {
 display: inline-flex; align-items: center; gap: 7px;
-background: linear-gradient(135deg, var(–a1), var(–a2));
+background: linear-gradient(135deg, #0ea472, #06c47f);
 color: #fff; font-family: ‘JetBrains Mono’, monospace;
 font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
 text-transform: uppercase; padding: 7px 18px;
 border-radius: 999px; margin-bottom: 22px;
-box-shadow: 0 4px 18px var(–a-glow);
+box-shadow: 0 4px 18px rgba(14,164,114,.22);
 animation: popIn .55s cubic-bezier(.34,1.56,.64,1) both;
 }
 @keyframes popIn {
@@ -166,11 +166,11 @@ font-family: ‘Sora’, sans-serif;
 font-size: clamp(44px, 7.5vw, 86px);
 font-weight: 800; line-height: 1.0; letter-spacing: -2px;
 margin-bottom: 14px;
-color: var(–text);
+color: #0f1923;
 animation: riseIn .55s .15s cubic-bezier(.4,0,.2,1) both;
 }
 .home-title span {
-background: linear-gradient(135deg, var(–a1) 0%, var(–b1) 100%);
+background: linear-gradient(135deg, #0ea472 0%, #3b5bdb 100%);
 -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 @keyframes riseIn {
@@ -179,7 +179,7 @@ to   { opacity:1; transform:translateY(0) }
 }
 
 .home-sub {
-font-size: 16px; color: var(–text-2); margin-bottom: 44px;
+font-size: 16px; color: #4a5568; margin-bottom: 44px;
 font-weight: 500; line-height: 1.6;
 animation: riseIn .55s .28s cubic-bezier(.4,0,.2,1) both;
 }
@@ -191,17 +191,17 @@ margin-bottom: 32px; flex-wrap: wrap;
 animation: riseIn .55s .36s cubic-bezier(.4,0,.2,1) both;
 }
 .course-tab {
-padding: 10px 24px; border-radius: var(–r);
+padding: 10px 24px; border-radius: 16px;
 font-size: 14px; font-weight: 700;
-cursor: pointer; border: 2px solid var(–border);
-background: var(–surface); color: var(–muted);
+cursor: pointer; border: 2px solid #e4e9f5;
+background: #ffffff; color: #94a3b8;
 transition: all .2s; font-family: ‘Plus Jakarta Sans’, sans-serif;
-box-shadow: var(–sh);
+box-shadow: 0 2px 12px rgba(15,25,35,.07), 0 1px 3px rgba(15,25,35,.05);
 }
 .course-tab.active-tab { color: #fff; border-color: transparent; transform: translateY(-1px) }
-.tab-basica.active-tab { background: linear-gradient(135deg,var(–a1),var(–a2)); box-shadow: 0 6px 22px var(–a-glow) }
-.tab-sepe.active-tab   { background: linear-gradient(135deg,var(–b1),var(–b2)); box-shadow: 0 6px 22px var(–b-glow) }
-.course-tab:hover:not(.active-tab) { border-color: var(–a1); color: var(–a1); transform: translateY(-1px) }
+.tab-basica.active-tab { background: linear-gradient(135deg,#0ea472,#06c47f); box-shadow: 0 6px 22px rgba(14,164,114,.22) }
+.tab-sepe.active-tab   { background: linear-gradient(135deg,#3b5bdb,#748ffc); box-shadow: 0 6px 22px rgba(59,91,219,.22) }
+.course-tab:hover:not(.active-tab) { border-color: #0ea472; color: #0ea472; transform: translateY(-1px) }
 
 .course-panel { display: none }
 .course-panel.active-panel { display: block; animation: fadeUp .3s ease }
@@ -212,8 +212,8 @@ font-family: ‘JetBrains Mono’, monospace; font-size: 10px;
 letter-spacing: 2px; text-transform: uppercase;
 margin-bottom: 16px; padding-left: 4px; font-weight: 700;
 }
-.section-label.gold { color: var(–a1) }
-.section-label.blue { color: var(–b1) }
+.section-label.gold { color: #0ea472 }
+.section-label.blue { color: #3b5bdb }
 
 /* Topic cards */
 .topic-grid {
@@ -221,10 +221,10 @@ display: grid; grid-template-columns: repeat(auto-fill, minmax(188px,1fr));
 gap: 12px; margin-bottom: 32px;
 }
 .topic-card {
-background: var(–surface); border: 1.5px solid var(–border);
-border-radius: var(–r); padding: 18px 16px 16px; cursor: pointer;
+background: #ffffff; border: 1.5px solid #e4e9f5;
+border-radius: 16px; padding: 18px 16px 16px; cursor: pointer;
 transition: all .2s; text-align: left; position: relative; overflow: hidden;
-box-shadow: var(–sh);
+box-shadow: 0 2px 12px rgba(15,25,35,.07), 0 1px 3px rgba(15,25,35,.05);
 }
 /* Left accent bar */
 .topic-card::before {
@@ -233,27 +233,27 @@ position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
 transform: scaleY(0); transform-origin: bottom; transition: transform .25s ease;
 border-radius: 0 2px 2px 0;
 }
-.gold-card::before { background: linear-gradient(to top, var(–a1), var(–a2)) }
-.blue-card::before { background: linear-gradient(to top, var(–b1), var(–b2)) }
+.gold-card::before { background: linear-gradient(to top, #0ea472, #06c47f) }
+.blue-card::before { background: linear-gradient(to top, #3b5bdb, #748ffc) }
 .topic-card:hover::before, .topic-card.selected::before { transform: scaleY(1) }
 
 .gold-card:hover,.gold-card.selected {
-border-color: var(–a1); background: var(–a-soft);
-transform: translateY(-2px); box-shadow: var(–sh-md);
+border-color: #0ea472; background: rgba(14,164,114,.10);
+transform: translateY(-2px); box-shadow: 0 8px 32px rgba(15,25,35,.10), 0 2px 8px rgba(15,25,35,.06);
 }
 .blue-card:hover,.blue-card.selected {
-border-color: var(–b1); background: var(–b-soft);
-transform: translateY(-2px); box-shadow: var(–sh-md);
+border-color: #3b5bdb; background: rgba(59,91,219,.09);
+transform: translateY(-2px); box-shadow: 0 8px 32px rgba(15,25,35,.10), 0 2px 8px rgba(15,25,35,.06);
 }
 
 .topic-num {
 font-family: ‘JetBrains Mono’, monospace; font-size: 10px;
 letter-spacing: 1px; margin-bottom: 8px; font-weight: 700;
 }
-.gold-card .topic-num { color: var(–a1) }
-.blue-card .topic-num { color: var(–b1) }
+.gold-card .topic-num { color: #0ea472 }
+.blue-card .topic-num { color: #3b5bdb }
 
-.topic-name { font-size: 13px; font-weight: 700; line-height: 1.4; color: var(–text) }
+.topic-name { font-size: 13px; font-weight: 700; line-height: 1.4; color: #0f1923 }
 
 .topic-check {
 position: absolute; top: 14px; right: 14px;
@@ -262,34 +262,34 @@ display: flex; align-items: center; justify-content: center;
 font-size: 10px; font-weight: 900; opacity: 0;
 transition: all .2s; color: #fff;
 }
-.gold-card .topic-check { background: var(–a1); box-shadow: 0 2px 8px var(–a-glow) }
-.blue-card .topic-check { background: var(–b1); box-shadow: 0 2px 8px var(–b-glow) }
+.gold-card .topic-check { background: #0ea472; box-shadow: 0 2px 8px rgba(14,164,114,.22) }
+.blue-card .topic-check { background: #3b5bdb; box-shadow: 0 2px 8px rgba(59,91,219,.22) }
 .topic-card.selected .topic-check { opacity: 1; transform: scale(1.1) }
 
 /* Buttons */
 .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap }
 .btn {
 display: inline-flex; align-items: center; gap: 8px;
-padding: 13px 30px; border-radius: var(–r);
+padding: 13px 30px; border-radius: 16px;
 font-family: ‘Plus Jakarta Sans’, sans-serif;
 font-size: 15px; font-weight: 700;
 cursor: pointer; border: none; transition: all .2s;
 }
 .btn-gold {
-background: linear-gradient(135deg, var(–a1) 0%, var(–a2) 100%);
-color: #fff; box-shadow: 0 6px 20px var(–a-glow);
+background: linear-gradient(135deg, #0ea472 0%, #06c47f 100%);
+color: #fff; box-shadow: 0 6px 20px rgba(14,164,114,.22);
 }
-.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 30px var(–a-glow); filter: brightness(1.05) }
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(14,164,114,.22); filter: brightness(1.05) }
 .btn-blue {
-background: linear-gradient(135deg, var(–b1) 0%, var(–b2) 100%);
-color: #fff; box-shadow: 0 6px 20px var(–b-glow);
+background: linear-gradient(135deg, #3b5bdb 0%, #748ffc 100%);
+color: #fff; box-shadow: 0 6px 20px rgba(59,91,219,.22);
 }
-.btn-blue:hover { transform: translateY(-2px); box-shadow: 0 10px 30px var(–b-glow); filter: brightness(1.05) }
+.btn-blue:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(59,91,219,.22); filter: brightness(1.05) }
 .btn-ghost {
-background: var(–surface); color: var(–text-2);
-border: 1.5px solid var(–border); box-shadow: var(–sh);
+background: #ffffff; color: #4a5568;
+border: 1.5px solid #e4e9f5; box-shadow: 0 2px 12px rgba(15,25,35,.07), 0 1px 3px rgba(15,25,35,.05);
 }
-.btn-ghost:hover { border-color: var(–a1); color: var(–a1); transform: translateY(-1px) }
+.btn-ghost:hover { border-color: #0ea472; color: #0ea472; transform: translateY(-1px) }
 
 /* ── QUIZ ── */
 #quiz { padding: 0; flex-direction: column }
@@ -300,34 +300,34 @@ padding: 14px 28px;
 background: rgba(255,255,255,.88);
 backdrop-filter: blur(12px);
 -webkit-backdrop-filter: blur(12px);
-border-bottom: 1.5px solid var(–border);
+border-bottom: 1.5px solid #e4e9f5;
 position: sticky; top: 0; z-index: 10;
 box-shadow: 0 2px 16px rgba(15,25,35,.06);
 }
 .quiz-logo {
 font-family: ‘Sora’, sans-serif; font-weight: 800; font-size: 17px;
-background: linear-gradient(135deg, var(–a1), var(–b1));
+background: linear-gradient(135deg, #0ea472, #3b5bdb);
 -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .quiz-logo.sepe {
-background: linear-gradient(135deg, var(–b1), var(–b2));
+background: linear-gradient(135deg, #3b5bdb, #748ffc);
 -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .quiz-meta { display: flex; align-items: center; gap: 16px }
 .q-counter {
 font-family: ‘JetBrains Mono’, monospace; font-size: 12px; font-weight: 700;
-color: var(–a1); background: var(–a-soft);
+color: #0ea472; background: rgba(14,164,114,.10);
 padding: 5px 13px; border-radius: 999px; letter-spacing: .5px;
 }
-.q-counter.sepe { color: var(–b1); background: var(–b-soft) }
+.q-counter.sepe { color: #3b5bdb; background: rgba(59,91,219,.09) }
 
-.progress-wrap { height: 4px; background: var(–subtle) }
+.progress-wrap { height: 4px; background: #edf1fa }
 .progress-bar {
 height: 100%;
-background: linear-gradient(90deg, var(–a1), var(–a2));
+background: linear-gradient(90deg, #0ea472, #06c47f);
 transition: width .55s cubic-bezier(.4,0,.2,1);
 }
-.progress-bar.sepe { background: linear-gradient(90deg, var(–b1), var(–b2)) }
+.progress-bar.sepe { background: linear-gradient(90deg, #3b5bdb, #748ffc) }
 
 .quiz-body {
 flex: 1; display: flex; align-items: flex-start;
@@ -335,10 +335,10 @@ justify-content: center; padding: 36px 16px 60px;
 }
 
 .quiz-card {
-background: var(–surface); border: 1.5px solid var(–border);
-border-radius: var(–r-lg); padding: 40px 40px 36px;
+background: #ffffff; border: 1.5px solid #e4e9f5;
+border-radius: 22px; padding: 40px 40px 36px;
 max-width: 700px; width: 100%;
-box-shadow: var(–sh-lg);
+box-shadow: 0 20px 60px rgba(15,25,35,.12), 0 4px 16px rgba(15,25,35,.07);
 animation: cardIn .4s cubic-bezier(.4,0,.2,1);
 }
 @keyframes cardIn {
@@ -350,54 +350,54 @@ to   { opacity:1; transform:translateY(0)  scale(1) }
 display: inline-flex; align-items: center; gap: 5px;
 font-family: ‘JetBrains Mono’, monospace; font-size: 10px;
 font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-color: var(–a1); background: var(–a-soft);
+color: #0ea472; background: rgba(14,164,114,.10);
 padding: 5px 12px; border-radius: 6px; margin-bottom: 20px;
 }
-.q-topic-tag.sepe { color: var(–b1); background: var(–b-soft) }
+.q-topic-tag.sepe { color: #3b5bdb; background: rgba(59,91,219,.09) }
 
 .q-text {
 font-family: ‘Sora’, sans-serif;
 font-size: clamp(17px, 2.6vw, 22px);
-font-weight: 700; line-height: 1.5; margin-bottom: 28px; color: var(–text);
+font-weight: 700; line-height: 1.5; margin-bottom: 28px; color: #0f1923;
 }
 
 .options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px }
 .option {
 display: flex; align-items: flex-start; gap: 14px;
 padding: 15px 18px;
-background: var(–bg); border: 1.5px solid var(–border);
-border-radius: var(–r-sm);
+background: #f6f8fc; border: 1.5px solid #e4e9f5;
+border-radius: 10px;
 cursor: pointer; transition: all .16s;
 font-size: 14.5px; line-height: 1.5; text-align: left;
-color: var(–text-2); font-family: ‘Plus Jakarta Sans’, sans-serif;
+color: #4a5568; font-family: ‘Plus Jakarta Sans’, sans-serif;
 font-weight: 600; width: 100%;
 }
 .option:hover:not(.locked) {
-border-color: var(–a1); background: var(–a-soft);
-color: var(–text); transform: translateX(4px);
-box-shadow: 0 0 0 3px var(–a-soft);
+border-color: #0ea472; background: rgba(14,164,114,.10);
+color: #0f1923; transform: translateX(4px);
+box-shadow: 0 0 0 3px rgba(14,164,114,.10);
 }
 .option-key {
 flex-shrink: 0; min-width: 28px; height: 28px; border-radius: 8px;
-background: var(–subtle); display: flex; align-items: center; justify-content: center;
+background: #edf1fa; display: flex; align-items: center; justify-content: center;
 font-family: ‘JetBrains Mono’, monospace; font-size: 11px; font-weight: 700;
-color: var(–muted); margin-top: 0px; transition: all .16s; letter-spacing: .5px;
+color: #94a3b8; margin-top: 0px; transition: all .16s; letter-spacing: .5px;
 }
-.option.correct { border-color: var(–green); background: rgba(14,164,114,.08); color: var(–text) }
-.option.correct .option-key { background: var(–green); color: #fff }
-.option.wrong   { border-color: var(–red); background: rgba(224,49,49,.07); color: var(–text) }
-.option.wrong .option-key   { background: var(–red); color: #fff }
+.option.correct { border-color: #0ea472; background: rgba(14,164,114,.08); color: #0f1923 }
+.option.correct .option-key { background: #0ea472; color: #fff }
+.option.wrong   { border-color: #e03131; background: rgba(224,49,49,.07); color: #0f1923 }
+.option.wrong .option-key   { background: #e03131; color: #fff }
 .option.locked  { cursor: default; transform: none; box-shadow: none }
 
 .explanation-box {
 background: #f0fdf8; border: 1.5px solid rgba(14,164,114,.25);
-border-left: 4px solid var(–green); border-radius: var(–r-sm);
-padding: 16px 18px; font-size: 14px; color: var(–text-2);
+border-left: 4px solid #0ea472; border-radius: 10px;
+padding: 16px 18px; font-size: 14px; color: #4a5568;
 line-height: 1.7; margin-bottom: 24px; display: none; font-weight: 500;
 }
 .explanation-box.show { display: block; animation: fadeUp .28s ease }
 .explanation-box.wrong-exp {
-background: #fff5f5; border-color: rgba(224,49,49,.25); border-left-color: var(–red);
+background: #fff5f5; border-color: rgba(224,49,49,.25); border-left-color: #e03131;
 }
 
 .quiz-nav { display: flex; justify-content: flex-end; padding-top: 4px }
@@ -417,61 +417,61 @@ display: flex; flex-direction: column; align-items: center; justify-content: cen
 }
 .score-num {
 font-family: ‘Sora’, sans-serif; font-size: 42px; font-weight: 800;
-background: linear-gradient(135deg, var(–a1), var(–b1));
+background: linear-gradient(135deg, #0ea472, #3b5bdb);
 -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 line-height: 1;
 }
 .score-label {
-font-size: 9px; color: var(–muted); margin-top: 3px;
+font-size: 9px; color: #94a3b8; margin-top: 3px;
 font-family: ‘JetBrains Mono’, monospace; letter-spacing: 2px; text-transform: uppercase;
 }
 
 .results-title {
 font-family: ‘Sora’, sans-serif; font-size: 30px;
-font-weight: 800; margin-bottom: 10px; color: var(–text); letter-spacing: -0.5px;
+font-weight: 800; margin-bottom: 10px; color: #0f1923; letter-spacing: -0.5px;
 }
-.results-sub { color: var(–text-2); font-size: 15px; margin-bottom: 36px; line-height: 1.7 }
+.results-sub { color: #4a5568; font-size: 15px; margin-bottom: 36px; line-height: 1.7 }
 
 .breakdown { display: flex; justify-content: center; gap: 14px; margin-bottom: 28px; flex-wrap: wrap }
 .breakdown-item {
-background: var(–surface); border: 1.5px solid var(–border);
-border-radius: var(–r); padding: 16px 22px; text-align: center;
-min-width: 96px; box-shadow: var(–sh);
+background: #ffffff; border: 1.5px solid #e4e9f5;
+border-radius: 16px; padding: 16px 22px; text-align: center;
+min-width: 96px; box-shadow: 0 2px 12px rgba(15,25,35,.07), 0 1px 3px rgba(15,25,35,.05);
 }
 .breakdown-val {
 font-family: ‘Sora’, sans-serif; font-size: 32px; font-weight: 800; margin-bottom: 4px;
 }
-.breakdown-val.c { color: var(–green) }
-.breakdown-val.w { color: var(–red) }
+.breakdown-val.c { color: #0ea472 }
+.breakdown-val.w { color: #e03131 }
 .breakdown-lbl {
-font-size: 10px; color: var(–muted); text-transform: uppercase;
+font-size: 10px; color: #94a3b8; text-transform: uppercase;
 letter-spacing: 1px; font-family: ‘JetBrains Mono’, monospace; font-weight: 700;
 }
 
 .topic-breakdown {
-background: var(–surface); border: 1.5px solid var(–border);
-border-radius: var(–r); padding: 22px; margin-bottom: 28px;
-text-align: left; box-shadow: var(–sh);
+background: #ffffff; border: 1.5px solid #e4e9f5;
+border-radius: 16px; padding: 22px; margin-bottom: 28px;
+text-align: left; box-shadow: 0 2px 12px rgba(15,25,35,.07), 0 1px 3px rgba(15,25,35,.05);
 }
 .tb-title {
-font-size: 10px; color: var(–muted); font-family: ‘JetBrains Mono’, monospace;
+font-size: 10px; color: #94a3b8; font-family: ‘JetBrains Mono’, monospace;
 letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 18px; font-weight: 700;
 }
 .tb-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px }
-.tb-name { flex: 1; color: var(–text); line-height: 1.3; font-size: 13px; font-weight: 600 }
+.tb-name { flex: 1; color: #0f1923; line-height: 1.3; font-size: 13px; font-weight: 600 }
 .tb-bar-wrap {
-width: 120px; height: 7px; background: var(–subtle);
+width: 120px; height: 7px; background: #edf1fa;
 border-radius: 999px; overflow: hidden; flex-shrink: 0;
 }
 .tb-bar {
 height: 100%; border-radius: 999px;
-background: linear-gradient(90deg, var(–a1), var(–a2));
+background: linear-gradient(90deg, #0ea472, #06c47f);
 transition: width 1s cubic-bezier(.4,0,.2,1);
 }
-.tb-bar.sepe { background: linear-gradient(90deg, var(–b1), var(–b2)) }
+.tb-bar.sepe { background: linear-gradient(90deg, #3b5bdb, #748ffc) }
 .tb-score {
 font-family: ‘JetBrains Mono’, monospace; font-size: 11px;
-color: var(–muted); width: 36px; text-align: right; flex-shrink: 0; font-weight: 700;
+color: #94a3b8; width: 36px; text-align: right; flex-shrink: 0; font-weight: 700;
 }
 
 .course-badge-r {
@@ -481,26 +481,534 @@ letter-spacing: 1.5px; text-transform: uppercase;
 padding: 6px 16px; border-radius: 999px; margin-bottom: 22px;
 }
 .course-badge-r.gold {
-background: linear-gradient(135deg, var(–a1), var(–a2));
-color: #fff; box-shadow: 0 4px 16px var(–a-glow);
+background: linear-gradient(135deg, #0ea472, #06c47f);
+color: #fff; box-shadow: 0 4px 16px rgba(14,164,114,.22);
 }
 .course-badge-r.blue {
-background: linear-gradient(135deg, var(–b1), var(–b2));
-color: #fff; box-shadow: 0 4px 16px var(–b-glow);
+background: linear-gradient(135deg, #3b5bdb, #748ffc);
+color: #fff; box-shadow: 0 4px 16px rgba(59,91,219,.22);
 }
-</style>
 
+/* ═══════════════════════════════════════
+RESPONSIVE MOBILE
+═══════════════════════════════════════ */
+@media (max-width: 768px) {
+.lang-bar { top:10px; right:10px }
+#home { padding:60px 14px 40px }
+.home-title { font-size:42px; letter-spacing:-1px }
+.home-sub { font-size:14px; margin-bottom:28px }
+.course-tabs { flex-direction:column; align-items:stretch }
+.course-tab { text-align:center; font-size:13px }
+.topic-grid { grid-template-columns:1fr 1fr; gap:8px }
+.topic-name { font-size:12px }
+.topic-check { width:14px; height:14px; font-size:8px; top:8px; right:8px }
+.btn-row { flex-direction:column; align-items:center }
+.btn-row .btn { width:100%; max-width:300px; justify-content:center }
+
+.quiz-topbar { padding:10px 14px }
+.quiz-logo { font-size:14px }
+.quiz-body { padding:20px 10px 40px }
+.quiz-card { padding:24px 16px 20px; border-radius:16px }
+.q-text { font-size:17px; margin-bottom:20px }
+.option { font-size:13px; padding:12px 14px; gap:10px }
+.option-key { width:22px; height:22px; font-size:10px }
+.explanation-box { font-size:13px; padding:12px 14px }
+
+#results { padding:40px 14px }
+.results-inner { max-width:100% }
+.score-ring { width:130px; height:130px }
+.score-num { font-size:36px }
+.breakdown { gap:10px }
+.breakdown-item { padding:12px 14px; min-width:80px }
+.breakdown-val { font-size:24px }
+.topic-breakdown { padding:14px }
+.tb-bar-wrap { width:80px }
+}
+
+@media (max-width:420px) {
+.topic-grid { grid-template-columns:1fr }
+.home-title { font-size:36px }
+.badge { font-size:10px; padding:5px 12px }
+}
+
+/* ═══════════════════════════════════════
+APRENDER PAGE
+═══════════════════════════════════════ */
+#learn-page { background:#f8f9ff }
+.aprender-hero { max-width:860px; margin:0 auto; padding:48px 20px 24px; text-align:center }
+.aprender-hero h2 { font-family:‘Sora’,sans-serif; font-size:clamp(28px,5vw,48px); font-weight:800; margin-bottom:10px; color:#0f1923 }
+.aprender-hero p { color:#4a5568; font-size:15px; max-width:540px; margin:0 auto 28px; line-height:1.65 }
+
+.learn-course-tabs { display:flex; gap:10px; justify-content:center; margin-bottom:28px; flex-wrap:wrap }
+.lctab {
+padding:10px 22px; border-radius:12px; font-size:13px; font-weight:700;
+cursor:pointer; border:2px solid #e2e8f8; background:#fff; color:#7b7b96;
+transition:all .2s; font-family:‘Plus Jakarta Sans’,sans-serif;
+}
+.lctab.active { color:#fff; border-color:transparent }
+.lctab-basica.active { background:linear-gradient(135deg,#0ea472,#06c47f); box-shadow:0 6px 20px rgba(14,164,114,.28) }
+.lctab-sepe.active   { background:linear-gradient(135deg,#3b5bdb,#748ffc); box-shadow:0 6px 20px rgba(59,91,219,.28) }
+.lctab:hover:not(.active) { border-color:#0ea472; color:#0ea472 }
+
+.lpanel { display:none }
+.lpanel.active { display:block; animation:lfadeIn .3s ease }
+@keyframes lfadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+.learn-layout {
+display:grid; grid-template-columns:210px 1fr;
+gap:22px; max-width:1060px; margin:0 auto; padding:0 20px 72px; align-items:start;
+}
+.lnav {
+background:#fff; border:1.5px solid #e2e8f8; border-radius:16px;
+padding:10px; position:sticky; top:72px;
+box-shadow:0 2px 12px rgba(59,91,219,.07);
+}
+.lnav-title {
+font-family:‘JetBrains Mono’,monospace; font-size:9px; font-weight:700;
+letter-spacing:2px; text-transform:uppercase; color:#94a3b8;
+padding:6px 8px 10px; border-bottom:1.5px solid #e2e8f8; margin-bottom:8px;
+}
+.lnav-btn {
+display:flex; align-items:center; gap:9px; width:100%;
+padding:9px 10px; border-radius:10px; border:none; background:transparent;
+cursor:pointer; text-align:left; font-family:‘Plus Jakarta Sans’,sans-serif;
+font-size:12.5px; font-weight:600; color:#4a5568; transition:all .18s; line-height:1.3;
+}
+.lnav-btn:hover { background:rgba(14,164,114,.08); color:#0a7a55 }
+.lnav-btn.active { background:#0ea472; color:#fff }
+.lnav-btn.blue:hover { background:rgba(59,91,219,.08); color:#3b5bdb }
+.lnav-btn.blue.active { background:#3b5bdb }
+.lnav-n {
+flex-shrink:0; width:21px; height:21px; border-radius:6px;
+background:rgba(14,164,114,.12); color:#0ea472;
+display:flex; align-items:center; justify-content:center;
+font-family:‘JetBrains Mono’,monospace; font-size:10px; font-weight:700;
+}
+.lnav-btn.blue .lnav-n { background:rgba(59,91,219,.12); color:#3b5bdb }
+.lnav-btn.active .lnav-n, .lnav-btn.blue.active .lnav-n { background:rgba(255,255,255,.25); color:#fff }
+
+.lcontent { min-width:0 }
+.lcard { display:none; background:#fff; border:1.5px solid #e2e8f8; border-radius:20px;
+padding:36px 38px; box-shadow:0 4px 24px rgba(59,91,219,.07); animation:lfadeIn .3s ease }
+.lcard.active { display:block }
+
+.lcard-tag {
+display:inline-block; font-family:‘JetBrains Mono’,monospace; font-size:10px;
+font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+color:#0ea472; background:rgba(14,164,114,.10);
+padding:4px 11px; border-radius:6px; margin-bottom:14px;
+}
+.lcard-tag.blue { color:#3b5bdb; background:rgba(59,91,219,.10) }
+.lcard h3 { font-family:‘Sora’,sans-serif; font-size:clamp(20px,2.8vw,28px); font-weight:800; margin-bottom:16px; color:#0f1923; line-height:1.25 }
+.lcard p { font-size:14.5px; color:#374151; line-height:1.75; margin-bottom:12px }
+.lcard strong { color:#0a7a55; font-weight:700 }
+.lcard h4 { font-size:13px; font-weight:800; color:#0f1923; margin:20px 0 9px; text-transform:uppercase; letter-spacing:.5px }
+
+.ibox { border-radius:11px; padding:14px 16px; margin:14px 0; font-size:13.5px; line-height:1.7 }
+.ibox-green { background:rgba(14,164,114,.07); border-left:4px solid #0ea472; color:#1f3a2d }
+.ibox-amber { background:rgba(245,158,11,.07); border-left:4px solid #f59e0b; color:#3a2800 }
+.ibox-blue  { background:rgba(59,91,219,.07);  border-left:4px solid #3b5bdb; color:#1a2555 }
+.ibox-red   { background:rgba(224,49,49,.06);  border-left:4px solid #e03131; color:#3a0a0a }
+.ibox strong { font-weight:700 }
+
+.formula-box {
+background:#0d1f1a; color:#06c47f; border-radius:11px;
+padding:14px 18px; font-family:‘JetBrains Mono’,monospace;
+font-size:12.5px; margin:14px 0; line-height:1.8; overflow-x:auto;
+}
+.tag-row { display:flex; gap:7px; flex-wrap:wrap; margin:10px 0 }
+.ltag { display:inline-block; font-family:‘JetBrains Mono’,monospace; font-size:10px; font-weight:700; padding:3px 10px; border-radius:5px; letter-spacing:.5px }
+.ltag-green { background:rgba(14,164,114,.12); color:#0a7a55 }
+.ltag-blue  { background:rgba(59,91,219,.12);  color:#3b5bdb }
+.ltag-amber { background:rgba(245,158,11,.12); color:#92400e }
+.ltag-red   { background:rgba(224,49,49,.10);  color:#b91c1c }
+
+.buchung-box {
+background:#f0fdf8; border:1.5px solid #c6e8d9; border-radius:10px;
+padding:12px 16px; font-family:‘JetBrains Mono’,monospace;
+font-size:12px; color:#0d1f1a; margin:8px 0; line-height:1.7;
+}
+.buchung-box .ac { color:#0ea472; font-weight:700 }
+
+.merksatz-box {
+background:linear-gradient(135deg,rgba(14,164,114,.08),rgba(6,196,127,.04));
+border:1.5px solid #c6e8d9; border-radius:13px; padding:16px 18px; margin:16px 0;
+}
+.merksatz-label { font-family:‘JetBrains Mono’,monospace; font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#0ea472; margin-bottom:7px }
+.merksatz-box p { font-size:14px; font-weight:700; color:#0d1f1a; margin:0; line-height:1.5 }
+
+.tkonto-wrap { display:flex; gap:14px; margin:14px 0; flex-wrap:wrap }
+.tkonto { flex:1; min-width:200px; border:1.5px solid #e2e8f8; border-radius:11px; overflow:hidden }
+.tkonto-head { background:#0ea472; color:#fff; font-weight:800; font-size:12px; padding:9px 12px; text-align:center }
+.tkonto-head.blue { background:#3b5bdb }
+.tkonto-body { display:grid; grid-template-columns:1fr 1fr }
+.tkonto-cell { padding:9px 12px; font-size:12px; font-weight:600; line-height:1.4; border:1px solid #e2e8f8 }
+.tc-debe { color:#0a7a55; background:rgba(14,164,114,.05) }
+.tc-haber { color:#e03131; background:rgba(224,49,49,.05) }
+
+.lcard-nav { display:flex; justify-content:space-between; align-items:center; margin-top:28px; padding-top:20px; border-top:1.5px solid #e2e8f8 }
+.lcard-nav span { font-family:‘JetBrains Mono’,monospace; font-size:11px; color:#94a3b8 }
+
+/* Mobile learn */
+@media (max-width:768px) {
+.learn-layout { grid-template-columns:1fr; gap:14px; padding:0 12px 48px }
+.lnav { position:static; display:flex; flex-wrap:wrap; gap:5px; padding:8px }
+.lnav-title { display:none }
+.lnav-btn { width:auto; flex:0 0 auto; font-size:11px; padding:6px 10px }
+.lnav-n { display:none }
+.lcard { padding:20px 16px }
+.lcard h3 { font-size:20px }
+.lcard p { font-size:13.5px }
+.tkonto-wrap { flex-direction:column }
+.lcard-nav { flex-direction:column; gap:10px; text-align:center }
+.lcard-nav .btn { width:100%; justify-content:center; font-size:13px; padding:10px 18px }
+.formula-box { font-size:11px }
+.aprender-hero { padding:36px 14px 18px }
+.learn-course-tabs { flex-direction:column; align-items:stretch }
+.lctab { text-align:center }
+}
+@media (max-width:420px) {
+.lnav-btn { font-size:10px; padding:5px 8px }
+.lcard { padding:16px 12px }
+}
+
+</style>
 </head>
 <body>
 
 <!-- LANGUAGE SWITCHER -->
 
+<nav style="position:sticky;top:0;z-index:90;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1.5px solid rgba(14,164,114,.15);padding:0 16px;display:flex;align-items:center;justify-content:center;gap:4px;height:52px">
+  <button onclick="showPage('home')" id="nav-home" style="padding:7px 14px;border-radius:8px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;background:#0ea472;color:#fff;transition:all .18s">🏠 Inicio</button>
+  <button onclick="showPage('learn-page')" id="nav-learn" style="padding:7px 14px;border-radius:8px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;background:transparent;color:#4a5568;transition:all .18s">📖 Aprender</button>
+  <button onclick="showPage('quiz')" id="nav-quiz" style="padding:7px 14px;border-radius:8px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;background:transparent;color:#4a5568;transition:all .18s">🧠 Quiz</button>
+  <button onclick="showPage('results')" id="nav-dl" style="padding:7px 14px;border-radius:8px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;background:transparent;color:#4a5568;transition:all .18s;display:none">📥 Resultados</button>
+  <button onclick="toggleDL()" id="nav-plantillas" style="padding:7px 14px;border-radius:8px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;background:transparent;color:#4a5568;transition:all .18s">📥 Plantillas</button>
+</nav>
 <div class="lang-bar">
   <button class="lang-btn active" onclick="setLang('es')">🇪🇸 ES</button>
   <button class="lang-btn" onclick="setLang('de')">🇩🇪 DE</button>
 </div>
 
 <!-- HOME -->
+
+<!-- ══════════════ LEARN PAGE ══════════════ -->
+
+<div id="learn-page" class="page" style="display:none">
+  <div class="aprender-hero">
+    <div class="badge" style="margin-bottom:14px">📖 Área de Aprendizaje</div>
+    <h2>Todo lo que necesitas saber</h2>
+    <p>Conceptos clave explicados de forma clara y compacta — con ejemplos, asientos y reglas mnemotécnicas.</p>
+    <div class="learn-course-tabs">
+      <button class="lctab lctab-basica active" onclick="switchLearnTab('basica')">📘 Contabilidad Básica</button>
+      <button class="lctab lctab-sepe" onclick="switchLearnTab('sepe')">🏛️ Curso SEPE</button>
+    </div>
+  </div>
+
+  <!-- PANEL BÁSICA -->
+
+  <div class="lpanel active" id="lp-basica">
+    <div class="learn-layout">
+      <div class="lnav" id="lnav-basica">
+        <div class="lnav-title">Temas</div>
+        <button class="lnav-btn active" onclick="showLearnCard('basica',0)"><span class="lnav-n">1</span>Conceptos básicos</button>
+        <button class="lnav-btn" onclick="showLearnCard('basica',1)"><span class="lnav-n">2</span>Patrimonio y cuentas</button>
+        <button class="lnav-btn" onclick="showLearnCard('basica',2)"><span class="lnav-n">3</span>Plan General Contable</button>
+        <button class="lnav-btn" onclick="showLearnCard('basica',3)"><span class="lnav-n">4</span>Libros contables</button>
+        <button class="lnav-btn" onclick="showLearnCard('basica',4)"><span class="lnav-n">5</span>IVA y facturación</button>
+        <button class="lnav-btn" onclick="showLearnCard('basica',5)"><span class="lnav-n">6</span>Balance y resultados</button>
+        <button class="lnav-btn" onclick="showLearnCard('basica',6)"><span class="lnav-n">7</span>Cierre contable</button>
+      </div>
+      <div class="lcontent" id="lc-basica">
+
+```
+    <div class="lcard active" id="lb-0">
+      <span class="lcard-tag">TEMA 01</span>
+      <h3>Conceptos Básicos de Contabilidad</h3>
+      <p>La <strong>contabilidad</strong> es el sistema de información que registra, clasifica y analiza todos los hechos económicos de una empresa para facilitar la toma de decisiones.</p>
+      <h4>¿Quién debe llevar contabilidad?</h4>
+      <div class="ibox ibox-green"><strong>Art. 25 CCom:</strong> Todo empresario está obligado a llevar una contabilidad ordenada, adecuada a su actividad.<br><strong>Autónomos (Estimación Directa):</strong> Libros de ingresos/gastos, bienes de inversión y provisiones.<br><strong>Sociedades (SL, SA):</strong> Contabilidad completa según el PGC.</div>
+      <h4>Principios contables fundamentales (PGC)</h4>
+      <div class="tag-row">
+        <span class="ltag ltag-green">Empresa en funcionamiento</span><span class="ltag ltag-green">Devengo</span>
+        <span class="ltag ltag-green">Uniformidad</span><span class="ltag ltag-amber">Prudencia</span>
+        <span class="ltag ltag-blue">No compensación</span><span class="ltag ltag-blue">Importancia relativa</span>
+      </div>
+      <h4>Principio de devengo</h4>
+      <p>Los ingresos y gastos se imputan al período en que se <strong>generan económicamente</strong>, independientemente del momento de cobro o pago. Es el principio más importante de la contabilidad española.</p>
+      <div class="merksatz-box"><div class="merksatz-label">💡 Regla de oro</div><p>«Sin factura no hay gasto deducible.» — Todos los hechos contables deben estar documentados y registrados en tiempo.</p></div>
+      <h4>Plazos de conservación</h4>
+      <div class="ibox ibox-amber"><strong>6 años (art. 30 CCom):</strong> Libros contables, correspondencia y documentación justificativa.<br><strong>4 años (art. 66 LGT):</strong> Plazo de prescripción tributaria — el mínimo fiscal.<br><strong>Recomendación práctica:</strong> Conservar todo 6 años como mínimo.</div>
+      <div class="lcard-nav"><span>1 / 7</span><button class="btn btn-gold" onclick="showLearnCard('basica',1)" style="font-size:13px;padding:10px 20px">Siguiente →</button></div>
+    </div>
+
+    <div class="lcard" id="lb-1">
+      <span class="lcard-tag">TEMA 02</span>
+      <h3>Patrimonio, Cuentas y Hechos Contables</h3>
+      <p>El <strong>patrimonio</strong> es el conjunto de bienes, derechos y obligaciones que pertenecen a una empresa. La ecuación fundamental de la contabilidad es la base de todo.</p>
+      <div class="formula-box">ACTIVO = PASIVO + PATRIMONIO NETO<br>Patrimonio Neto = Activo − Pasivo</div>
+      <h4>El método de partida doble</h4>
+      <div class="tkonto-wrap">
+        <div class="tkonto"><div class="tkonto-head">CUENTA DE ACTIVO</div><div class="tkonto-body"><div class="tkonto-cell tc-debe">DEBE<br>+ Aumentos<br>+ Saldo inicial</div><div class="tkonto-cell tc-haber">HABER<br>− Disminuciones<br>+ Saldo final</div></div></div>
+        <div class="tkonto"><div class="tkonto-head blue">CUENTA DE PASIVO / NETO</div><div class="tkonto-body"><div class="tkonto-cell" style="color:#e03131;background:rgba(224,49,49,.05)">DEBE<br>− Disminuciones<br>+ Saldo final</div><div class="tkonto-cell" style="color:#3b5bdb;background:rgba(59,91,219,.05)">HABER<br>+ Aumentos<br>+ Saldo inicial</div></div></div>
+      </div>
+      <h4>Asientos contables — Ejemplos</h4>
+      <div class="buchung-box">Compra mercancía a crédito 1.210 € (IVA 21%):<br><span class="ac">Compras 1.000 €</span> + <span class="ac">IVA soportado 210 €</span> a <span class="ac">Proveedores 1.210 €</span></div>
+      <div class="buchung-box">Cobro de cliente por transferencia:<br><span class="ac">Banco c/c</span> a <span class="ac">Clientes (431)</span></div>
+      <div class="buchung-box">Pago de nómina 2.500 € netos:<br><span class="ac">Sueldos y salarios (640)</span> a <span class="ac">Banco (572)</span> + <span class="ac">Organismos SS acreedores (476)</span> + <span class="ac">H.P. retenciones (475)</span></div>
+      <div class="merksatz-box"><div class="merksatz-label">💡 Regla mnemotécnica</div><p>Activo aumenta → DEBE · Activo disminuye → HABER<br>Pasivo/Neto aumenta → HABER · Pasivo/Neto disminuye → DEBE<br>Gastos siempre → DEBE · Ingresos siempre → HABER</p></div>
+      <div class="lcard-nav"><button class="btn btn-ghost" onclick="showLearnCard('basica',0)" style="font-size:13px;padding:9px 16px">← Anterior</button><span>2 / 7</span><button class="btn btn-gold" onclick="showLearnCard('basica',2)" style="font-size:13px;padding:10px 20px">Siguiente →</button></div>
+    </div>
+
+    <div class="lcard" id="lb-2">
+      <span class="lcard-tag">TEMA 03</span>
+      <h3>Plan General Contable (PGC 2007)</h3>
+      <p>El <strong>PGC</strong> es la norma contable española obligatoria para todas las empresas. Establece los principios, normas de valoración, cuentas anuales y el cuadro de cuentas.</p>
+      <h4>Estructura del PGC — 5 partes</h4>
+      <div class="ibox ibox-green"><strong>1ª</strong> Marco Conceptual (principios, elementos, criterios de valoración)<br><strong>2ª</strong> Normas de Registro y Valoración (NRV 1ª a 23ª)<br><strong>3ª</strong> Cuentas Anuales (Balance, PyG, ECPN, EFE, Memoria)<br><strong>4ª</strong> Cuadro de Cuentas (grupos 1 al 9)<br><strong>5ª</strong> Definiciones y Relaciones Contables</div>
+      <h4>Los 9 grupos del Cuadro de Cuentas</h4>
+      <div class="ibox ibox-blue"><strong>Grupo 1</strong> — Financiación básica (Capital 100, Reservas 11x, Deudas LP 17x)<br><strong>Grupo 2</strong> — Activo no corriente (Inmovilizado material 21x, Amort. acum. 28x)<br><strong>Grupo 3</strong> — Existencias (Mercaderías 300, Mat. primas 310)<br><strong>Grupo 4</strong> — Acreedores y deudores (Clientes 430, Proveedores 400, H.P. 47x)<br><strong>Grupo 5</strong> — Cuentas financieras (Banco 572, Caja 570)<br><strong>Grupo 6</strong> — Compras y gastos (Compras 600, Sueldos 640, Amort. 681)<br><strong>Grupo 7</strong> — Ventas e ingresos (Ventas 700, Ingresos div. 76x)<br><strong>Grupo 8/9</strong> — Gastos/Ingresos imputados al Patrimonio Neto</div>
+      <h4>Cuentas clave del Grupo 4 (IVA)</h4>
+      <div class="buchung-box"><span class="ac">472</span> — H.P. IVA soportado (activo, deducible)<br><span class="ac">477</span> — H.P. IVA repercutido (pasivo, a ingresar)<br><span class="ac">4700</span> — H.P. deudora por IVA (Hacienda nos debe)<br><span class="ac">4750</span> — H.P. acreedora por IVA (debemos a Hacienda)</div>
+      <div class="lcard-nav"><button class="btn btn-ghost" onclick="showLearnCard('basica',1)" style="font-size:13px;padding:9px 16px">← Anterior</button><span>3 / 7</span><button class="btn btn-gold" onclick="showLearnCard('basica',3)" style="font-size:13px;padding:10px 20px">Siguiente →</button></div>
+    </div>
+
+    <div class="lcard" id="lb-3">
+      <span class="lcard-tag">TEMA 04</span>
+      <h3>Registro de Operaciones y Libros Contables</h3>
+      <p>Las <strong>empresas obligadas</strong> deben llevar el Libro Diario y el Libro de Inventarios y Cuentas Anuales. Los libros deben legalizarse en el Registro Mercantil.</p>
+      <h4>Libros obligatorios (art. 25-28 CCom)</h4>
+      <div class="ibox ibox-green"><strong>Libro Diario:</strong> Registro cronológico de todos los asientos contables<br><strong>Libro de Inventarios y Cuentas Anuales:</strong> Balance inicial, balances de comprobación y cuentas anuales<br><strong>Libro Mayor:</strong> No obligatorio por ley, imprescindible en la práctica — recoge los movimientos por cuenta<br><strong>Legalización:</strong> Telemáticamente en el RM en los 4 meses siguientes al cierre</div>
+      <h4>El proceso contable</h4>
+      <div class="ibox ibox-blue"><strong>1.</strong> Hecho económico → <strong>2.</strong> Justificante/Factura → <strong>3.</strong> Asiento en Libro Diario → <strong>4.</strong> Traspaso al Libro Mayor → <strong>5.</strong> Balance de comprobación → <strong>6.</strong> Ajustes y reclasificaciones → <strong>7.</strong> Cuentas anuales</div>
+      <h4>Libros para autónomos en Estimación Directa</h4>
+      <div class="ibox ibox-amber"><strong>Libro de ingresos:</strong> Todas las facturas emitidas<br><strong>Libro de gastos:</strong> Todas las facturas recibidas y gastos deducibles<br><strong>Libro de bienes de inversión:</strong> Activos amortizables<br><strong>Libro de provisiones y suplidos:</strong> Cobros y pagos por cuenta de terceros</div>
+      <div class="merksatz-box"><div class="merksatz-label">💡 Clave</div><p>El Libro Diario es la memoria cronológica. El Libro Mayor es el índice por temas. Sin ambos no hay contabilidad completa.</p></div>
+      <div class="lcard-nav"><button class="btn btn-ghost" onclick="showLearnCard('basica',2)" style="font-size:13px;padding:9px 16px">← Anterior</button><span>4 / 7</span><button class="btn btn-gold" onclick="showLearnCard('basica',4)" style="font-size:13px;padding:10px 20px">Siguiente →</button></div>
+    </div>
+
+    <div class="lcard" id="lb-4">
+      <span class="lcard-tag">TEMA 05</span>
+      <h3>IVA, Facturación y Documentación Económica</h3>
+      <p>El <strong>IVA (Impuesto sobre el Valor Añadido)</strong> es un impuesto indirecto que grava el consumo. El empresario actúa como recaudador del Estado, cobrándolo a sus clientes y descontando el pagado a sus proveedores.</p>
+      <h4>Tipos impositivos de IVA en España</h4>
+      <div class="tag-row"><span class="ltag ltag-green">21% — Tipo general</span><span class="ltag ltag-amber">10% — Tipo reducido (alimentación, hostelería, transporte)</span><span class="ltag ltag-red">4% — Tipo superreducido (pan, leche, medicamentos, libros)</span><span class="ltag ltag-blue">0% — Exento (sanidad, educación, seguros, financiero)</span></div>
+      <h4>Liquidación del IVA</h4>
+      <div class="formula-box">IVA repercutido (cobrado a clientes)<br>− IVA soportado (pagado a proveedores)<br>══════════════════════════<br>= CUOTA DIFERENCIAL<br>  (+) A ingresar en Hacienda<br>  (−) A compensar o devolver</div>
+      <h4>Modelo 303 — Plazos</h4>
+      <div class="ibox ibox-amber"><strong>Trimestral:</strong> 20 de abril / 20 de julio / 20 de octubre / 30 de enero<br><strong>Mensual (Grandes Empresas + REDEME):</strong> Día 30 del mes siguiente<br><strong>Presentación:</strong> Sede Electrónica de la AEAT (certificado digital u otro sistema)</div>
+      <h4>Menciones obligatorias en factura (RD 1619/2012)</h4>
+      <div class="ibox ibox-blue">Número correlativo · Fecha de expedición · Nombre, razón social y NIF de emisor y destinatario · Descripción de la operación · Base imponible · Tipo impositivo · Cuota tributaria · Importe total</div>
+      <div class="merksatz-box"><div class="merksatz-label">💡 Regla</div><p>Sin factura completa no hay derecho a deducción del IVA soportado (art. 97 LIVA). Una factura defectuosa puede suponer perder la deducción en una inspección.</p></div>
+      <div class="lcard-nav"><button class="btn btn-ghost" onclick="showLearnCard('basica',3)" style="font-size:13px;padding:9px 16px">← Anterior</button><span>5 / 7</span><button class="btn btn-gold" onclick="showLearnCard('basica',5)" style="font-size:13px;padding:10px 20px">Siguiente →</button></div>
+    </div>
+
+    <div class="lcard" id="lb-5">
+      <span class="lcard-tag">TEMA 06</span>
+      <h3>Balance de Situación y Cuenta de Resultados</h3>
+      <p>Las <strong>cuentas anuales</strong> son el resultado final del proceso contable. Muestran la imagen fiel del patrimonio, la situación financiera y los resultados de la empresa.</p>
+      <h4>Balance de Situación — Estructura</h4>
+      <div class="tkonto-wrap">
+        <div class="tkonto"><div class="tkonto-head">ACTIVO</div><div class="tkonto-body" style="grid-template-columns:1fr"><div class="tkonto-cell tc-debe">A) Activo No Corriente<br>· Inmovilizado intangible<br>· Inmovilizado material<br>· Inversiones financieras LP</div><div class="tkonto-cell tc-debe">B) Activo Corriente<br>· Existencias<br>· Deudores (clientes, H.P.)<br>· Efectivo (caja, banco)</div></div></div>
+        <div class="tkonto"><div class="tkonto-head blue">PASIVO + PATRIMONIO NETO</div><div class="tkonto-body" style="grid-template-columns:1fr"><div class="tkonto-cell" style="color:#3b5bdb;background:rgba(59,91,219,.04)">A) Patrimonio Neto<br>· Capital social<br>· Reservas<br>· Resultado del ejercicio</div><div class="tkonto-cell" style="color:#e03131;background:rgba(224,49,49,.04)">B) Pasivo No Corriente<br>· Deudas LP<br>C) Pasivo Corriente<br>· Proveedores, acreedores CP</div></div></div>
+      </div>
+      <h4>Cuenta de Pérdidas y Ganancias</h4>
+      <div class="formula-box">Importe neto de la cifra de negocios<br>± Variación de existencias<br>− Aprovisionamientos<br>− Gastos de personal<br>− Amortizaciones<br>− Otros gastos de explotación<br>══════════════════════<br>= RESULTADO DE EXPLOTACIÓN (EBIT)<br>± Resultado financiero<br>− Impuesto sobre beneficios<br>══════════════════════<br>= RESULTADO DEL EJERCICIO</div>
+      <div class="ibox ibox-green"><strong>Resultado positivo → Beneficio</strong> (aumenta el Patrimonio Neto)<br><strong>Resultado negativo → Pérdida</strong> (disminuye el Patrimonio Neto)</div>
+      <div class="lcard-nav"><button class="btn btn-ghost" onclick="showLearnCard('basica',4)" style="font-size:13px;padding:9px 16px">← Anterior</button><span>6 / 7</span><button class="btn btn-gold" onclick="showLearnCard('basica',6)" style="font-size:13px;padding:10px 20px">Siguiente →</button></div>
+    </div>
+
+    <div class="lcard" id="lb-6">
+      <span class="lcard-tag">TEMA 07</span>
+      <h3>Cierre Contable y Control Financiero</h3>
+      <p>El <strong>cierre contable</strong> es el proceso que se realiza al final del ejercicio (normalmente el 31 de diciembre) para calcular el resultado y preparar las cuentas anuales.</p>
+      <h4>Proceso de cierre — Pasos</h4>
+      <div class="ibox ibox-blue"><strong>1. Ajustes previos:</strong> Periodificaciones (ARAP/PRPA), correcciones valorativas, dotación de amortizaciones y provisiones<br><strong>2. Asiento de regularización:</strong> Cierre de cuentas de Grupos 6 y 7 contra la cuenta 129 «Resultado del ejercicio»<br><strong>3. Asiento de cierre:</strong> Saldo a cero de todas las cuentas de Balance (Grupos 1-5)<br><strong>4. Cuentas anuales:</strong> Balance, PyG, Estado de Cambios en PN, EFE y Memoria<br><strong>5. Reapertura:</strong> Primer asiento del nuevo ejercicio con los saldos del cierre</div>
+      <h4>Cuentas anuales — Obligaciones de depósito</h4>
+      <div class="ibox ibox-amber"><strong>Aprobación:</strong> Junta General en los 6 meses siguientes al cierre (antes del 30 de junio)<br><strong>Depósito:</strong> Registro Mercantil en el mes siguiente a la aprobación (antes del 31 de julio)<br><strong>Auditoría:</strong> Obligatoria a partir de determinados umbrales (art. 263 LSC)</div>
+      <h4>Ratios clave de control financiero</h4>
+      <div class="formula-box">Liquidez       = Activo Corriente / Pasivo Corriente  [óptimo &gt; 1,5]
+```
+
+Endeudamiento  = Pasivo Total / Patrimonio Neto     [óptimo < 1]
+ROE            = Resultado / Fondos Propios × 100
+Fondo Maniobra = Activo Corriente − Pasivo Corriente</div>
+<div class="merksatz-box"><div class="merksatz-label">💡 Regla de oro</div><p>Un Fondo de Maniobra negativo es una señal de alarma: la empresa financia activo fijo con deuda a corto plazo. Riesgo de insolvencia técnica.</p></div>
+<div class="lcard-nav"><button class="btn btn-ghost" onclick="showLearnCard('basica',5)" style="font-size:13px;padding:9px 16px">← Anterior</button><span>7 / 7</span><button class="btn btn-gold" onclick="switchLearnTab('sepe')" style="font-size:13px;padding:10px 20px;background:#3b5bdb">Curso SEPE →</button></div>
+</div>
+
+```
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- PANEL SEPE -->
+
+  <div class="lpanel" id="lp-sepe">
+    <div class="learn-layout">
+      <div class="lnav" id="lnav-sepe">
+        <div class="lnav-title">Módulos</div>
+        <button class="lnav-btn blue active" onclick="showLearnCard('sepe',0)"><span class="lnav-n">1</span>Intro contabilidad</button>
+        <button class="lnav-btn blue" onclick="showLearnCard('sepe',1)"><span class="lnav-n">2</span>Análisis financiero</button>
+        <button class="lnav-btn blue" onclick="showLearnCard('sepe',2)"><span class="lnav-n">3</span>Control de costes</button>
+        <button class="lnav-btn blue" onclick="showLearnCard('sepe',3)"><span class="lnav-n">4</span>Presupuestos</button>
+        <button class="lnav-btn blue" onclick="showLearnCard('sepe',4)"><span class="lnav-n">5</span>Obligaciones fiscales</button>
+        <button class="lnav-btn blue" onclick="showLearnCard('sepe',5)"><span class="lnav-n">6</span>Gestión fiscal avanzada</button>
+        <button class="lnav-btn blue" onclick="showLearnCard('sepe',6)"><span class="lnav-n">7</span>Plan General Contable</button>
+      </div>
+      <div class="lcontent" id="lc-sepe">
+
+```
+    <div class="lcard active" id="ls-0">
+      <span class="lcard-tag blue">MÓDULO 01</span>
+      <h3>Introducción a la Contabilidad Empresarial</h3>
+      <p>La contabilidad es el lenguaje de los negocios. Permite registrar, clasificar, resumir e interpretar la actividad económica de la empresa para facilitar decisiones.</p>
+      <h4>Ecuación fundamental</h4>
+      <div class="formula-box">ACTIVO = PASIVO + PATRIMONIO NETO<br><br>Activo: lo que TIENE la empresa (bienes + derechos)<br>Pasivo: lo que DEBE a terceros (obligaciones)<br>PN: lo que es SUYO (aportaciones + resultados acumulados)</div>
+      <h4>Cuentas de activo vs. pasivo — Funcionamiento</h4>
+      <div class="tkonto-wrap">
+        <div class="tkonto"><div class="tkonto-head">ACTIVO — Ej: Banco (572)</div><div class="tkonto-body"><div class="tkonto-cell tc-debe">DEBE<br>Aumentos (+)<br>Saldo inicial</div><div class="tkonto-cell tc-haber">HABER<br>Disminuciones (−)</div></div></div>
+        <div class="tkonto"><div class="tkonto-head blue">PASIVO/NETO — Ej: Proveedores (400)</div><div class="tkonto-body"><div class="tkonto-cell" style="color:#e03131;background:rgba(224,49,49,.05)">DEBE<br>Disminuciones (−)</div><div class="tkonto-cell" style="color:#3b5bdb;background:rgba(59,91,219,.05)">HABER<br>Aumentos (+)<br>Saldo inicial</div></div></div>
+      </div>
+      <h4>Cuentas de ingresos y gastos</h4>
+      <div class="ibox ibox-green"><strong>Gastos (Grupo 6):</strong> Aumentan por el DEBE → Reducen el resultado → Reducen el PN<br><strong>Ingresos (Grupo 7):</strong> Aumentan por el HABER → Incrementan el resultado → Aumentan el PN<br>Al cierre: se regulariza todo contra la cuenta 129 «Resultado del ejercicio»</div>
+      <div class="lcard-nav"><span>1 / 7</span><button class="btn btn-blue" onclick="showLearnCard('sepe',1)" style="font-size:13px;padding:10px 20px">Siguiente →</button></div>
+    </div>
+
+    <div class="lcard" id="ls-1">
+      <span class="lcard-tag blue">MÓDULO 02</span>
+      <h3>Análisis de Estados Financieros</h3>
+      <p>El análisis financiero permite evaluar la <strong>salud económica</strong> de la empresa mediante ratios que miden liquidez, solvencia, rentabilidad y eficiencia.</p>
+      <h4>Ratios de liquidez</h4>
+      <div class="formula-box">Liquidez corriente = AC / PC          [óptimo: 1,5–2]
+```
+
+Test ácido        = (AC − Existencias) / PC  [óptimo: ~1]
+Liquidez inmediata = Tesorería / PC          [óptimo: 0,2]</div>
+<h4>Ratios de rentabilidad</h4>
+<div class="formula-box">ROA = BAIT / Activo Total × 100    (Rentabilidad económica)
+ROE = Bº Neto / Fondos Propios × 100  (Rentabilidad financiera)
+Margen EBIT = BAIT / Ventas × 100
+EBITDA = BAIT + Amortizaciones</div>
+<h4>Fondo de Maniobra y efecto apalancamiento</h4>
+<div class="ibox ibox-blue"><strong>FM = AC − PC</strong> · Si FM > 0: equilibrio financiero · Si FM < 0: riesgo de insolvencia<br><strong>Apalancamiento positivo:</strong> ROA > coste de la deuda → más deuda = más ROE<br><strong>Apalancamiento negativo:</strong> ROA < coste de la deuda → la deuda destruye valor</div>
+<div class="lcard-nav"><button class="btn btn-ghost" onclick="showLearnCard('sepe',0)" style="font-size:13px;padding:9px 16px">← Anterior</button><span>2 / 7</span><button class="btn btn-blue" onclick="showLearnCard('sepe',2)" style="font-size:13px;padding:10px 20px">Siguiente →</button></div>
+</div>
+
+```
+    <div class="lcard" id="ls-2">
+      <span class="lcard-tag blue">MÓDULO 03</span>
+      <h3>Control de Costes</h3>
+      <p>La <strong>contabilidad analítica</strong> no es obligatoria por ley, pero es imprescindible para tomar decisiones de pricing, producción e inversión.</p>
+      <h4>Clasificación de costes</h4>
+      <div class="tag-row"><span class="ltag ltag-green">Fijos (no varían con producción)</span><span class="ltag ltag-amber">Variables (proporcionales a producción)</span><span class="ltag ltag-blue">Directos (asignables al producto)</span><span class="ltag ltag-red">Indirectos (requieren reparto)</span></div>
+      <h4>Punto muerto o umbral de rentabilidad</h4>
+      <div class="formula-box">Margen de contribución unitario = PVP − CVu
+```
+
+Punto muerto (unidades) = Costes Fijos / MCu
+Punto muerto (€)        = Costes Fijos / (MCu / PVP)
+
+Ejemplo: CF=50.000€, PVP=100€, CVu=60€
+→ MC = 40€ → PM = 50.000/40 = 1.250 unidades</div>
+<h4>Decisiones operativas</h4>
+<div class="ibox ibox-green"><strong>Make or Buy:</strong> Si CVu de fabricación < precio de compra → fabricar · Si no → comprar<br><strong>Pedido especial:</strong> Aceptar si precio > CVu (mientras haya capacidad ociosa)<br><strong>Eliminar producto:</strong> Solo si el MC que aporta es negativo (no cubrir ni costes variables)</div>
+<div class="lcard-nav"><button class="btn btn-ghost" onclick="showLearnCard('sepe',1)" style="font-size:13px;padding:9px 16px">← Anterior</button><span>3 / 7</span><button class="btn btn-blue" onclick="showLearnCard('sepe',3)" style="font-size:13px;padding:10px 20px">Siguiente →</button></div>
+</div>
+
+```
+    <div class="lcard" id="ls-3">
+      <span class="lcard-tag blue">MÓDULO 04</span>
+      <h3>Control de Presupuestos</h3>
+      <p>El <strong>sistema presupuestario</strong> es la herramienta de planificación y control más utilizada en las empresas. Permite anticipar resultados y detectar desviaciones.</p>
+      <h4>Proceso presupuestario</h4>
+      <div class="ibox ibox-blue"><strong>1.</strong> Presupuesto de ventas (punto de partida)<br><strong>2.</strong> Presupuesto de producción<br><strong>3.</strong> Presupuesto de compras y aprovisionamientos<br><strong>4.</strong> Presupuesto de gastos generales<br><strong>5.</strong> Presupuesto de inversiones<br><strong>6.</strong> Presupuesto de tesorería (cash budget)<br><strong>7.</strong> Cuenta de resultados y balance previsionales</div>
+      <h4>Análisis de desviaciones</h4>
+      <div class="formula-box">Desviación total en ventas = (Precio real − Precio prev.) × Q real
+                      + (Q real − Q prev.) × Precio prev.
+                      = Desviación de precio + Desviación de volumen
+```
+
+Desviación favorable: Real MEJOR que previsto
+Desviación desfavorable: Real PEOR que previsto</div>
+<h4>Herramientas modernas</h4>
+<div class="tag-row"><span class="ltag ltag-blue">Rolling Forecast (12 meses rodantes)</span><span class="ltag ltag-green">Presupuesto base cero (ZBB)</span><span class="ltag ltag-amber">Balanced Scorecard (BSC)</span><span class="ltag ltag-red">Beyond Budgeting</span></div>
+<div class="lcard-nav"><button class="btn btn-ghost" onclick="showLearnCard('sepe',2)" style="font-size:13px;padding:9px 16px">← Anterior</button><span>4 / 7</span><button class="btn btn-blue" onclick="showLearnCard('sepe',4)" style="font-size:13px;padding:10px 20px">Siguiente →</button></div>
+</div>
+
+```
+    <div class="lcard" id="ls-4">
+      <span class="lcard-tag blue">MÓDULO 05</span>
+      <h3>Obligaciones Fiscales</h3>
+      <p>Las <strong>obligaciones fiscales</strong> son el conjunto de deberes tributarios que tiene la empresa o autónomo frente a la Agencia Tributaria (AEAT) y otras administraciones.</p>
+      <h4>Principales impuestos empresariales</h4>
+      <div class="ibox ibox-green"><strong>IVA (LIVA):</strong> Modelo 303 (trimestral/mensual) + Modelo 390 (resumen anual)<br><strong>IRPF — Autónomos:</strong> Modelo 130 (pagos fraccionados trimestrales) + Modelo 100 (anual)<br><strong>Impuesto de Sociedades:</strong> Modelo 200 (anual) + Modelo 202 (pagos fraccionados)<br><strong>Retenciones IRPF:</strong> Modelo 111 (trimestral) + Modelo 190 (resumen anual)<br><strong>Operaciones con terceros:</strong> Modelo 347 (&gt;3.005,06 € anuales)</div>
+      <h4>Calendario fiscal básico</h4>
+      <div class="ibox ibox-amber"><strong>Enero:</strong> M.390 (resumen IVA), M.190 (resumen retenciones)<br><strong>Abril/Julio/Oct/Ene:</strong> M.303 + M.111 + M.130 (trimestral)<br><strong>Julio:</strong> M.200 (IS, si cierre 31/12)<br><strong>Abril/Oct/Dic:</strong> M.202 (pagos fraccionados IS)</div>
+      <div class="merksatz-box"><div class="merksatz-label">💡 Regla de la prorrata</div><p>Si realizas operaciones con y sin derecho a deducción de IVA, solo puedes deducir el IVA soportado en la proporción que representan las operaciones con derecho a deducción sobre el total.</p></div>
+      <div class="lcard-nav"><button class="btn btn-ghost" onclick="showLearnCard('sepe',3)" style="font-size:13px;padding:9px 16px">← Anterior</button><span>5 / 7</span><button class="btn btn-blue" onclick="showLearnCard('sepe',5)" style="font-size:13px;padding:10px 20px">Siguiente →</button></div>
+    </div>
+
+    <div class="lcard" id="ls-5">
+      <span class="lcard-tag blue">MÓDULO 06</span>
+      <h3>Gestión Fiscal Avanzada</h3>
+      <p>Profundizamos en el <strong>IRPF para autónomos y profesionales</strong>, el Impuesto de Sociedades y las normas especiales de tributación.</p>
+      <h4>IRPF — Métodos de estimación</h4>
+      <div class="ibox ibox-blue"><strong>Estimación Directa Normal:</strong> Contabilidad completa según PGC adaptado. Para facturación &gt;600.000 €/año o renuncia a simplificada.<br><strong>Estimación Directa Simplificada:</strong> Libros registro simplificados. Amortizaciones según tablas simplificadas. Provisiones: 5% de gastos máximo.<br><strong>Estimación Objetiva (Módulos):</strong> Rendimiento calculado por signos, índices y módulos fijados por la AEAT. Solo para actividades incluidas en la Orden Ministerial.</div>
+      <h4>Impuesto de Sociedades — Aspectos clave</h4>
+      <div class="formula-box">Resultado contable (PyG)
+```
+
+± Ajustes extracontables (diferencias permanentes y temporarias)
+══════════════════════════════
+= Base imponible previa
+− Bases imponibles negativas de ejercicios anteriores
+══════════════════════════════
+= Base imponible
+× Tipo de gravamen (25% general / 23% PYMES con <1M€ cifra neg.)
+══════════════════════════════
+= Cuota íntegra
+− Deducciones y bonificaciones
+══════════════════════════════
+= Cuota líquida
+− Retenciones y pagos a cuenta (M.202)
+══════════════════════════════
+= Cuota diferencial (a ingresar o devolver)</div>
+<div class="ibox ibox-amber"><strong>PYMES:</strong> Tipo reducido 23% si CN < 1.000.000 € (ejercicios iniciados desde 2023)<br><strong>Empresas de nueva creación:</strong> 15% en los 2 primeros ejercicios con base positiva<br><strong>Libertad de amortización:</strong> Para inversiones en elementos nuevos bajo determinadas condiciones (ERD)</div>
+<div class="lcard-nav"><button class="btn btn-ghost" onclick="showLearnCard('sepe',4)" style="font-size:13px;padding:9px 16px">← Anterior</button><span>6 / 7</span><button class="btn btn-blue" onclick="showLearnCard('sepe',6)" style="font-size:13px;padding:10px 20px">Siguiente →</button></div>
+</div>
+
+```
+    <div class="lcard" id="ls-6">
+      <span class="lcard-tag blue">MÓDULO 07</span>
+      <h3>Plan General Contable — Cuadro de Cuentas</h3>
+      <p>El <strong>cuadro de cuentas del PGC</strong> es la herramienta fundamental para saber qué cuenta usar en cada asiento. Aprende su estructura y las cuentas más importantes.</p>
+      <h4>Los 9 grupos — Resumen completo</h4>
+      <div class="ibox ibox-green">
+        <strong>G.1 Financiación básica:</strong> 100 Capital · 112 Reserva legal · 129 Resultado ejercicio · 170 Deudas LP<br>
+        <strong>G.2 Activo no corriente:</strong> 210 Terrenos · 211 Construcciones · 213 Maquinaria · 217 Equipos informáticos · 280/281 Amortización acumulada<br>
+        <strong>G.3 Existencias:</strong> 300 Mercaderías · 310 Materias primas · 350 Productos terminados<br>
+        <strong>G.4 Acreedores y deudores:</strong> 400 Proveedores · 430 Clientes · 431 Efectos comerciales · 472 IVA soportado · 475 H.P. retenciones · 477 IVA repercutido<br>
+        <strong>G.5 Cuentas financieras:</strong> 520 Deudas CP · 570 Caja · 572 Banco c/c<br>
+        <strong>G.6 Compras y gastos:</strong> 600 Compras mercaderías · 621 Arrendamientos · 640 Sueldos · 642 SS empresa · 681 Amortización inmovilizado material<br>
+        <strong>G.7 Ventas e ingresos:</strong> 700 Ventas mercaderías · 705 Prestaciones de servicios · 740 Subvenciones · 769 Otros ingresos financieros
+      </div>
+      <h4>Asientos tipo frecuentes</h4>
+      <div class="buchung-box">Venta a crédito 2.420 € (IVA 21%): <span class="ac">431 Clientes 2.420</span> a <span class="ac">700 Ventas 2.000</span> + <span class="ac">477 IVA rep. 420</span></div>
+      <div class="buchung-box">Amortización anual maquinaria 3.000 €: <span class="ac">681 Amort. inm. mat. 3.000</span> a <span class="ac">281 Amort. acum. mat. 3.000</span></div>
+      <div class="buchung-box">Asiento de regularización (cierre): <span class="ac">700 Ventas</span> + <span class="ac">705 Serv.</span> a <span class="ac">129 Resultado</span> · <span class="ac">129 Resultado</span> a <span class="ac">600 Compras</span> + <span class="ac">640 Sueldos</span>...</div>
+      <div class="merksatz-box"><div class="merksatz-label">💡 Clave del PGC</div><p>Memoriza los grupos 4, 5, 6 y 7 — son los que usarás en el 90% de los asientos del día a día. El grupo 2 para inversiones y el grupo 1 para el cierre anual.</p></div>
+      <div class="lcard-nav"><button class="btn btn-ghost" onclick="showLearnCard('sepe',5)" style="font-size:13px;padding:9px 16px">← Anterior</button><span>7 / 7</span><button class="btn btn-gold" onclick="showPage('quiz')" style="font-size:13px;padding:10px 20px">Ir al Quiz →</button></div>
+    </div>
+
+  </div>
+</div>
+```
+
+  </div>
+</div>
 
 <div id="home" class="page active" style="display:flex;flex-direction:column;min-height:100vh">
   <div class="home-inner">
@@ -567,7 +1075,7 @@ color: #fff; box-shadow: 0 4px 16px var(–b-glow);
       <svg width="160" height="160" viewBox="0 0 160 160">
         <circle cx="80" cy="80" r="67" fill="none" stroke="#e2e8f8" stroke-width="10"/>
         <circle cx="80" cy="80" r="67" fill="none" stroke="url(#rg)" stroke-width="10" stroke-linecap="round" stroke-dasharray="421" id="scoreCircle" stroke-dashoffset="421"/>
-        <defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f5c842" id="rg1"/><stop offset="100%" stop-color="#e07b3a" id="rg2"/></linearGradient></defs>
+        <defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#0ea472" id="rg1"/><stop offset="100%" stop-color="#06c47f" id="rg2"/></linearGradient></defs>
       </svg>
       <div class="score-center"><div class="score-num" id="scoreNum">0%</div><div class="score-label" id="ui-result-label">RESULTADO</div></div>
     </div>
@@ -1560,7 +2068,7 @@ function showResults() {
   document.getElementById('correctCount').textContent = correct;
   document.getElementById('wrongCount').textContent = total - correct;
   document.getElementById('totalCount').textContent = total;
-  document.getElementById('totalCount').style.color = isSepe ? 'var(--blue)' : 'var(--gold)';
+  document.getElementById('totalCount').style.color = isSepe ? '#3b5bdb' : '#0ea472';
   document.getElementById('restartBtn').className = isSepe ? 'btn btn-blue' : 'btn btn-gold';
   document.getElementById('restartBtn').textContent = t.restart;
   document.getElementById('ui-change-topics').textContent = t.changeTopics;
@@ -1568,8 +2076,8 @@ function showResults() {
   document.getElementById('ui-correct-lbl').textContent = t.correct;
   document.getElementById('ui-wrong-lbl').textContent = t.wrong;
   document.getElementById('ui-total-lbl').textContent = t.total;
-  document.getElementById('rg1').setAttribute('stop-color', isSepe ? '#5b8dee' : '#f5c842');
-  document.getElementById('rg2').setAttribute('stop-color', isSepe ? '#3ecf8e' : '#e07b3a');
+  document.getElementById('rg1').setAttribute('stop-color', isSepe ? '#3b5bdb' : '#0ea472');
+  document.getElementById('rg2').setAttribute('stop-color', isSepe ? '#748ffc' : '#06c47f');
 
   const offset = 421 - (421 * pct / 100);
   document.getElementById('scoreCircle').style.strokeDashoffset = 421;
@@ -1617,6 +2125,183 @@ function showPage(id) {
   el.classList.add('active');
   el.style.display = 'flex';
   window.scrollTo(0, 0);
+}
+
+// ═══════════════════════════════════════
+// SPANISH EXCEL BASE64
+// ═══════════════════════════════════════
+
+
+
+const _origDlFile = dlFile;
+
+
+// ═══════════════════════════════════════
+// LEARN PAGE LOGIC
+// ═══════════════════════════════════════
+function switchLearnTab(course) {
+  document.querySelectorAll('.lctab').forEach(el => el.classList.remove('active'));
+  document.querySelector('.lctab-' + course).classList.add('active');
+  document.querySelectorAll('.lpanel').forEach(el => el.classList.remove('active'));
+  document.getElementById('lp-' + course).classList.add('active');
+  showLearnCard(course, 0);
+}
+
+function showLearnCard(course, idx) {
+  const navId = 'lnav-' + course;
+  document.querySelectorAll('#' + navId + ' .lnav-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', i === idx);
+  });
+  const contentId = 'lc-' + course;
+  document.querySelectorAll('#' + contentId + ' .lcard').forEach((card, i) => {
+    card.classList.toggle('active', i === idx);
+  });
+  const card = document.querySelector('#' + contentId + ' .lcard.active');
+  if (card) card.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+// Update showPage to highlight nav
+const _origShowPage = showPage;
+function showPage(id) {
+  _origShowPage(id);
+  const map = { 'home':'nav-home', 'learn-page':'nav-learn', 'quiz':'nav-quiz', 'results':'nav-dl' };
+  document.querySelectorAll('nav button[id^=nav]').forEach(b => {
+    b.style.background = 'transparent'; b.style.color = '#4a5568';
+  });
+  const active = map[id];
+  if (active) {
+    const btn = document.getElementById(active);
+    if (btn) { btn.style.background = '#0ea472'; btn.style.color = '#fff'; }
+  }
+}
+
+</script>
+
+<!-- ═══ SPANISH DOWNLOAD SECTION ═══ -->
+
+<div id="dl-es-section" style="display:none;background:#f0f7f4">
+  <div style="max-width:860px;margin:0 auto;padding:48px 20px 24px;text-align:center">
+    <div style="display:inline-block;background:linear-gradient(135deg,#0ea472,#06c47f);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:999px;margin-bottom:20px">📥 Plantillas Gratuitas</div>
+    <h2 style="font-family:'Sora',sans-serif;font-size:clamp(28px,5vw,46px);font-weight:800;margin-bottom:10px;color:#0f1923">Plantillas Excel Gratis</h2>
+    <p style="color:#4a5568;font-size:15px;max-width:540px;margin:0 auto 28px;line-height:1.65">Documentos legales y contables para España y Canarias — listos para usar, 100% gratuitos.</p>
+  </div>
+
+  <div style="max-width:900px;margin:0 auto 32px;padding:0 20px">
+    <div style="display:flex;align-items:flex-start;gap:14px;background:#fff;border:2px solid #fbbf24;border-radius:16px;padding:18px 22px;box-shadow:0 2px 12px rgba(251,191,36,.12)">
+      <div style="font-size:26px;flex-shrink:0">⚖️</div>
+      <div>
+        <h4 style="font-size:14px;font-weight:700;margin-bottom:4px;color:#92400e">Aviso Legal Importante</h4>
+        <p style="font-size:12.5px;color:#4a5568;line-height:1.6;margin:0">Estas plantillas son herramientas de apoyo y <strong>no sustituyen el asesoramiento de un asesor fiscal o gestor profesional</strong>. Para situaciones individuales, consulta siempre con un profesional autorizado. Contenido conforme a LGT, LIVA, LIRPF y LIS vigentes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;padding:0 20px 60px;max-width:1060px;margin:0 auto">
+
+```
+<div style="background:#fff;border:2px solid #d4edd7;border-radius:18px;overflow:hidden;box-shadow:0 2px 14px rgba(14,164,114,.07);display:flex;flex-direction:column">
+  <div style="padding:22px 22px 16px;background:linear-gradient(135deg,rgba(14,164,114,.07),rgba(6,196,127,.03));border-bottom:1.5px solid #d4edd7">
+    <div style="font-size:36px;margin-bottom:10px">📒</div>
+    <div style="font-size:16px;font-weight:800;margin-bottom:4px;color:#0d1f1a">Libro de Caja</div>
+    <div style="font-size:11px;font-weight:700;color:#0ea472;font-family:'JetBrains Mono',monospace;letter-spacing:.5px">Art. 29 LGT · Art. 66 LGT</div>
+  </div>
+  <div style="padding:18px 22px;flex:1;display:flex;flex-direction:column">
+    <p style="font-size:13.5px;color:#374151;line-height:1.65;margin-bottom:14px;flex:1">Registro diario de cobros y pagos en efectivo con saldo automático y cierre mensual.</p>
+    <div style="font-size:11.5px;color:#4a5568;background:rgba(14,164,114,.05);border:1px solid #d4edd7;border-radius:8px;padding:9px 12px;line-height:1.6;margin-bottom:14px"><strong style="color:#0a7a55">Base legal:</strong> Art. 29 LGT (obligación de registro). Conservar 4 años (art. 66 LGT). Sin libro de caja Hacienda puede estimar ingresos.</div>
+    <button onclick="dlFile('CAJA','Libro_de_Caja.xlsx')" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;border:none;background:#0ea472;color:#fff;box-shadow:0 4px 14px rgba(14,164,114,.28);font-family:'Plus Jakarta Sans',sans-serif;width:100%;transition:all .2s">⬇️ Descargar Libro de Caja</button>
+  </div>
+</div>
+<div style="background:#fff;border:2px solid #d4edd7;border-radius:18px;overflow:hidden;box-shadow:0 2px 14px rgba(14,164,114,.07);display:flex;flex-direction:column">
+  <div style="padding:22px 22px 16px;background:linear-gradient(135deg,rgba(14,164,114,.07),rgba(6,196,127,.03));border-bottom:1.5px solid #d4edd7">
+    <div style="font-size:36px;margin-bottom:10px">🧾</div>
+    <div style="font-size:16px;font-weight:800;margin-bottom:4px;color:#0d1f1a">Modelo de Factura</div>
+    <div style="font-size:11px;font-weight:700;color:#0ea472;font-family:'JetBrains Mono',monospace;letter-spacing:.5px">RD 1619/2012 · Art. 97 LIVA</div>
+  </div>
+  <div style="padding:18px 22px;flex:1;display:flex;flex-direction:column">
+    <p style="font-size:13.5px;color:#374151;line-height:1.65;margin-bottom:14px;flex:1">Factura completa con todas las menciones obligatorias, cálculo automático de IVA 21%/7% y campo de retención IRPF.</p>
+    <div style="font-size:11.5px;color:#4a5568;background:rgba(14,164,114,.05);border:1px solid #d4edd7;border-radius:8px;padding:9px 12px;line-height:1.6;margin-bottom:14px"><strong style="color:#0a7a55">Base legal:</strong> Art. 6 RD 1619/2012 (menciones obligatorias). Sin factura completa: sin deducción de IVA (art. 97 LIVA).</div>
+    <button onclick="dlFile('FACTURA','Modelo_Factura.xlsx')" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;border:none;background:#0ea472;color:#fff;box-shadow:0 4px 14px rgba(14,164,114,.28);font-family:'Plus Jakarta Sans',sans-serif;width:100%;transition:all .2s">⬇️ Descargar Modelo Factura</button>
+  </div>
+</div>
+<div style="background:#fff;border:2px solid #d4edd7;border-radius:18px;overflow:hidden;box-shadow:0 2px 14px rgba(14,164,114,.07);display:flex;flex-direction:column">
+  <div style="padding:22px 22px 16px;background:linear-gradient(135deg,rgba(14,164,114,.07),rgba(6,196,127,.03));border-bottom:1.5px solid #d4edd7">
+    <div style="font-size:36px;margin-bottom:10px">🏭</div>
+    <div style="font-size:16px;font-weight:800;margin-bottom:4px;color:#0d1f1a">Registro de Bienes e Inversiones</div>
+    <div style="font-size:11px;font-weight:700;color:#0ea472;font-family:'JetBrains Mono',monospace;letter-spacing:.5px">Art. 12 LIS · Art. 30 RIRPF</div>
+  </div>
+  <div style="padding:18px 22px;flex:1;display:flex;flex-direction:column">
+    <p style="font-size:13.5px;color:#374151;line-height:1.65;margin-bottom:14px;flex:1">Registro de activos amortizables con cálculo automático de amortización lineal y valor neto contable.</p>
+    <div style="font-size:11.5px;color:#4a5568;background:rgba(14,164,114,.05);border:1px solid #d4edd7;border-radius:8px;padding:9px 12px;line-height:1.6;margin-bottom:14px"><strong style="color:#0a7a55">Base legal:</strong> Art. 12 LIS y art. 30 RIRPF. Usar tablas AEAT. PEP hasta 300€ amortizable libremente.</div>
+    <button onclick="dlFile('BIENES','Registro_de_Bienes.xlsx')" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;border:none;background:#0ea472;color:#fff;box-shadow:0 4px 14px rgba(14,164,114,.28);font-family:'Plus Jakarta Sans',sans-serif;width:100%;transition:all .2s">⬇️ Descargar Registro de Bienes</button>
+  </div>
+</div>
+<div style="background:#fff;border:2px solid #d4edd7;border-radius:18px;overflow:hidden;box-shadow:0 2px 14px rgba(14,164,114,.07);display:flex;flex-direction:column">
+  <div style="padding:22px 22px 16px;background:linear-gradient(135deg,rgba(14,164,114,.07),rgba(6,196,127,.03));border-bottom:1.5px solid #d4edd7">
+    <div style="font-size:36px;margin-bottom:10px">📋</div>
+    <div style="font-size:16px;font-weight:800;margin-bottom:4px;color:#0d1f1a">Libro Registro Facturas Emitidas</div>
+    <div style="font-size:11px;font-weight:700;color:#0ea472;font-family:'JetBrains Mono',monospace;letter-spacing:.5px">Art. 63 RIVA · RD 1619/2012</div>
+  </div>
+  <div style="padding:18px 22px;flex:1;display:flex;flex-direction:column">
+    <p style="font-size:13.5px;color:#374151;line-height:1.65;margin-bottom:14px;flex:1">Registro obligatorio de facturas emitidas con cuotas de IVA automáticas y totales por período.</p>
+    <div style="font-size:11.5px;color:#4a5568;background:rgba(14,164,114,.05);border:1px solid #d4edd7;border-radius:8px;padding:9px 12px;line-height:1.6;margin-bottom:14px"><strong style="color:#0a7a55">Base legal:</strong> Art. 63 RIVA: obligatorio para sujetos pasivos de IVA. Base para el Modelo 303 trimestral.</div>
+    <button onclick="dlFile('VENTAS','Libro_Facturas_Emitidas.xlsx')" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;border:none;background:#0ea472;color:#fff;box-shadow:0 4px 14px rgba(14,164,114,.28);font-family:'Plus Jakarta Sans',sans-serif;width:100%;transition:all .2s">⬇️ Descargar Libro Facturas</button>
+  </div>
+</div>
+<div style="background:#fff;border:2px solid #d4edd7;border-radius:18px;overflow:hidden;box-shadow:0 2px 14px rgba(14,164,114,.07);display:flex;flex-direction:column">
+  <div style="padding:22px 22px 16px;background:linear-gradient(135deg,rgba(14,164,114,.07),rgba(6,196,127,.03));border-bottom:1.5px solid #d4edd7">
+    <div style="font-size:36px;margin-bottom:10px">📊</div>
+    <div style="font-size:16px;font-weight:800;margin-bottom:4px;color:#0d1f1a">Registro de Ingresos y Gastos</div>
+    <div style="font-size:11px;font-weight:700;color:#0ea472;font-family:'JetBrains Mono',monospace;letter-spacing:.5px">Art. 68 RIRPF · Modelo 100</div>
+  </div>
+  <div style="padding:18px 22px;flex:1;display:flex;flex-direction:column">
+    <p style="font-size:13.5px;color:#374151;line-height:1.65;margin-bottom:14px;flex:1">Registro anual completo para autónomos en estimación directa con rendimiento neto automático.</p>
+    <div style="font-size:11.5px;color:#4a5568;background:rgba(14,164,114,.05);border:1px solid #d4edd7;border-radius:8px;padding:9px 12px;line-height:1.6;margin-bottom:14px"><strong style="color:#0a7a55">Base legal:</strong> Art. 68 RIRPF: obligatorio en estimación directa. Base para el Modelo 100 (IRPF anual).</div>
+    <button onclick="dlFile('GASTOS','Registro_Ingresos_Gastos.xlsx')" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;border:none;background:#0ea472;color:#fff;box-shadow:0 4px 14px rgba(14,164,114,.28);font-family:'Plus Jakarta Sans',sans-serif;width:100%;transition:all .2s">⬇️ Descargar Registro I/G</button>
+  </div>
+</div>
+<div style="background:#fff;border:2px solid #d4edd7;border-radius:18px;overflow:hidden;box-shadow:0 2px 14px rgba(14,164,114,.07);display:flex;flex-direction:column">
+  <div style="padding:22px 22px 16px;background:linear-gradient(135deg,rgba(14,164,114,.07),rgba(6,196,127,.03));border-bottom:1.5px solid #d4edd7">
+    <div style="font-size:36px;margin-bottom:10px">🧮</div>
+    <div style="font-size:16px;font-weight:800;margin-bottom:4px;color:#0d1f1a">Hoja Apoyo IVA — Modelo 303</div>
+    <div style="font-size:11px;font-weight:700;color:#0ea472;font-family:'JetBrains Mono',monospace;letter-spacing:.5px">Arts. 167-168 LIVA · AEAT</div>
+  </div>
+  <div style="padding:18px 22px;flex:1;display:flex;flex-direction:column">
+    <p style="font-size:13.5px;color:#374151;line-height:1.65;margin-bottom:14px;flex:1">Hoja de cálculo para preparar la liquidación trimestral del IVA con todas las casillas del Modelo 303.</p>
+    <div style="font-size:11.5px;color:#4a5568;background:rgba(14,164,114,.05);border:1px solid #d4edd7;border-radius:8px;padding:9px 12px;line-height:1.6;margin-bottom:14px"><strong style="color:#0a7a55">Base legal:</strong> ⚠️ NO sustituye al Modelo 303 oficial. Presentación obligatoria en Sede Electrónica AEAT.</div>
+    <button onclick="dlFile('IVA','Ayuda_IVA_Modelo303.xlsx')" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;border:none;background:#0ea472;color:#fff;box-shadow:0 4px 14px rgba(14,164,114,.28);font-family:'Plus Jakarta Sans',sans-serif;width:100%;transition:all .2s">⬇️ Descargar Apoyo IVA</button>
+  </div>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+
+<footer style="background:#0d1f1a;color:#8aada4;padding:28px 24px;text-align:center;font-size:12.5px;line-height:1.8;font-family:'Plus Jakarta Sans',sans-serif">
+  <strong style="color:#0ea472">© 2025 Sara Manoochehri</strong> — Contabilidad Quiz &amp; Plantillas<br>
+  ⚠️ Todos los contenidos son de carácter educativo y no sustituyen el asesoramiento fiscal o contable profesional.<br>
+  Normativa de referencia: PGC 2007 · LGT · LIVA · LIRPF · LIS · RD 1619/2012
+</footer>
+
+<!-- ═══ SPANISH BASE64 TEMPLATES ═══ -->
+
+<script>
+
+
+
+</script>
+
+<script>function toggleDL(){const sec=document.getElementById("dl-es-section");const btn=document.getElementById("nav-plantillas");const v=sec.style.display!=="none";sec.style.display=v?"none":"block";btn.style.background=v?"transparent":"#0ea472";btn.style.color=v?"#4a5568":"#fff";if(!v)sec.scrollIntoView({behavior:"smooth"})}</script>
+
+<script>
+function dlFile(key, filename) {
+  var a = document.createElement('a');
+  a.href = filename;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
 </script>
 
